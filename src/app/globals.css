@@ -115,12 +115,11 @@
   --breakpoint-3xl: 120rem;
 
   /* Heights based on Tailwind's spacing scale: --spacing: 0.25rem /* 4px */
-  --height-header: calc(var(--spacing) * 40) /* [40] 10rem = 160px */;
+  --height-header: calc(var(--spacing) * 20) /* [40] 10rem = 160px */;
   --height-footer: calc(var(--spacing) * 150); /* [150] 37.5rem = 600px */
   --height-content: calc(100svh - var(--height-header));
 
-  /* Widths */
-  --width-column: calc(100vw / 14);
+  --padding-header: calc(var(--height-header) + calc(var(--spacing) * 8));
 }
 
 @layer base {
@@ -230,6 +229,10 @@
   }
 
   /* TEXT STYLES */
+  .text-navlink {
+    @apply text-navlink-small md:text-navlink-medium lg:text-navlink-large uppercase;
+  }
+
   .text-body {
     @apply text-body-medium md:text-body-large;
   }
@@ -240,31 +243,6 @@
 
   .text-label {
     @apply text-label-small md:text-label-medium lg:text-label-large uppercase leading-5;
-  }
-
-  /* NAVLINK STYLES */
-  .text-link-lg {
-    @apply text-navlink-small md:text-navlink-medium lg:text-navlink-large uppercase leading-6;
-  }
-
-  .navlink:nth-child(2),
-  .navlink:nth-child(3) {
-    @apply text-right self-end block w-full;
-  }
-
-  /* ANIMATIONS */
-  .form-input {
-    @apply px-3 py-2 border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-
-  /* ANIMATIONS */
-  @keyframes glitchStrip {
-    0% {
-      mask-position: -150% 0;
-    }
-    100% {
-      mask-position: 150% 0;
-    }
   }
 
   /* UTILITIES */

@@ -3,13 +3,13 @@ import { Suspense } from "react";
 import { AuthButton } from "@/services/supabase/components/auth-button";
 
 export default function Navbar() {
+  console.log("navbar");
   return (
-    <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-      <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
-        <div className="flex gap-5 items-center font-semibold">
-          <Link href={"/"}>London.Smalls</Link>
-        </div>
-
+    <nav className="fixed left-0 top-0 right-0 flex justify-center border-b border-b-foreground/10 h-header z-50 bg-background">
+      <div className="w-full max-w-desktop flex justify-between items-center p-3 px-5 text-body-medium">
+        <Link href={"/"} className="uppercase font-bold">
+          Smalls.London
+        </Link>
         <Suspense>
           <AuthButton />
         </Suspense>
