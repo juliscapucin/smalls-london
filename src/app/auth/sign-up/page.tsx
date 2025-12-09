@@ -1,4 +1,4 @@
-import { SignUpForm } from "@/services/supabase/components/sign-up-form";
+import { SignUpForm } from "@/services/supabase/components";
 
 export default function Page() {
   return (

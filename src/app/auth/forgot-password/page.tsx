@@ -1,4 +1,4 @@
-import { ForgotPasswordForm } from "@/services/supabase/components/forgot-password-form";
+import { ForgotPasswordForm } from "@/services/supabase/components";
 
 export default function Page() {
   return (
