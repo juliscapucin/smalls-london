@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
 import { createClient } from "../client";
-import { User } from "@supabase/supabase-js";
+import { User, Session } from "@supabase/supabase-js";
 
 export function useCurrentUser() {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+    });
+
     supabase.auth
-      .getUser()
+      .getSession()
       .then(({ data }) => {
-        setUser(data.user);
+        setSession(data.session);
       })
       .finally(() => {
         setIsLoading(false);
@@ -28,5 +33,5 @@ export function useCurrentUser() {
       authListener.subscription.unsubscribe();
     };
   }, []);
-  return { user, isLoading };
+  return { user, session, isLoading };
 }
