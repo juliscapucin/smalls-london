@@ -5,8 +5,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "gen-schemas": "supabase gen types typescript --project-id lcunmtbuckkgahwrvyzt --schema public > ./src/services/supabase/schemas/supabase.ts",
-    "gen-types": "supabase gen types typescript --project-id lcunmtbuckkgahwrvyzt > ./src/services/supabase/types/database.ts"
+    "gen-schemas": "supabase gen types typescript --project-id drjmezmfocczxovyuhhd --schema public > ./src/services/supabase/schemas/supabase.ts",
+    "gen-types": "supabase gen types typescript --project-id drjmezmfocczxovyuhhd > ./src/services/supabase/types/database.ts"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.3",

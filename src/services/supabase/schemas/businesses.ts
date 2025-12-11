@@ -1,9 +1,11 @@
 import { z } from "zod";
 
 export const businessSchema = z.object({
-  id: z.string().uuid().optional(),
-  business_name: z.string().min(1, "Business name is required"),
+  name: z.string().min(1, "Business name is required"),
   description: z.string().min(1, "Business description is required"),
+  owner_id: z.uuid(),
+  created_at: z.string().optional(),
+  updated_at: z.string().optional(),
 });
 
 export type Business = z.infer<typeof businessSchema>;

@@ -1,6 +1,10 @@
-import { createClient } from "@/services/supabase/client";
+import { createClient } from "@/services/supabase/server";
 
 export async function getCurrentUser() {
   const supabase = await createClient();
-  return (await supabase.auth.getUser()).data.user;
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return await user;
 }

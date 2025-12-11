@@ -1,11 +1,11 @@
 import {
-  Business,
   businessSchema,
+  InsertBusiness,
 } from "@/services/supabase/schemas/businesses";
 import { getCurrentUser } from "@/services/supabase/lib/getCurrentUser";
-import { createClient } from "@/services/supabase/client";
+import { createClient } from "@/services/supabase/server";
 
-export async function createBusiness(unsafeData: Business) {
+export async function createBusiness(unsafeData: InsertBusiness) {
   const { success, data } = businessSchema.safeParse(unsafeData);
   if (!success) {
     return { error: true, message: "Invalid business data" };
@@ -18,10 +18,18 @@ export async function createBusiness(unsafeData: Business) {
 
   const supabase = await createClient();
 
-  supabase.from("Businesses").insert({
-    ...data,
-    owner_id: user.id,
-  });
+  const { data: business, error } = await supabase
+    .from("businesses")
+    .insert({
+      ...data,
+      owner_id: user.id,
+    })
+    .select()
+    .single();
 
-  return data;
+  if (error) {
+    return { error: true, message: error.message };
+  }
+
+  return { error: false, data: business };
 }

@@ -1,38 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
+import { redirect } from "next/navigation";
 
 import { PageWrapper } from "@/components/layout";
 import { createClient } from "@/services/supabase/client";
 import { Tables } from "@/services/supabase/types/database";
 
+import { useCurrentUser } from "@/services/supabase/hooks/useCurrentUser";
+
 export default function Page() {
-  const [businesses, setBusinesses] = useState<Tables<"Businesses">[]>([]);
+  const [businesses, setBusinesses] = useState<Tables<"businesses">[]>([]);
   const [newBusiness, setNewBusiness] = useState({
-    business_name: "",
+    name: "",
     description: "",
+    owner_id: "",
   });
 
+  const currentUser = useCurrentUser();
   const supabase = createClient();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { error } = await supabase.from("Businesses").insert(newBusiness);
+    const { error } = await supabase.from("businesses").insert(newBusiness);
 
     if (error) {
       console.error("Error adding business:", error.message);
     }
-    setNewBusiness({ business_name: "", description: "" });
+    setNewBusiness({ name: "", description: "", owner_id: "" });
   };
 
-  const fetchBusinesses = async () => {
-    const { data, error } = await supabase.from("Businesses").select("*");
+  const fetchBusinesses = useEffectEvent(async () => {
+    const { data, error } = await supabase.from("businesses").select("*");
     if (error) {
       console.error("Error fetching businesses:", error.message);
       return;
     }
     return data;
-  };
+  });
 
   useEffect(() => {
     fetchBusinesses().then((data) => {
@@ -41,6 +46,10 @@ export default function Page() {
       }
     });
   }, []);
+
+  if (!currentUser.user) {
+    redirect("/auth/login");
+  }
 
   return (
     <PageWrapper>
@@ -95,8 +104,8 @@ export default function Page() {
         <h2>Businesses</h2>
         {businesses &&
           businesses.map((business) => (
-            <div key={business.business_name}>
-              <h3>{business.business_name}</h3>
+            <div key={business.name}>
+              <h3>{business.name}</h3>
               <p>{business.description}</p>
             </div>
           ))}
