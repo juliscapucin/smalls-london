@@ -13,8 +13,6 @@ export default async function Page() {
 
   const user = await getUserById(currentUser.id);
 
-  console.log(user);
-
   return (
     <PageWrapper>
       <UserForm user={user} currentUser={currentUser} />

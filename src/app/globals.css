@@ -225,7 +225,7 @@
   }
 
   .heading-title {
-    @apply text-title-small font-normal sm:text-title-medium xl:text-title-large uppercase leading-none text-pretty;
+    @apply text-title-small font-thin sm:text-title-medium xl:text-title-large uppercase leading-none text-pretty;
   }
 
   /* TEXT STYLES */
