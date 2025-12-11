@@ -5,7 +5,8 @@ export const getBusinessesByUserId = async (userId: string) => {
   const { data, error } = await supabase
     .from("businesses")
     .select("*")
-    .eq("owner_id", userId);
+    .eq("owner_id", userId)
+    .order("name", { ascending: true });
 
   if (error) {
     console.error("Error fetching businesses:", error.message);

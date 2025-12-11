@@ -4,6 +4,7 @@ import {
   businessSchema,
   InsertBusiness,
 } from "@/services/supabase/schemas/businesses";
+import { Tables } from "@/services/supabase/types/database";
 import { getCurrentUser } from "@/services/supabase/lib/getCurrentUser";
 import { createClient } from "@/services/supabase/server";
 
@@ -61,7 +62,7 @@ export async function deleteBusiness(businessId: string) {
 
 export async function updateBusiness(
   businessId: string,
-  unsafeData: Partial<InsertBusiness>
+  unsafeData: Partial<Tables<"businesses">>
 ) {
   const { success, data } = businessSchema.partial().safeParse(unsafeData);
   if (!success) {
@@ -86,7 +87,7 @@ export async function updateBusiness(
     .single();
 
   if (error) {
-    return { error: true, message: error.message };
+    return { error: true, errorMessage: error.message };
   }
 
   return { error: false, data: business };
