@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { getBusinessesByUserId } from "../_lib/getBusinessesByUserId";
-import { getCurrentUser } from "@/lib/user";
+import { getCurrentUser } from "@/lib/get-current-user";
 
 import PageWrapper from "@/components/page-wrapper";
 import BusinessForm from "../_components/business-form";

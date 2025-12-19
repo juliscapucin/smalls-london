@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
-import { PageWrapper } from "@/components/layout";
+import PageWrapper from "@/components/page-wrapper";
 import { createClient } from "@/services/supabase/client";
-import { Tables, TablesUpdate } from "@/services/supabase/types/database";
+import { Tables, TablesUpdate } from "@/types/database";
 import { User } from "@supabase/supabase-js";
 
 type UserFormProps = {

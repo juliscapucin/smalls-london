@@ -110,7 +110,8 @@
   --text-label-medium: 14px;
   --text-label-small: 12px;
 
-  --max-width-desktop: 1800px;
+  --max-width-desktop: 1400px;
+  --max-width-modal: 800px;
 
   --breakpoint-3xl: 120rem;
 

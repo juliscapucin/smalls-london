@@ -1,12 +1,12 @@
 "use client";
 
-import { Tables } from "@/services/supabase/types/database";
+import { Business } from "../_types/business";
 import { useEffect, useState } from "react";
 
 type BusinessModalProps = {
-  business: Tables<"businesses"> | null;
+  business: Business | null;
   onClose: () => void;
-  onSave: (id: string, newBusiness: Partial<Tables<"businesses">>) => void;
+  onSave: (id: string, newBusiness: Partial<Business>) => void;
 };
 
 export default function BusinessModal({
@@ -14,12 +14,10 @@ export default function BusinessModal({
   onClose,
   onSave,
 }: BusinessModalProps) {
-  const [newBusiness, setNewBusiness] = useState<Partial<Tables<"businesses">>>(
-    {
-      name: business?.name,
-      description: business?.description,
-    }
-  );
+  const [newBusiness, setNewBusiness] = useState<Partial<Business>>({
+    name: business?.name,
+    description: business?.description,
+  });
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -39,9 +37,13 @@ export default function BusinessModal({
   }
   return (
     <div className="fixed inset-0 bg-background/90">
-      <div className="p-8 w-1/2 mx-auto h-[80vh] mt-[10vh] bg-background">
+      <div className="p-8 w-1/2 max-w-modal mx-auto h-[80vh] mt-[10vh] bg-background">
         <h2 className="heading-headline">Edit Business</h2>
-        <form onSubmit={() => onSave(business.id, newBusiness!)}>
+        <form
+          onSubmit={() => {
+            if (business.id) onSave(business.id, newBusiness!);
+          }}
+        >
           <label className="block mb-2">
             Business Name
             <input
@@ -64,12 +66,10 @@ export default function BusinessModal({
             />
           </label>
           <div className="flex justify-end space-x-4">
-            <button type="button" className="btn-secondary" onClick={onClose}>
+            <button type="button" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="btn-primary">
-              Save Changes
-            </button>
+            <button type="submit">Save</button>
           </div>
         </form>
       </div>
