@@ -28,14 +28,20 @@ A curated, stylish, human directory of small creative businesses in London built
 
 - **Create Businesses** - Add and manage business profiles
 - **Business Listings** - View all registered businesses
-- **User-Specific Businesses** - Filter businesses by owner
-- **Business Details** - Rich business information including descriptions
+- **Category Browsing** - Filter businesses by category
+- **Search** - Search business by name
+- **Business Details** - Business individual page with details and image gallery
 
 ### User Features
 
 - **User Profiles** - Manage user account information
 - **Theme Switching** - Dark/light mode support
 - **Responsive Design** - Mobile-first, fully responsive UI
+
+### Admin Features
+
+- **Add/Edit Businesses** - Manage businesses from admin dashboard
+- **Business Submission** - Approve & publish business submissions
 
 ## Tech Stack
 
@@ -51,7 +57,7 @@ A curated, stylish, human directory of small creative businesses in London built
 
 ### Prerequisites
 
-- Node.js 18+ installed
+- Node.js 22+ installed
 - A Supabase account and project ([create one here](https://database.new))
 
 ### Installation
@@ -107,34 +113,6 @@ A curated, stylish, human directory of small creative businesses in London built
 
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Project Structure
-
-```
-src/
-├── app/                      # Next.js App Router pages
-│   ├── auth/                # Authentication pages and components
-│   │   ├── login/          # Login page
-│   │   ├── sign-up/        # Registration page
-│   │   ├── forgot-password/ # Password recovery
-│   │   └── _components/    # Auth form components
-│   ├── businesses/          # Business management
-│   │   ├── _actions/       # Server actions
-│   │   ├── _components/    # Business components
-│   │   └── _lib/           # Business utilities
-│   ├── user/               # User profile management
-│   │   └── profile/        # User profile page
-│   └── protected/          # Protected/authenticated routes
-├── components/              # Shared React components
-│   └── ui/                 # shadcn/ui components
-├── services/               # External services
-│   └── supabase/          # Supabase client, schemas, types
-│       ├── client.ts      # Browser client
-│       ├── server.ts      # Server client
-│       ├── schemas/       # Zod validation schemas
-│       └── types/         # TypeScript types
-└── lib/                    # Utility functions
-```
-
 ## Development
 
 ### Available Scripts
@@ -146,13 +124,6 @@ npm run start      # Start production server
 npm run lint       # Run ESLint
 npm run gen-types  # Generate TypeScript types from Supabase
 ```
-
-### Key Patterns
-
-- **Server Components**: Default for pages, used for data fetching
-- **Client Components**: Marked with `"use client"`, used for interactivity
-- **Server Actions**: Located in `_actions/` folders for mutations
-- **Supabase SSR**: Cookie-based auth working across the entire Next.js stack
 
 ### Styling
 
@@ -171,14 +142,3 @@ npm run gen-types
 ```
 
 This syncs your local TypeScript types with your Supabase database schema.
-
-## Environment Variables
-
-| Variable                               | Description                          |
-| -------------------------------------- | ------------------------------------ |
-| `NEXT_PUBLIC_SUPABASE_URL`             | Your Supabase project URL            |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Your Supabase publishable (anon) key |
-
----
-
-Built with ❤️ using Next.js and Supabase

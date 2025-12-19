@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { getBusinessesByUserId } from "../_lib/getBusinessesByUserId";
-import { getCurrentUser } from "@/services/supabase/lib/getCurrentUser";
+import { getCurrentUser } from "@/lib/user";
 
 import PageWrapper from "@/components/page-wrapper";
 import BusinessForm from "../_components/business-form";

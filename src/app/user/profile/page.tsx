@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
-import { getCurrentUser } from "@/services/supabase/lib/getCurrentUser";
-import { getUserById } from "@/services/supabase/lib/getUserById";
+import { getCurrentUser, getUserById } from "@/lib/user";
 
 import PageWrapper from "@/components/page-wrapper";
 import UserForm from "../_components/user-form";
