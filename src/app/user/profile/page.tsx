@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-import { getCurrentUser, getUserById } from "@/lib/get-user-by-id";
+import { getUserById } from "@/lib/get-user-by-id";
+import { getCurrentUser } from "@/lib/get-current-user";
 
 import PageWrapper from "@/components/page-wrapper";
 import UserForm from "../_components/user-form";

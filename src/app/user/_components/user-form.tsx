@@ -4,16 +4,15 @@ import { useState } from "react";
 
 import PageWrapper from "@/components/page-wrapper";
 import { createClient } from "@/services/supabase/client";
-import { Tables, TablesUpdate } from "@/types/database";
-import { User } from "@supabase/supabase-js";
+import { UpdateUser } from "../_types/user";
 
 type UserFormProps = {
-  user: Tables<"users"> | null;
-  currentUser: User;
+  user: UpdateUser | null;
+  currentUser: UpdateUser;
 };
 
 export default function UserForm({ user, currentUser }: UserFormProps) {
-  const [newUser, setNewUser] = useState<TablesUpdate<"users">>({
+  const [newUser, setNewUser] = useState<UpdateUser>({
     full_name: user?.full_name || "",
     email: currentUser.email || "",
     phone: user?.phone || null,
@@ -41,7 +40,7 @@ export default function UserForm({ user, currentUser }: UserFormProps) {
 
   return (
     <PageWrapper>
-      <form onSubmit={handleSubmit}>
+      <form className="max-w-prose" onSubmit={handleSubmit}>
         <h1 className="heading-headline mb-6">User Profile</h1>
         <div className="mb-4">
           <label className="block text-body mb-2">
