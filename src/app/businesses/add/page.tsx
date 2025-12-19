@@ -1,10 +1,11 @@
 import { redirect } from "next/navigation";
 
-import { getBusinessesByUserId } from "@/services/supabase/lib";
+import { getBusinessesByUserId } from "../_lib/getBusinessesByUserId";
 import { getCurrentUser } from "@/services/supabase/lib/getCurrentUser";
 
-import { PageWrapper } from "@/components/layout";
-import { BusinessForm, BusinessList } from "@/components/businesses";
+import PageWrapper from "@/components/page-wrapper";
+import BusinessForm from "../_components/business-form";
+import BusinessList from "../_components/business-list";
 
 export default async function Page() {
   const currentUser = await getCurrentUser();

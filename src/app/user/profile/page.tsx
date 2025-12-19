@@ -1,8 +1,9 @@
-import { PageWrapper } from "@/components/layout";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/services/supabase/lib/getCurrentUser";
-import UserForm from "./user-form";
 import { getUserById } from "@/services/supabase/lib/getUserById";
+
+import PageWrapper from "@/components/page-wrapper";
+import UserForm from "../_components/user-form";
 
 export default async function Page() {
   const currentUser = await getCurrentUser();

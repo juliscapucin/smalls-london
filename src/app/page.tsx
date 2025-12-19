@@ -1,6 +1,6 @@
-import { Hero } from "@/components";
-import { PageWrapper } from "@/components/layout";
-import { Navbar } from "@/components";
+import Hero from "@/components/hero";
+import PageWrapper from "@/components/page-wrapper";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
   return (

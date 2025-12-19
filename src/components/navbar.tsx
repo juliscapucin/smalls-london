@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { AuthButton } from "@/services/supabase/components/auth-button";
+import { AuthButton } from "@/components/auth-button";
 
 export default function Navbar() {
   console.log("navbar");

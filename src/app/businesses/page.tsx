@@ -1,6 +1,7 @@
-import BusinessList from "@/components/businesses/business-list";
-import { PageWrapper } from "@/components/layout";
-import { getAllBusinesses } from "@/services/supabase/lib";
+import { getAllBusinesses } from "./_lib/getAllBusinesses";
+
+import BusinessList from "./_components/business-list";
+import PageWrapper from "@/components/page-wrapper";
 
 export default async function Page() {
   const businesses = await getAllBusinesses();
