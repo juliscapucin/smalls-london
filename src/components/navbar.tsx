@@ -5,7 +5,7 @@ import { AuthButton } from "@/components/auth-button";
 export default function Navbar() {
   return (
     <nav className="fixed left-0 top-0 right-0 flex justify-center border-b border-b-foreground/10 h-header z-50 bg-background">
-      <div className="w-full max-w-desktop flex justify-between items-center p-3 px-5 text-body-medium">
+      <div className="w-full max-w-desktop flex justify-between items-center p-3 px-5 text-body-tablet">
         <Link href={"/"} className="uppercase font-bold">
           Smalls.London
         </Link>
@@ -14,6 +14,9 @@ export default function Navbar() {
         </Link>
         <Link href={"/businesses"} className="uppercase font-bold">
           Beauty
+        </Link>
+        <Link href={"/businesses"} className="uppercase font-bold">
+          Search
         </Link>
         <Suspense>
           <AuthButton />

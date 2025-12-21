@@ -49,6 +49,7 @@ A curated, stylish, human directory of small creative businesses in London built
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Database & Auth**: [Supabase](https://supabase.com)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
+- **Theming**: Custom design system inspired by Material 3 typography
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com)
 - **Icons**: [Lucide React](https://lucide.dev)
 - **Schema Validation**: [Zod](https://zod.dev)
