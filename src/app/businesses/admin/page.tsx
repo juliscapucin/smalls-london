@@ -1,6 +1,6 @@
 import { getAllBusinesses } from "@/app/businesses/_lib/getAllBusinesses";
 
-import BusinessList from "@/app/businesses/_components/business-list";
+import BusinessListAdmin from "@/app/businesses/_components/business-list-admin";
 import PageWrapper from "@/components/page-wrapper";
 
 export default async function Page() {
@@ -8,7 +8,7 @@ export default async function Page() {
 
   return (
     <PageWrapper>
-      <BusinessList businesses={businesses} />
+      <BusinessListAdmin businesses={businesses} />
     </PageWrapper>
   );
 }

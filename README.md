@@ -41,7 +41,9 @@ A curated, stylish, human directory of small creative businesses in London built
 ### Admin Features
 
 - **Add/Edit Businesses** - Manage businesses from admin dashboard
+- **Add/Edit Events** - Manage events from admin dashboard
 - **Business Submission** - Approve & publish business submissions
+- **Event Submission** - Approve & publish event submissions
 
 ## Tech Stack
 
@@ -49,10 +51,17 @@ A curated, stylish, human directory of small creative businesses in London built
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Database & Auth**: [Supabase](https://supabase.com)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
-- **Theming**: Custom design system inspired by Material 3 typography
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com)
+- **Theming**: Custom design system inspired by Material 3 typography + shadcn design tokens
+- **UI Components**: Version of [shadcn/ui](https://ui.shadcn.com) + [radix-ui](https://www.radix-ui.com/themes/docs/overview/getting-started)
 - **Icons**: [Lucide React](https://lucide.dev)
 - **Schema Validation**: [Zod](https://zod.dev)
+
+### UI Architecture
+
+- Design tokens defined in CSS variables
+- Radix used for behavior + accessibility
+- shadcn used as a reference & base
+- Custom components wrap Radix primitives
 
 ## Getting Started
 

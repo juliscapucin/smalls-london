@@ -5,7 +5,7 @@ import { getCurrentUser } from "@/lib/get-current-user";
 
 import PageWrapper from "@/components/page-wrapper";
 import BusinessForm from "../_components/business-form";
-import BusinessList from "../_components/business-list";
+import BusinessList from "../_components/business-list-admin";
 
 export default async function Page() {
   const currentUser = await getCurrentUser();
