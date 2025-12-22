@@ -127,7 +127,7 @@
   --tracking-display: -0.02em;
   --tracking-label: 0.04em;
 
-  --max-width-desktop: 1400px;
+  --max-width-desktop: 1280px;
   --max-width-modal: 800px;
 
   /* Heights based on Tailwind's spacing scale: --spacing: 0.25rem /* 4px */
