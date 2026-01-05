@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Geist } from "next/font/google";
 import "@/styles/globals.css";
 
@@ -10,14 +11,29 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "London.Smalls",
+  description:
+    "An opinionated directory of creative small businesses in London.",
 };
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   display: "swap",
   subsets: ["latin"],
+});
+
+const fontPrimary = localFont({
+  variable: "--font-pp-frama",
+  src: [
+    {
+      path: "../../public/fonts/PPFrama-Black.otf",
+      weight: "900",
+    },
+    {
+      path: "../../public/fonts/PPFrama-Regular.otf",
+      weight: "400",
+    },
+  ],
 });
 
 export default function RootLayout({
@@ -31,7 +47,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className="gutter-stable bg-primary text-secondary"
     >
-      <body className={`${geistSans.className} antialiased`}>
+      <body className={`${fontPrimary.className} antialiased font-normal`}>
         <Navbar />
         {children}
       </body>

@@ -51,9 +51,8 @@ A curated, stylish, human directory of small creative businesses in London built
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Database & Auth**: [Supabase](https://supabase.com)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
-- **Theming**: Custom design system inspired by Material 3 typography + Tailwind + shadcn design tokens
+- **Theming**: Custom design system inspired by Material 3 typography + Tailwind
 - **UI Components**: Version of [shadcn/ui](https://ui.shadcn.com) + [radix-ui](https://www.radix-ui.com/themes/docs/overview/getting-started)
-- **Icons**: [Lucide React](https://lucide.dev)
 - **Schema Validation**: [Zod](https://zod.dev)
 
 ### UI Architecture
@@ -137,11 +136,9 @@ npm run gen-types  # Generate TypeScript types from Supabase
 
 ### Styling
 
-This project uses Tailwind CSS 4 with the default shadcn/ui theme. To customize:
+This project uses Tailwind CSS 4. To customize:
 
 - Modify `src/styles/globals.css` for global styles
-- Update `components.json` for shadcn/ui configuration
-- Add new shadcn/ui components: `npx shadcn@latest add <component-name>`
 
 ### Database Schema Management
 

@@ -35,7 +35,7 @@ export default function BusinessForm({ business }: BusinessFormProps) {
         }
       }}
     >
-      <h1 className="heading-headline mb-6">{variant} Business Profile</h1>
+      <h2 className="heading-headline mb-6">{variant} Business Profile</h2>
       <div className="mb-4">
         <Label>
           Full Name

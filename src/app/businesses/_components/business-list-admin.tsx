@@ -5,6 +5,7 @@ import { deleteBusiness } from "@/app/businesses/_actions/business";
 import BusinessModal from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
 import { Button } from "@/components/ui/button";
+import { Heading } from "@/components/ui/heading";
 
 type BusinessListProps = {
   businesses: Business[];
@@ -26,17 +27,18 @@ export default function BusinessListAdmin({ businesses }: BusinessListProps) {
         />
       )}
       <div>
-        <h2 className="mt-20">Businesses</h2>
         {businesses.length === 0 ? (
           <p className="text-foreground">No businesses found.</p>
         ) : (
           businesses.map((business) => (
             <div
-              className="space-y-8 border-t border-secondary py-8"
+              className="space-y-8 border-t border-secondary pt-8 mb-8 first:mt-16"
               key={business.id}
             >
               <div className="max-w-prose space-y-4">
-                <h3 className="heading-title">{business.name}</h3>
+                <Heading tag="h3" variant="title">
+                  {business.name}
+                </Heading>
                 <p>{business.description}</p>
                 <p className="capitalize">Category: {business.category}</p>
               </div>
