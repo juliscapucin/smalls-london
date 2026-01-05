@@ -17,7 +17,7 @@ const headingVariants = cva(
     variants: {
       variant: {
         display:
-          "text-display-mobile md:text-display-tablet lg:text-display-desktop leading-display font-medium",
+          "text-display-mobile md:text-display-tablet lg:text-display-desktop leading-display font-bold",
         headline:
           "text-headline-mobile md:text-headline-tablet lg:text-headline-desktop font-medium leading-headline",
         title:
