@@ -1,6 +1,6 @@
 "use server";
 
-import { Business } from "../_types/business";
+import { revalidatePath } from "next/cache";
 import { addBusinessSchema, updateBusinessSchema } from "../_schemas/business";
 import { Tables } from "@/services/supabase/types/database";
 import { getCurrentUser } from "@/lib/get-current-user";
@@ -32,6 +32,7 @@ export async function addBusiness(unsafeData: Partial<Tables<"businesses">>) {
     return { error: true, message: error.message };
   }
 
+  revalidatePath("/businesses");
   return { error: false, data: business };
 }
 
@@ -43,8 +44,6 @@ export async function deleteBusiness(businessId: string) {
 
   const supabase = await createClient();
 
-  console.log(businessId, user.id);
-
   const { error } = await supabase
     .from("businesses")
     .delete()
@@ -55,6 +54,7 @@ export async function deleteBusiness(businessId: string) {
     return { error: true, errorMessage: error.message };
   }
 
+  revalidatePath("/businesses");
   return { error: false };
 }
 
@@ -90,7 +90,7 @@ export async function updateBusiness(
     return { error: true, errorMessage: error.message };
   }
 
-  console.log(data);
+  revalidatePath("/businesses");
 
   return { error: false, data: business };
 }

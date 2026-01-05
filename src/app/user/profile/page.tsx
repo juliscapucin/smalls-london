@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { getUserById } from "@/lib/get-user-by-id";
 import { getCurrentUser } from "@/lib/get-current-user";
 
 import PageWrapper from "@/components/page-wrapper";

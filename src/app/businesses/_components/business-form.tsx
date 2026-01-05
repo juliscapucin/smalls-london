@@ -27,11 +27,18 @@ export default function BusinessForm({ business }: BusinessFormProps) {
 
   return (
     <form
-      onSubmit={() => {
+      onSubmit={(e) => {
+        e.preventDefault();
         if (business?.id) {
           updateBusiness(business.id, newBusiness);
         } else {
           addBusiness(newBusiness);
+          setNewBusiness({
+            name: "",
+            description: "",
+            category: "",
+            email: "",
+          });
         }
       }}
     >

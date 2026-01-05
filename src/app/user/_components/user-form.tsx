@@ -36,6 +36,7 @@ export default function UserForm({ currentUser }: UserFormProps) {
     if (error) {
       console.error("Error updating user:", error.message);
     } else {
+      // TODO: Implement toaster notification
       alert("Profile updated successfully!");
     }
   };
@@ -44,12 +45,12 @@ export default function UserForm({ currentUser }: UserFormProps) {
     <form className="max-w-prose" onSubmit={handleSubmit}>
       <h1 className="heading-headline mb-6">User Profile</h1>
       <div className="mb-4">
-        <Label className="block text-body mb-2">
+        <Label className="block mb-2">
           Full Name
           <Input
             type="text"
             name="full-name"
-            className="form-input w-full"
+            className="w-full"
             required
             value={newUser.full_name || ""}
             onChange={(e) => {
@@ -62,7 +63,7 @@ export default function UserForm({ currentUser }: UserFormProps) {
           <Input
             type="email"
             name="email"
-            className="form-input w-full"
+            className="w-full"
             required
             value={newUser.email || ""}
             onChange={(e) => {
@@ -72,9 +73,7 @@ export default function UserForm({ currentUser }: UserFormProps) {
         </Label>
       </div>
 
-      <Button type="submit" className="btn btn-primary">
-        Update Profile
-      </Button>
+      <Button type="submit">Update Profile</Button>
     </form>
   );
 }
