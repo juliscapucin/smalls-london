@@ -2,71 +2,47 @@
 
 import { useState } from "react";
 
-import { createClient } from "@/services/supabase/client";
-import { User } from "@supabase/supabase-js";
-import { useRouter } from "next/navigation";
+import {
+  addBusiness,
+  updateBusiness,
+} from "@/app/businesses/_actions/business";
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Business } from "../_types/business";
 
 type BusinessFormProps = {
-  currentUser: User;
+  business?: Business;
 };
 
-export default function BusinessForm({ currentUser }: BusinessFormProps) {
-  const router = useRouter();
+export default function BusinessForm({ business }: BusinessFormProps) {
   const [newBusiness, setNewBusiness] = useState({
-    name: "",
-    description: "",
+    name: business ? business.name : "",
+    description: business ? business.description : "",
+    category: business ? business.category : "",
+    email: business ? business.email : "",
   });
-
-  const supabase = createClient();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!currentUser.id) return;
-
-    if (newBusiness.name) {
-      const { error } = await supabase
-        .from("businesses")
-        .insert({
-          name: newBusiness.name,
-          description: newBusiness.description,
-          owner_id: currentUser.id,
-        })
-        .single();
-
-      if (error) {
-        console.error("Error creating business:", error.message);
-      } else {
-        alert("Business created successfully!");
-        location.reload();
-      }
-      return;
-    }
-
-    const { error } = await supabase
-      .from("businesses")
-      .update({ name: newBusiness.name, description: newBusiness.description })
-      .eq("owner_id", currentUser.id)
-      .single();
-
-    if (error) {
-      console.error("Error updating business:", error.message);
-    } else {
-      alert("Profile updated successfully!");
-      router.refresh();
-    }
-  };
+  const variant = business ? "Update" : "Add";
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1 className="heading-headline mb-6">Business Profile</h1>
+    <form
+      onSubmit={() => {
+        if (business?.id) {
+          updateBusiness(business.id, newBusiness);
+        } else {
+          addBusiness(newBusiness);
+        }
+      }}
+    >
+      <h1 className="heading-headline mb-6">{variant} Business Profile</h1>
       <div className="mb-4">
-        <label className="block text-body mb-2">
+        <Label>
           Full Name
-          <input
+          <Input
             type="text"
             name="full-name"
-            className="form-input w-full"
+            className="w-full"
             required
             minLength={1}
             value={newBusiness.name}
@@ -74,25 +50,47 @@ export default function BusinessForm({ currentUser }: BusinessFormProps) {
               setNewBusiness({ ...newBusiness, name: e.target.value });
             }}
           />
-        </label>
-        <label className="block text-body mb-2">
+        </Label>
+        <Label>
           Description
-          <input
-            type="text"
+          <textarea
+            rows={7}
             name="description"
-            className="form-input w-full"
+            className="w-full border border-secondary rounded-md p-2"
             required
-            value={newBusiness.description}
+            value={newBusiness.description!}
             onChange={(e) => {
               setNewBusiness({ ...newBusiness, description: e.target.value });
             }}
           />
-        </label>
+        </Label>
+        <Label>
+          Category
+          <select
+            name="category"
+            className="w-fit border border-secondary rounded-md p-2 block"
+            required
+            onChange={(e) => {
+              setNewBusiness({ ...newBusiness, category: e.target.value });
+            }}
+          >
+            <option
+              className="capitalize"
+              value={newBusiness.category ? newBusiness.category : ""}
+            >
+              {newBusiness.category
+                ? newBusiness.category
+                : "Select a category"}
+            </option>
+            <option value="design">Design</option>
+            <option value="fashion">Fashion</option>
+            <option value="beauty">Beauty</option>
+            <option value="retail">Retail</option>
+          </select>
+        </Label>
       </div>
 
-      <button type="submit" className="btn btn-primary">
-        Update Profile
-      </button>
+      <Button type="submit">{variant} Business</Button>
     </form>
   );
 }

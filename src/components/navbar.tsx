@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { AuthButton } from "@/components/auth-button";
+import { AuthButton } from "@/app/auth/_components/auth-button";
 
 export default function Navbar() {
   return (
@@ -10,13 +10,10 @@ export default function Navbar() {
           Smalls.London
         </Link>
         <Link href={"/businesses"} className="uppercase font-bold">
-          Design
+          Explore
         </Link>
-        <Link href={"/businesses"} className="uppercase font-bold">
+        <Link href={"/businesses/beauty"} className="uppercase font-bold">
           Beauty
-        </Link>
-        <Link href={"/businesses"} className="uppercase font-bold">
-          Search
         </Link>
         <Suspense>
           <AuthButton />

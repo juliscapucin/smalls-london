@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import {
-  deleteBusiness,
-  updateBusiness,
-} from "@/app/businesses/_actions/business";
+import { deleteBusiness } from "@/app/businesses/_actions/business";
 import BusinessModal from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
+import { Button } from "@/components/ui/button";
 
 type BusinessListProps = {
   businesses: Business[];
@@ -14,30 +12,9 @@ type BusinessListProps = {
 
 export default function BusinessListAdmin({ businesses }: BusinessListProps) {
   const [businessToEdit, setBusinessToEdit] = useState<Business | null>(null);
-  const handleDelete = async (id: string) => {
-    const { errorMessage } = await deleteBusiness(id);
-
-    if (errorMessage) {
-      alert("Error deleting business: " + errorMessage);
-    } else {
-      alert("Business deleted successfully!");
-      location.reload();
-    }
-  };
 
   const handleEdit = (business: Business) => {
     setBusinessToEdit(business);
-  };
-
-  const handleSave = async (id: string, newBusiness: Partial<Business>) => {
-    const { errorMessage } = await updateBusiness(id, newBusiness);
-    if (errorMessage) {
-      alert("Error editing business: " + errorMessage);
-    } else {
-      alert("Business edited successfully!");
-      location.reload();
-      setBusinessToEdit(null);
-    }
   };
 
   return (
@@ -46,27 +23,35 @@ export default function BusinessListAdmin({ businesses }: BusinessListProps) {
         <BusinessModal
           business={businessToEdit}
           onClose={() => setBusinessToEdit(null)}
-          onSave={handleSave}
         />
       )}
-      <div className="space-y-16">
+      <div>
         <h2 className="mt-20">Businesses</h2>
         {businesses.length === 0 ? (
           <p className="text-foreground">No businesses found.</p>
         ) : (
           businesses.map((business) => (
-            <div className="space-y-8" key={business.id}>
+            <div
+              className="space-y-8 border-t border-secondary py-8"
+              key={business.id}
+            >
               <div className="max-w-prose space-y-4">
                 <h3 className="heading-title">{business.name}</h3>
                 <p>{business.description}</p>
+                <p className="capitalize">Category: {business.category}</p>
               </div>
               <div className="space-x-8">
-                <button onClick={() => handleEdit(business)}>Edit</button>
-                <button
-                  onClick={() => business.id && handleDelete(business.id)}
+                <Button
+                  variant="secondary"
+                  onClick={() => handleEdit(business)}
+                >
+                  Edit
+                </Button>
+                <Button
+                  onClick={() => business.id && deleteBusiness(business.id)}
                 >
                   Delete
-                </button>
+                </Button>
               </div>
             </div>
           ))

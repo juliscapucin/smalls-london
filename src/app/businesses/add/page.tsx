@@ -17,7 +17,7 @@ export default async function Page() {
 
   return (
     <PageWrapper>
-      <BusinessForm currentUser={currentUser} />
+      <BusinessForm />
       <BusinessList businesses={businesses} />
     </PageWrapper>
   );

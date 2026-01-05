@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import "@/styles/globals.css";
 
 import Navbar from "@/components/navbar";
@@ -27,17 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="gutter-stable">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className="gutter-stable bg-primary text-secondary"
+    >
       <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-        </ThemeProvider>
+        <Navbar />
+        {children}
       </body>
     </html>
   );

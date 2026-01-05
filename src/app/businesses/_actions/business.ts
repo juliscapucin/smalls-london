@@ -1,16 +1,13 @@
 "use server";
 
 import { Business } from "../_types/business";
-import {
-  createBusinessSchema,
-  updateBusinessSchema,
-} from "../_schemas/business";
+import { addBusinessSchema, updateBusinessSchema } from "../_schemas/business";
 import { Tables } from "@/services/supabase/types/database";
 import { getCurrentUser } from "@/lib/get-current-user";
 import { createClient } from "@/services/supabase/server";
 
-export async function createBusiness(unsafeData: Business) {
-  const { success, data } = createBusinessSchema.safeParse(unsafeData);
+export async function addBusiness(unsafeData: Partial<Tables<"businesses">>) {
+  const { success, data } = addBusinessSchema.safeParse(unsafeData);
   if (!success) {
     return { error: true, message: "Invalid business data" };
   }
@@ -92,6 +89,8 @@ export async function updateBusiness(
   if (error) {
     return { error: true, errorMessage: error.message };
   }
+
+  console.log(data);
 
   return { error: false, data: business };
 }

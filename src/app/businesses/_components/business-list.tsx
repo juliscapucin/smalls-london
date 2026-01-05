@@ -1,11 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import {
-  deleteBusiness,
-  updateBusiness,
-} from "@/app/businesses/_actions/business";
-import BusinessModal from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
 
 type BusinessListProps = {
@@ -15,7 +9,7 @@ type BusinessListProps = {
 export default function BusinessList({ businesses }: BusinessListProps) {
   return (
     <div className="space-y-16">
-      <h2 className="mt-20">Businesses</h2>
+      <h1 className="mt-20">Businesses</h1>
       {businesses.length === 0 ? (
         <p className="text-foreground">No businesses found.</p>
       ) : (

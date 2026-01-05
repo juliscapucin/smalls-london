@@ -5,6 +5,9 @@ import { useState } from "react";
 import PageWrapper from "@/components/page-wrapper";
 import { createClient } from "@/services/supabase/client";
 import { UpdateUser } from "../_types/user";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 
 type UserFormProps = {
   user: UpdateUser | null;
@@ -39,42 +42,40 @@ export default function UserForm({ user, currentUser }: UserFormProps) {
   };
 
   return (
-    <PageWrapper>
-      <form className="max-w-prose" onSubmit={handleSubmit}>
-        <h1 className="heading-headline mb-6">User Profile</h1>
-        <div className="mb-4">
-          <label className="block text-body mb-2">
-            Full Name
-            <input
-              type="text"
-              name="full-name"
-              className="form-input w-full"
-              required
-              value={newUser.full_name || ""}
-              onChange={(e) => {
-                setNewUser({ ...newUser, full_name: e.target.value });
-              }}
-            />
-          </label>
-          <label className="block text-body mb-2">
-            Email
-            <input
-              type="email"
-              name="email"
-              className="form-input w-full"
-              required
-              value={newUser.email || ""}
-              onChange={(e) => {
-                setNewUser({ ...newUser, email: e.target.value });
-              }}
-            />
-          </label>
-        </div>
+    <form className="max-w-prose" onSubmit={handleSubmit}>
+      <h1 className="heading-headline mb-6">User Profile</h1>
+      <div className="mb-4">
+        <Label className="block text-body mb-2">
+          Full Name
+          <Input
+            type="text"
+            name="full-name"
+            className="form-input w-full"
+            required
+            value={newUser.full_name || ""}
+            onChange={(e) => {
+              setNewUser({ ...newUser, full_name: e.target.value });
+            }}
+          />
+        </Label>
+        <Label className="block text-body mb-2">
+          Email
+          <Input
+            type="email"
+            name="email"
+            className="form-input w-full"
+            required
+            value={newUser.email || ""}
+            onChange={(e) => {
+              setNewUser({ ...newUser, email: e.target.value });
+            }}
+          />
+        </Label>
+      </div>
 
-        <button type="submit" className="btn btn-primary">
-          Update Profile
-        </button>
-      </form>
-    </PageWrapper>
+      <Button type="submit" className="btn btn-primary">
+        Update Profile
+      </Button>
+    </form>
   );
 }

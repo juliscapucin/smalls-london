@@ -16,25 +16,69 @@ export type Database = {
     Tables: {
       businesses: {
         Row: {
+          category: string | null
           created_at: string
           description: string | null
+          email: string | null
           id: string
+          location: string | null
           name: string
           owner_id: string | null
+          specialties: string[] | null
+          team_size: string | null
+          website: string | null
         }
         Insert: {
+          category?: string | null
           created_at?: string
           description?: string | null
+          email?: string | null
           id?: string
+          location?: string | null
           name: string
           owner_id?: string | null
+          specialties?: string[] | null
+          team_size?: string | null
+          website?: string | null
         }
         Update: {
+          category?: string | null
           created_at?: string
           description?: string | null
+          email?: string | null
           id?: string
+          location?: string | null
           name?: string
           owner_id?: string | null
+          specialties?: string[] | null
+          team_size?: string | null
+          website?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "businesses_category_fkey"
+            columns: ["category"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["name"]
+          },
+        ]
+      }
+      categories: {
+        Row: {
+          id: string
+          label: string | null
+          name: string
+        }
+        Insert: {
+          id?: string
+          label?: string | null
+          name: string
+        }
+        Update: {
+          id?: string
+          label?: string | null
+          name?: string
         }
         Relationships: []
       }
