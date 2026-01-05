@@ -5,7 +5,6 @@ This project uses a custom design system built with:
 - Tailwind CSS (utilities)
 - CSS variables (design tokens)
 - Radix UI (behavior & accessibility primitives)
-- shadcn/ui (component patterns)
 
 The goal is consistency, accessibility and flexibility.
 
@@ -22,7 +21,7 @@ The goal is consistency, accessibility and flexibility.
 
 ## Color System
 
-The color system is structured in **three layers**.
+The color system is structured in **two layers**.
 
 ### 1. Structural colors
 
@@ -31,10 +30,8 @@ They are neutral and used throughout the interface.
 
 Examples:
 
-- `--color-background`
-- `--color-foreground`
-- `--color-card`
-- `--color-border`
+- `--color-primary`
+- `--color-secondary`
 - `--color-ring`
 
 Usage:
@@ -58,28 +55,6 @@ Usage:
 
 - Buttons, links, focus/hover states
 - Selection and interactive feedback
-
-> Note: `accent` exists for compatibility with shadcn components and represents a subtle interactive surface highlight, not a brand accent.
-
-### 3. Brand accents palette
-
-Brand accents are expressive colors used intentionally to add character and emphasis.
-
-Examples:
-
-- `--color-brand-orange`
-- `--color-brand-blue`
-- `--color-brand-green`
-- `--color-brand-yellow`
-- `--color-brand-vanilla`
-
-Usage:
-
-- Editorial sections
-- Highlighted components
-- Feature areas
-
-Brand accents are **not applied automatically** and should be used deliberately.
 
 ---
 

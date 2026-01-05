@@ -80,7 +80,7 @@
   /* SCROLLBAR STYLES */
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--primary) var(--secondary);
+    scrollbar-color: var(--accent-yellow) var(--secondary);
   }
 
   /* Chrome, Edge, and Safari */
