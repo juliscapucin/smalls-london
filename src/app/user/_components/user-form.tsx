@@ -4,21 +4,20 @@ import { useState } from "react";
 
 import PageWrapper from "@/components/page-wrapper";
 import { createClient } from "@/services/supabase/client";
-import { UpdateUser } from "../_types/user";
+import { UpdateUser } from "@/types/user";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 
 type UserFormProps = {
-  user: UpdateUser | null;
   currentUser: UpdateUser;
 };
 
-export default function UserForm({ user, currentUser }: UserFormProps) {
+export default function UserForm({ currentUser }: UserFormProps) {
   const [newUser, setNewUser] = useState<UpdateUser>({
-    full_name: user?.full_name || "",
+    full_name: currentUser?.full_name || "",
     email: currentUser.email || "",
-    phone: user?.phone || null,
+    phone: currentUser?.phone || null,
   });
 
   const supabase = createClient();

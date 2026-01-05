@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/get-current-user";
 import { getAllBusinesses } from "@/app/businesses/_lib/getAllBusinesses";
 
-import BusinessListAdmin from "@/app/businesses/_components/business-list-admin";
+import BusinessList from "@/app/businesses/_components/business-list";
 import PageWrapper from "@/components/page-wrapper";
 import { Heading } from "@/components/ui/heading";
 
@@ -21,7 +21,7 @@ export default async function Page() {
       <Heading tag="h1" className="mt-20">
         Edit Businesses
       </Heading>
-      <BusinessListAdmin businesses={businesses} />
+      <BusinessList businesses={businesses} currentUser={currentUser} />
     </PageWrapper>
   );
 }

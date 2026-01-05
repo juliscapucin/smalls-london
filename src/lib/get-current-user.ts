@@ -6,5 +6,13 @@ export async function getCurrentUser() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return await user;
+  if (!user) return null;
+
+  const { data } = await supabase
+    .from("users")
+    .select("*")
+    .eq("id", user.id)
+    .single();
+
+  return data ?? null;
 }

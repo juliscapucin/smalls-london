@@ -6,7 +6,7 @@ import { getCurrentUser } from "@/lib/get-current-user";
 import PageWrapper from "@/components/page-wrapper";
 import { Heading } from "@/components/ui/heading";
 import BusinessForm from "../_components/business-form";
-import BusinessList from "../_components/business-list-admin";
+import BusinessList from "../_components/business-list";
 
 export default async function Page() {
   const currentUser = await getCurrentUser();
@@ -22,7 +22,7 @@ export default async function Page() {
         Add Businesses
       </Heading>
       <BusinessForm />
-      <BusinessList businesses={businesses} />
+      <BusinessList businesses={businesses} currentUser={currentUser} />
     </PageWrapper>
   );
 }
