@@ -28,9 +28,6 @@ const classnames = {
 const businessCategories = await getBusinessCategories();
 const eventCategories = await getEventCategories();
 
-console.log("businessCategories", businessCategories);
-console.log("eventCategories", eventCategories);
-
 const HeaderMenu = () => {
   return (
     <NavigationMenu.Root className={classnames.root}>
@@ -47,9 +44,14 @@ const HeaderMenu = () => {
           <NavigationMenu.Content className={classnames.content}>
             <ul className="w-full list-none">
               <ListItem href="/businesses">All</ListItem>
-              <ListItem href="/businesses/fashion">Fashion</ListItem>
-              <ListItem href="/businesses/beauty">Beauty</ListItem>
-              <ListItem href="/businesses/design">Design</ListItem>
+              {businessCategories.map((category) => (
+                <ListItem
+                  key={category.name}
+                  href={`/businesses/category/${category.name}`}
+                >
+                  {category.label}
+                </ListItem>
+              ))}
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
@@ -61,11 +63,15 @@ const HeaderMenu = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className={classnames.content}>
             <ul className="w-full list-none">
-              <ListItem href="/events/exhibitions">Exhibitions</ListItem>
-              <ListItem href="/events/talks">Talks</ListItem>
-              <ListItem href="/events/workshops">Workshops</ListItem>
-              <ListItem href="/events/popups">Popups & Markets</ListItem>
-              <ListItem href="/events/community">Community</ListItem>
+              <ListItem href="/events">All</ListItem>
+              {eventCategories.map((category) => (
+                <ListItem
+                  key={category.name}
+                  href={`/events/category/${category.name}`}
+                >
+                  {category.label}
+                </ListItem>
+              ))}
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>

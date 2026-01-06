@@ -5,14 +5,11 @@ async function getCategories(
 ) {
   const supabase = await createClient();
 
-  const { data, error } = await supabase
-    .from("business_categories")
-    .select("*");
+  const { data, error } = await supabase.from(table).select("*");
 
   if (error) {
     console.error(`Error fetching ${table}:`, error.message);
-    console.log("error");
-    return null;
+    return [];
   }
 
   return data;
