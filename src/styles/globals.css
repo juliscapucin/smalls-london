@@ -59,6 +59,8 @@
   --tracking-label: 0.04em;
 
   /* Layout */
+  --rounded-radius: var(--radius);
+  --border-radius-radius: var(--radius);
   --max-width-desktop: 2800px;
   --max-width-content: 800px;
 
@@ -68,14 +70,14 @@
   --height-content: calc(100svh - var(--height-header));
 
   /* ANIMATIONS */
-  --animate-enter-from-right: enterFromRight 0.5s ease forwards;
-  --animate-enter-from-left: enterFromLeft 0.5s ease forwards;
-  --animate-exit-to-right: exitToRight 0.5s ease forwards;
-  --animate-exit-to-left: exitToLeft 0.5s ease forwards;
-  --animate-scale-in: scaleIn 0.3s ease forwards;
-  --animate-scale-out: scaleOut 0.3s ease forwards;
-  --animate-fade-in: fadeIn 0.3s ease forwards;
-  --animate-fade-out: fadeOut 0.3s ease forwards;
+  --animate-enter-from-right: enterFromRight 0.3s ease forwards;
+  --animate-enter-from-left: enterFromLeft 0.3s ease forwards;
+  --animate-exit-to-right: exitToRight 0.3s ease forwards;
+  --animate-exit-to-left: exitToLeft 0.3s ease forwards;
+  --animate-scale-in: scaleIn 0.2s ease forwards;
+  --animate-scale-out: scaleOut 0.2s ease forwards;
+  --animate-fade-in: fadeIn 0.2s ease forwards;
+  --animate-fade-out: fadeOut 0.2s ease forwards;
 
   @keyframes enterFromRight {
     from {
