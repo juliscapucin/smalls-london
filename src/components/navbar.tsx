@@ -13,9 +13,6 @@ export default function Navbar() {
         <Link href={"/businesses"} className="uppercase">
           Explore
         </Link>
-        <Link href={"/businesses/beauty"} className="uppercase">
-          Beauty
-        </Link>
         <Suspense>
           <AuthButton />
         </Suspense>

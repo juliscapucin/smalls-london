@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { Business } from "../_types/business";
 
 type BusinessFormProps = {
@@ -60,7 +61,7 @@ export default function BusinessForm({ business }: BusinessFormProps) {
         </Label>
         <Label>
           Description
-          <textarea
+          <Textarea
             rows={7}
             name="description"
             className="w-full border border-secondary rounded-md p-2"
