@@ -26,23 +26,23 @@ export default function BusinessForm({ business }: BusinessFormProps) {
   });
   const variant = business ? "Update" : "Add";
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (business?.id) {
+      updateBusiness(business.id, newBusiness);
+    } else {
+      addBusiness(newBusiness);
+      setNewBusiness({
+        name: "",
+        description: "",
+        category: "",
+        email: "",
+      });
+    }
+  };
+
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (business?.id) {
-          updateBusiness(business.id, newBusiness);
-        } else {
-          addBusiness(newBusiness);
-          setNewBusiness({
-            name: "",
-            description: "",
-            category: "",
-            email: "",
-          });
-        }
-      }}
-    >
+    <form onSubmit={handleSubmit}>
       <h2 className="heading-headline mb-6">{variant} Business Profile</h2>
       <div className="mb-4">
         <Label>

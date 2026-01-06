@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Geist } from "next/font/google";
 import "@/styles/globals.css";
 
 import Navbar from "@/components/navbar";
@@ -15,12 +14,6 @@ export const metadata: Metadata = {
   description:
     "An opinionated directory of creative small businesses in London.",
 };
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
 
 const fontPrimary = localFont({
   variable: "--font-pp-frama",
