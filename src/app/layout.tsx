@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
 
-import { HeaderNavbar } from "@/components/header-navbar";
+import { HeaderMenu } from "@/components/header-menu";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -41,7 +41,7 @@ export default function RootLayout({
       className="bg-primary text-secondary gutter-stable"
     >
       <body className={`${fontPrimary.className} antialiased font-normal`}>
-        <HeaderNavbar />
+        <HeaderMenu />
         {children}
       </body>
     </html>

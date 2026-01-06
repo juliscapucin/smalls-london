@@ -5,6 +5,10 @@ import { ChevronDownIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Logo from "./logo";
 import Link from "next/link";
+import {
+  getBusinessCategories,
+  getEventCategories,
+} from "@/lib/get-categories";
 
 const classnames = {
   root: "fixed h-header z-20 top-0 left-0 right-0 flex justify-between items-center bg-primary border-b-2 border-b-secondary",
@@ -21,7 +25,13 @@ const classnames = {
     "top-[48px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
 };
 
-const HeaderNavbar = () => {
+const businessCategories = await getBusinessCategories();
+const eventCategories = await getEventCategories();
+
+console.log("businessCategories", businessCategories);
+console.log("eventCategories", eventCategories);
+
+const HeaderMenu = () => {
   return (
     <NavigationMenu.Root className={classnames.root}>
       <NavigationMenu.Link href="/">
@@ -40,7 +50,6 @@ const HeaderNavbar = () => {
               <ListItem href="/businesses/fashion">Fashion</ListItem>
               <ListItem href="/businesses/beauty">Beauty</ListItem>
               <ListItem href="/businesses/design">Design</ListItem>
-              <ListItem href="/businesses/design">Design</ListItem>
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
@@ -52,8 +61,11 @@ const HeaderNavbar = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className={classnames.content}>
             <ul className="w-full list-none">
-              <ListItem href="/events/online">Online</ListItem>
-              <ListItem href="/events/presential">Presential</ListItem>
+              <ListItem href="/events/exhibitions">Exhibitions</ListItem>
+              <ListItem href="/events/talks">Talks</ListItem>
+              <ListItem href="/events/workshops">Workshops</ListItem>
+              <ListItem href="/events/popups">Popups & Markets</ListItem>
+              <ListItem href="/events/community">Community</ListItem>
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
@@ -116,4 +128,4 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
   )
 );
 
-export { HeaderNavbar };
+export { HeaderMenu };
