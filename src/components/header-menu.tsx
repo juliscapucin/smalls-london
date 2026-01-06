@@ -5,30 +5,28 @@ import { ChevronDownIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Logo from "./logo";
 import Link from "next/link";
-import {
-  getBusinessCategories,
-  getEventCategories,
-} from "@/lib/get-categories";
+import { getCategories } from "@/lib/get-categories";
 
 const classnames = {
-  root: "fixed h-header z-20 top-0 left-0 right-0 flex justify-between items-center bg-primary border-b-2 border-b-secondary",
-  list: "list-none p-1 flex justify-center items-center",
+  root: "fixed h-header z-20 top-0 left-0 right-0 px-2 flex justify-between items-center bg-primary border-b-2 border-b-secondary",
+  list: "list-none p-1 flex justify-center items-center gap-4",
   item: "flex justify-center items-center",
   trigger:
-    "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-primary hover:border-secondary px-3 py-2 text-secondary outline-none hover:bg-accent focus:shadow-[0_0_0_2px] focus:shadow-secondary",
+    "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-transparent hover:border-secondary px-3 py-2 text-secondary outline-none hover:bg-accent focus-visible:border-secondary focus-visible:bg-accent",
   chevronIcon:
     "relative top-px ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180",
-  link: "block select-none rounded-full border-2 border-primary hover:border-secondary px-3 py-2 text-secondary no-underline outline-none hover:bg-accent focus:shadow-[0_0_0_2px] focus:shadow-secondary",
+  link: "block select-none rounded-full border-2 border-transparent hover:border-secondary px-3 py-2 text-secondary no-underline outline-none hover:bg-accent focus-visible:border-secondary focus-visible:bg-accent",
   content:
     "absolute top-[58px] min-w-[245px] bg-primary border-2 border-secondary rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left",
   indicator:
     "top-[48px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
+  focus: "focus-visible:ring-ring focus-visible:ring-2",
 };
 
-const businessCategories = await getBusinessCategories();
-const eventCategories = await getEventCategories();
+const HeaderMenu = async () => {
+  const businessCategories = await getCategories("business_categories");
+  const eventCategories = await getCategories("event_categories");
 
-const HeaderMenu = () => {
   return (
     <NavigationMenu.Root className={classnames.root}>
       <NavigationMenu.Link href="/">
@@ -37,7 +35,9 @@ const HeaderMenu = () => {
 
       <NavigationMenu.List className={classnames.list}>
         <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger className={classnames.trigger}>
+          <NavigationMenu.Trigger
+            className={cn(classnames.trigger, classnames.focus)}
+          >
             Businesses{" "}
             <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
           </NavigationMenu.Trigger>
@@ -57,7 +57,9 @@ const HeaderMenu = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger className={classnames.trigger}>
+          <NavigationMenu.Trigger
+            className={cn(classnames.trigger, classnames.focus)}
+          >
             Events{" "}
             <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
           </NavigationMenu.Trigger>
@@ -77,7 +79,10 @@ const HeaderMenu = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Link className={classnames.trigger} href="/search">
+          <NavigationMenu.Link
+            className={cn(classnames.trigger, classnames.focus)}
+            href="/search"
+          >
             Search
           </NavigationMenu.Link>
         </NavigationMenu.Item>
@@ -121,7 +126,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
       <NavigationMenu.Link asChild>
         <Link
           href={href}
-          className={cn(classnames.link)}
+          className={cn(classnames.link, classnames.focus)}
           {...props}
           ref={forwardedRef}
         >

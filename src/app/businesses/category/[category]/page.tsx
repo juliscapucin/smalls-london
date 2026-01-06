@@ -17,6 +17,10 @@ export default async function Page(props: PageProps) {
   const businesses = await getAllBusinesses(category);
   const currentUser = await getCurrentUser();
 
+  if (!category) {
+    return <PageWrapper>No category specified</PageWrapper>;
+  }
+
   return (
     <PageWrapper>
       <TypographyHeading tag="h1" className="mt-20 capitalize">

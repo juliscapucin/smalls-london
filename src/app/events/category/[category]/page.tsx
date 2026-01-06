@@ -1,5 +1,3 @@
-import { getAllBusinesses } from "@/app/businesses/_lib/getAllBusinesses";
-
 import PageWrapper from "@/components/page-wrapper";
 import { TypographyHeading } from "@/components/ui/typography-heading";
 import { getCurrentUser } from "@/lib/get-current-user";
@@ -13,8 +11,10 @@ type PageProps = {
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const category = params.category;
-  const businesses = await getAllBusinesses(category);
-  const currentUser = await getCurrentUser();
+
+  if (!category) {
+    return <PageWrapper>No category specified</PageWrapper>;
+  }
 
   return (
     <PageWrapper>

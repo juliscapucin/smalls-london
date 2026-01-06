@@ -1,6 +1,6 @@
 import { createClient } from "@/services/supabase/server";
 
-async function getCategories(
+export async function getCategories(
   table: "business_categories" | "event_categories"
 ) {
   const supabase = await createClient();
@@ -14,7 +14,3 @@ async function getCategories(
 
   return data;
 }
-
-export const getBusinessCategories = () => getCategories("business_categories");
-
-export const getEventCategories = () => getCategories("event_categories");
