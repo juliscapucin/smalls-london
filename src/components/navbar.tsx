@@ -3,6 +3,17 @@ import { Suspense } from "react";
 import { AuthButton } from "@/app/auth/_components/auth-button";
 import Logo from "./logo";
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+
 export default function Navbar() {
   return (
     <nav className="fixed left-0 top-0 right-0 flex justify-center border-b border-b-foreground/10 h-header z-50 bg-primary">

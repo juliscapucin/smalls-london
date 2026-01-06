@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 
 import Navbar from "@/components/navbar";
+import NavigationMenuDemo from "@/components/ui/navigation-menu-demo";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -41,7 +42,8 @@ export default function RootLayout({
       className="bg-primary text-secondary gutter-stable"
     >
       <body className={`${fontPrimary.className} antialiased font-normal`}>
-        <Navbar />
+        {/* <Navbar /> */}
+        <NavigationMenuDemo />
         {children}
       </body>
     </html>
