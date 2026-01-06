@@ -30,7 +30,7 @@ const headingVariants = cva(
   }
 );
 
-const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+const TypographyHeading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
   ({ tag, className, variant, children, ...props }, ref) => {
     const Tag = tag;
 
@@ -46,6 +46,6 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
   }
 );
 
-Heading.displayName = "Heading";
+TypographyHeading.displayName = "Heading";
 
-export { Heading, headingVariants };
+export { TypographyHeading, headingVariants };

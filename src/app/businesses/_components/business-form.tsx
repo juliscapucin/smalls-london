@@ -20,6 +20,7 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { TypographyHeading } from "@/components/ui/typography-heading";
 
 type BusinessFormProps = {
   business?: Business;
@@ -52,7 +53,9 @@ export default function BusinessForm({ business }: BusinessFormProps) {
         }
       }}
     >
-      <h2 className="heading-headline mb-6">{variant} Business Profile</h2>
+      <TypographyHeading tag="h2" variant="title" className="mb-6">
+        {variant} Profile
+      </TypographyHeading>
       <div className="mb-4">
         <Label>
           Full Name

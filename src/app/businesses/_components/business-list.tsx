@@ -5,7 +5,7 @@ import { deleteBusiness } from "@/app/businesses/_actions/business";
 import BusinessModal from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
 import { Button } from "@/components/ui/button";
-import { Heading } from "@/components/ui/heading";
+import { TypographyHeading } from "@/components/ui/typography-heading";
 import { User } from "@/types/user";
 
 type BusinessListProps = {
@@ -41,9 +41,9 @@ export default function BusinessList({
               key={business.id}
             >
               <div className="max-w-prose space-y-4">
-                <Heading tag="h3" variant="title">
+                <TypographyHeading tag="h3" variant="title">
                   {business.name}
-                </Heading>
+                </TypographyHeading>
                 <p>{business.description}</p>
                 <p className="capitalize">Category: {business.category}</p>
               </div>

@@ -2,7 +2,7 @@ import { getAllBusinesses } from "@/app/businesses/_lib/getAllBusinesses";
 
 import BusinessList from "@/app/businesses/_components/business-list";
 import PageWrapper from "@/components/page-wrapper";
-import { Heading } from "@/components/ui/heading";
+import { TypographyHeading } from "@/components/ui/typography-heading";
 
 type PageProps = {
   params: {
@@ -17,9 +17,9 @@ export default async function Page(props: PageProps) {
 
   return (
     <PageWrapper>
-      <Heading tag="h1" className="mt-20 capitalize">
+      <TypographyHeading tag="h1" className="mt-20 capitalize">
         {category}
-      </Heading>
+      </TypographyHeading>
       <BusinessList businesses={businesses} />
     </PageWrapper>
   );
