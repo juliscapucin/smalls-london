@@ -40,9 +40,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className="bg-primary text-secondary gutter-stable"
     >
-      <body
-        className={`${fontPrimary.className} antialiased font-normal gutter-stable`}
-      >
+      <body className={`${fontPrimary.className} antialiased font-normal`}>
         <Navbar />
         {children}
       </body>

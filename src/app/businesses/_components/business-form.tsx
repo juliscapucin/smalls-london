@@ -36,6 +36,7 @@ export default function BusinessForm({ business }: BusinessFormProps) {
 
   return (
     <form
+      className="max-w-content"
       onSubmit={(e) => {
         e.preventDefault();
         if (business?.id) {

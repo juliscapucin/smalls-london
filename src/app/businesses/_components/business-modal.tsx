@@ -33,7 +33,7 @@ export default function BusinessModal({
   }
   return (
     <div className="fixed inset-0 bg-primary/90">
-      <div className="p-8 w-1/2 max-w-modal mx-auto h-[80vh] mt-[10vh] bg-primary border border-secondary rounded-lg">
+      <div className="p-8 w-1/2 max-w-content mx-auto h-[80vh] mt-[10vh] bg-primary border border-secondary rounded-lg">
         <BusinessForm business={business} />
       </div>
     </div>
