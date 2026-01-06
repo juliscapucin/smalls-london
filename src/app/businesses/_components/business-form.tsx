@@ -11,6 +11,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Business } from "../_types/business";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectValue,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 type BusinessFormProps = {
   business?: Business;
@@ -60,10 +69,9 @@ export default function BusinessForm({ business }: BusinessFormProps) {
         </Label>
         <Label>
           Description
-          <textarea
+          <Textarea
             rows={7}
             name="description"
-            className="w-full border border-secondary rounded-md p-2"
             required
             value={newBusiness.description!}
             onChange={(e) => {
@@ -73,27 +81,25 @@ export default function BusinessForm({ business }: BusinessFormProps) {
         </Label>
         <Label>
           Category
-          <select
-            name="category"
-            className="w-fit border border-secondary rounded-md p-2 block"
-            required
-            onChange={(e) => {
-              setNewBusiness({ ...newBusiness, category: e.target.value });
+          <Select
+            value={newBusiness.category ?? ""}
+            onValueChange={(value) => {
+              setNewBusiness({ ...newBusiness, category: value });
             }}
           >
-            <option
-              className="capitalize"
-              value={newBusiness.category ? newBusiness.category : ""}
-            >
-              {newBusiness.category
-                ? newBusiness.category
-                : "Select a category"}
-            </option>
-            <option value="design">Design</option>
-            <option value="fashion">Fashion</option>
-            <option value="beauty">Beauty</option>
-            <option value="retail">Retail</option>
-          </select>
+            <SelectTrigger className="w-fit capitalize">
+              <SelectValue placeholder="Select a category">
+                {newBusiness.category}
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent position="popper">
+              <SelectGroup>
+                <SelectItem value="design">Design</SelectItem>
+                <SelectItem value="fashion">Fashion</SelectItem>
+                <SelectItem value="beauty">Beauty</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </Label>
       </div>
 

@@ -23,7 +23,10 @@
   --color-accent-green: var(--accent-green);
   --color-accent-yellow: var(--accent-yellow);
   --color-accent-vanilla: var(--accent-vanilla);
+  --color-accent: var(--accent-yellow);
+  --color-accent-foreground: var(--secondary);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--secondary);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-ring: var(--ring);
@@ -103,5 +106,9 @@
   /* FOCUS STYLES */
   :focus-visible {
     @apply outline-none ring-1 ring-ring;
+  }
+
+  .gutter-stable {
+    scrollbar-gutter: stable;
   }
 }
