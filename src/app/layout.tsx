@@ -38,7 +38,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="bg-primary text-secondary gutter-stable"
+      className="bg-background text-foreground gutter-stable"
     >
       <body className={`${fontPrimary.className} antialiased font-normal`}>
         <HeaderMenu />

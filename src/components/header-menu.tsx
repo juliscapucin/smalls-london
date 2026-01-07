@@ -1,23 +1,25 @@
 import * as React from "react";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { AuthButton } from "@/app/auth/_components/auth-button";
-import { ChevronDownIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import Logo from "./logo";
 import Link from "next/link";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { ChevronDownIcon } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 import { getCategories } from "@/lib/get-categories";
 
+import { AuthButton } from "@/app/auth/_components/auth-button";
+import { Logo } from "@/components/logo";
+
 const classnames = {
-  root: "fixed h-header z-20 top-0 left-0 right-0 px-2 flex justify-between items-center bg-primary border-b-2 border-b-secondary",
+  root: "fixed h-header z-20 top-0 left-0 right-0 px-2 flex justify-between items-center bg-background border-b-2 border-b-secondary",
   list: "list-none p-1 flex justify-center items-center gap-4",
   item: "flex justify-center items-center",
   trigger:
-    "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-transparent hover:border-secondary px-3 py-2 text-secondary outline-none hover:bg-accent focus-visible:border-secondary focus-visible:bg-accent",
+    "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
   chevronIcon:
     "relative top-px ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180",
-  link: "block select-none rounded-full border-2 border-transparent hover:border-secondary px-3 py-2 text-secondary no-underline outline-none hover:bg-accent focus-visible:border-secondary focus-visible:bg-accent",
+  link: "block select-none rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground no-underline outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
   content:
-    "absolute top-[58px] min-w-[245px] bg-primary border-2 border-secondary rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left",
+    "absolute top-[58px] min-w-[245px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left",
   indicator:
     "top-[48px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
   focus: "focus-visible:ring-ring focus-visible:ring-2",
@@ -130,7 +132,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
           {...props}
           ref={forwardedRef}
         >
-          <span className="mb-[5px] font-medium leading-[1.2] text-secondary">
+          <span className="mb-[5px] font-medium leading-[1.2] text-foreground">
             {children}
           </span>
         </Link>
