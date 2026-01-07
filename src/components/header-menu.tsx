@@ -30,90 +30,92 @@ const HeaderMenu = async () => {
   const eventCategories = await getCategories("event_categories");
 
   return (
-    <NavigationMenu.Root className={classnames.root}>
-      <NavigationMenu.Link href="/">
-        <Logo />
-      </NavigationMenu.Link>
+    <header>
+      <NavigationMenu.Root className={classnames.root}>
+        <NavigationMenu.Link href="/">
+          <Logo />
+        </NavigationMenu.Link>
 
-      <NavigationMenu.List className={classnames.list}>
-        <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger
-            className={cn(classnames.trigger, classnames.focus)}
-          >
-            Businesses{" "}
-            <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
-          </NavigationMenu.Trigger>
-          <NavigationMenu.Content className={classnames.content}>
-            <ul className="w-full list-none">
-              <ListItem href="/businesses">All</ListItem>
-              {businessCategories.map((category) => (
-                <ListItem
-                  key={category.name}
-                  href={`/businesses/category/${category.name}`}
-                >
-                  {category.label}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenu.Content>
-        </NavigationMenu.Item>
+        <NavigationMenu.List className={classnames.list}>
+          <NavigationMenu.Item className={classnames.item}>
+            <NavigationMenu.Trigger
+              className={cn(classnames.trigger, classnames.focus)}
+            >
+              Businesses{" "}
+              <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
+            </NavigationMenu.Trigger>
+            <NavigationMenu.Content className={classnames.content}>
+              <ul className="w-full list-none">
+                <ListItem href="/businesses">All</ListItem>
+                {businessCategories.map((category) => (
+                  <ListItem
+                    key={category.name}
+                    href={`/businesses/category/${category.name}`}
+                  >
+                    {category.label}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenu.Content>
+          </NavigationMenu.Item>
 
-        <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger
-            className={cn(classnames.trigger, classnames.focus)}
-          >
-            Events{" "}
-            <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
-          </NavigationMenu.Trigger>
-          <NavigationMenu.Content className={classnames.content}>
-            <ul className="w-full list-none">
-              <ListItem href="/events">All</ListItem>
-              {eventCategories.map((category) => (
-                <ListItem
-                  key={category.name}
-                  href={`/events/category/${category.name}`}
-                >
-                  {category.label}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenu.Content>
-        </NavigationMenu.Item>
+          <NavigationMenu.Item className={classnames.item}>
+            <NavigationMenu.Trigger
+              className={cn(classnames.trigger, classnames.focus)}
+            >
+              Events{" "}
+              <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
+            </NavigationMenu.Trigger>
+            <NavigationMenu.Content className={classnames.content}>
+              <ul className="w-full list-none">
+                <ListItem href="/events">All</ListItem>
+                {eventCategories.map((category) => (
+                  <ListItem
+                    key={category.name}
+                    href={`/events/category/${category.name}`}
+                  >
+                    {category.label}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenu.Content>
+          </NavigationMenu.Item>
 
-        <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Link
-            className={cn(classnames.trigger, classnames.focus)}
-            href="/search"
-          >
-            Search
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
+          <NavigationMenu.Item className={classnames.item}>
+            <NavigationMenu.Link
+              className={cn(classnames.trigger, classnames.focus)}
+              href="/search"
+            >
+              Search
+            </NavigationMenu.Link>
+          </NavigationMenu.Item>
 
-        <NavigationMenu.Indicator className={classnames.indicator}>
-          <svg
-            width="23"
-            height="15"
-            viewBox="0 0 23 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11.8195 1.3457L22.6448 11.0957C22.6448 11.0957 22.6448 10.0594 22.6448 14.3457C20.1448 14.3457 5.12615 14.7561 0.994141 14.3457C0.994255 11.8457 0.994141 11.0957 0.994141 11.0957L11.8195 1.3457Z"
-              fill="#F5F3EA"
-            />
-            <path
-              d="M22.3206 11.0957L11.4952 1.3457L0.669922 11.0957"
-              stroke="#302634"
-              strokeWidth="2"
-            />
-          </svg>
-        </NavigationMenu.Indicator>
-      </NavigationMenu.List>
+          <NavigationMenu.Indicator className={classnames.indicator}>
+            <svg
+              width="23"
+              height="15"
+              viewBox="0 0 23 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.8195 1.3457L22.6448 11.0957C22.6448 11.0957 22.6448 10.0594 22.6448 14.3457C20.1448 14.3457 5.12615 14.7561 0.994141 14.3457C0.994255 11.8457 0.994141 11.0957 0.994141 11.0957L11.8195 1.3457Z"
+                fill="#F5F3EA"
+              />
+              <path
+                d="M22.3206 11.0957L11.4952 1.3457L0.669922 11.0957"
+                stroke="#302634"
+                strokeWidth="2"
+              />
+            </svg>
+          </NavigationMenu.Indicator>
+        </NavigationMenu.List>
 
-      <React.Suspense>
-        <AuthButton />
-      </React.Suspense>
-    </NavigationMenu.Root>
+        <React.Suspense>
+          <AuthButton />
+        </React.Suspense>
+      </NavigationMenu.Root>
+    </header>
   );
 };
 
