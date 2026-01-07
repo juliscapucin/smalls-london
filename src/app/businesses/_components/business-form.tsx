@@ -19,10 +19,10 @@ type BusinessFormProps = {
 
 export default function BusinessForm({ business }: BusinessFormProps) {
   const [newBusiness, setNewBusiness] = useState({
-    name: business ? business.name : "",
-    description: business ? business.description : "",
-    category: business ? business.category : "",
-    email: business ? business.email : "",
+    name: business?.name || "",
+    description: business?.description || "",
+    category: business?.category || "",
+    email: business?.email || "",
   });
   const variant = business ? "Update" : "Add";
 
@@ -39,6 +39,8 @@ export default function BusinessForm({ business }: BusinessFormProps) {
         email: "",
       });
     }
+
+    // TODO: handle errors and loading states
   };
 
   return (

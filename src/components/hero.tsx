@@ -15,7 +15,7 @@ export default function Hero() {
         </Heading>
         <Image
           src="/images/hong-nguyen-FO-zQd7Wqio-unsplash.jpg"
-          alt="Hero Image"
+          alt=""
           fill
           sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"}
           className="h-full w-full object-cover"
