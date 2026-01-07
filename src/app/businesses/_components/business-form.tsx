@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { TypographyHeading } from "@/components/ui/typography-heading";
+
 import { Business } from "../_types/business";
 import {
   Select,
@@ -20,8 +22,6 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { TypographyHeading } from "@/components/ui/typography-heading";
 
 type BusinessFormProps = {
   business?: Business;
@@ -55,7 +55,9 @@ export default function BusinessForm({ business }: BusinessFormProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="heading-headline mb-6">{variant} Business Profile</h2>
+      <TypographyHeading tag="h2" className="mb-6">
+        {action} Business Profile
+      </TypographyHeading>
       <div className="mb-4">
         <Label>
           Full Name
