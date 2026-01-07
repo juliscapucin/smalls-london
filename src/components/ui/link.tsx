@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-const linkClassnames = "text-foreground underline-offset-4 underline";
+const linkClassnames = "underline-offset-4 underline";
 
 function InternalLink(props: React.ComponentProps<typeof Link>) {
   const { className, ...rest } = props;
@@ -14,8 +14,14 @@ function InternalLink(props: React.ComponentProps<typeof Link>) {
 }
 
 function ExternalLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  const { className, ...rest } = props;
   return (
-    <a {...props} target="_blank" rel="noopener noreferrer">
+    <a
+      {...rest}
+      className={cn(linkClassnames, className)}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {props.children}
     </a>
   );

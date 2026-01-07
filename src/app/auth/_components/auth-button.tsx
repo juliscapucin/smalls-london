@@ -13,9 +13,7 @@ export async function AuthButton() {
 
   return user ? (
     <div className="flex items-center gap-4">
-      <Link href="/user/profile" className="text-lg font-medium">
-        {user?.email || "Profile"}
-      </Link>
+      <Link href="/user/profile">{user?.email || "Profile"}</Link>
       <LogoutButton />
     </div>
   ) : (

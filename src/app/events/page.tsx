@@ -11,7 +11,6 @@ export default async function Page() {
       <TypographyHeading tag="h1" className="mt-20">
         All Events
       </TypographyHeading>
-      <p>Events List</p>
     </PageWrapper>
   );
 }

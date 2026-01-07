@@ -33,7 +33,7 @@ export default function BusinessForm({ business }: BusinessFormProps) {
     category: business ? business.category : "",
     email: business ? business.email : "",
   });
-  const variant = business ? "Update" : "Add";
+  const action = business ? "Update" : "Add";
 
   return (
     <form
@@ -54,7 +54,7 @@ export default function BusinessForm({ business }: BusinessFormProps) {
       }}
     >
       <TypographyHeading tag="h2" variant="title" className="mb-6">
-        {variant} Profile
+        {action} Profile
       </TypographyHeading>
       <div className="mb-4">
         <Label>
@@ -107,7 +107,7 @@ export default function BusinessForm({ business }: BusinessFormProps) {
         </Label>
       </div>
 
-      <Button type="submit">{variant} Business</Button>
+      <Button type="submit">{action} Business</Button>
     </form>
   );
 }

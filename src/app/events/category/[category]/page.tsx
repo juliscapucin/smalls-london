@@ -21,7 +21,9 @@ export default async function Page(props: PageProps) {
       <TypographyHeading tag="h1" className="mt-20 capitalize">
         {category}
       </TypographyHeading>
-      <p>Events List</p>
+      <p>
+        Please fill out the form below to submit your event to our directory
+      </p>
     </PageWrapper>
   );
 }
