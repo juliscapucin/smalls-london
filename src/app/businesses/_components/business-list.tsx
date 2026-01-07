@@ -53,7 +53,8 @@ export default function BusinessList({
                 <p>{business.description}</p>
                 <p className="capitalize">Category: {business.category}</p>
               </div>
-              {currentUser?.role === "admin" && (
+              {(currentUser?.role === "admin" ||
+                currentUser?.role === "guest") && (
                 <div className="space-x-8">
                   <Button
                     variant="secondary"
