@@ -19,9 +19,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Logo } from "@/components/logo";
 
-import { NavItem } from "./header";
-import { Category } from "@/types/category";
+import type { NavItem } from "./header";
+import type { Category } from "@/types/category";
 
 type MobileMenuProps = {
   navItems: NavItem[];
@@ -37,17 +38,16 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button variant="outline" size="icon" aria-label="Open menu">
-          ☰
-        </Button>
-      </SheetTrigger>
+      <div className="fixed top-0 left-0 right-0 flex items-center justify-between h-header px-2 bg-background border-b-2 border-b-secondary lg:hidden z-20">
+        <Logo />
+        <SheetTrigger asChild>
+          <Button variant="default" size="icon" aria-label="Open menu">
+            ☰
+          </Button>
+        </SheetTrigger>
+      </div>
 
       <SheetContent side="right" className="w-80 max-w-[85vw]">
-        <SheetHeader>
-          <SheetTitle>Menu</SheetTitle>
-        </SheetHeader>
-
         <nav className="mt-6 flex flex-col gap-2">
           {navItems.map((item) => {
             if (item.type === "link") {

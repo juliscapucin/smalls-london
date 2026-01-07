@@ -79,6 +79,12 @@
   --animate-scale-out: scaleOut 0.2s ease forwards;
   --animate-fade-in: fadeIn 0.2s ease forwards;
   --animate-fade-out: fadeOut 0.2s ease forwards;
+  --animate-slide-down: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards;
+  --animate-slide-up: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards;
+  --animate-overlay-show: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
+  --animate-content-show: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
 
   @keyframes enterFromRight {
     from {
@@ -161,6 +167,43 @@
     }
     to {
       opacity: 0;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      height: "0px";
+    }
+    to {
+      height: "var(--radix-accordion-content-height)";
+    }
+  }
+  @keyframes slideUp {
+    from {
+      height: "var(--radix-accordion-content-height)";
+    }
+    to {
+      height: "0px";
+    }
+  }
+
+  @keyframes overlayShow {
+    from {
+      opacity: "0";
+    }
+    to {
+      opacity: "1";
+    }
+  }
+
+  @keyframes contentShow {
+    from {
+      opacity: "0";
+      transform: "translate(-50%, -48%) scale(0.96)";
+    }
+    to {
+      opacity: "1";
+      transform: "translate(-50%, -50%) scale(1)";
     }
   }
 }
