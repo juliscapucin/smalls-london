@@ -6,7 +6,7 @@ import { Category } from "@/types/category";
 
 export type NavItem =
   | { type: "link"; label: string; href: string }
-  | { type: "group"; label: string; items: Category[] };
+  | { type: "group"; label: string; path: string; items: Category[] };
 
 export async function Header() {
   const businessCategories = await getCategories("business_categories");
@@ -17,11 +17,13 @@ export async function Header() {
     {
       type: "group",
       label: "Businesses",
+      path: "businesses",
       items: [...businessCategories],
     },
     {
       type: "group",
       label: "Events",
+      path: "events",
       items: [...eventCategories],
     },
   ];

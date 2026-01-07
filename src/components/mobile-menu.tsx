@@ -8,8 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
@@ -39,10 +37,12 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <div className="fixed top-0 left-0 right-0 flex items-center justify-between h-header px-2 bg-background border-b-2 border-b-secondary lg:hidden z-20">
-        <Logo />
+        <Link href="/" aria-label="Smalls.London logo — Homepage">
+          <Logo />
+        </Link>
         <SheetTrigger asChild>
-          <Button variant="default" size="icon" aria-label="Open menu">
-            ☰
+          <Button variant="ghost" size="icon" aria-label="Open menu">
+            <BurgerIcon />
           </Button>
         </SheetTrigger>
       </div>
@@ -55,7 +55,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-4 py-2 rounded hover:bg-gray-100"
+                  className="block px-4 py-2"
                 >
                   {item.label}
                 </Link>
@@ -64,14 +64,16 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
               return (
                 <Accordion key={item.label} type="single" collapsible>
                   <AccordionItem value={item.label}>
-                    <AccordionTrigger>{item.label}</AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionTrigger className="px-4">
+                      {item.label}
+                    </AccordionTrigger>
+                    <AccordionContent className="px-2">
                       <div className="flex flex-col gap-1">
                         {item.items.map((category: Category) => (
                           <SheetClose asChild key={category.name}>
                             <Link
-                              href={`/${category.name}`}
-                              className="rounded-md px-3 py-2 hover:bg-muted"
+                              href={`/${item.path}/category/${category.name}`}
+                              className="px-4 py-2 hover:bg-accent rounded-full"
                             >
                               {category.label}
                             </Link>
@@ -87,5 +89,21 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
         </nav>
       </SheetContent>
     </Sheet>
+  );
+}
+
+function BurgerIcon() {
+  return (
+    <div
+      className="h-12 w-6 flex flex-col justify-center gap-1.5 relative"
+      aria-hidden="true"
+    >
+      {[...Array(3)].map((_, index) => (
+        <div
+          key={index}
+          className="h-0.5 w-full bg-foreground rounded-full"
+        ></div>
+      ))}
+    </div>
   );
 }
