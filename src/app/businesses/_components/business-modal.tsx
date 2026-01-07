@@ -1,6 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import { Business } from "../_types/business";
 
@@ -8,34 +17,15 @@ import BusinessForm from "./business-form";
 
 type BusinessModalProps = {
   business: Business | null;
-  onClose: () => void;
 };
 
-export default function BusinessModal({
-  business,
-  onClose,
-}: BusinessModalProps) {
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [onClose]);
-
+export default function BusinessModal({ business }: BusinessModalProps) {
   if (!business) {
     return null;
   }
   return (
-    <div className="fixed inset-0 bg-primary/90">
-      <div className="p-8 w-1/2 max-w-modal mx-auto h-[80vh] mt-[10vh] bg-primary border border-secondary rounded-lg">
-        <BusinessForm business={business} />
-      </div>
-    </div>
+    <DialogContent className="max-w-content">
+      <BusinessForm business={business} />
+    </DialogContent>
   );
 }

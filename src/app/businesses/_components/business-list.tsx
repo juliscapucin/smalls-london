@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+
 import { deleteBusiness } from "@/app/businesses/_actions/business";
 import BusinessModal from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
+
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { User } from "@/types/user";
@@ -25,19 +28,13 @@ export default function BusinessList({
 
   return (
     <>
-      {businessToEdit && (
-        <BusinessModal
-          business={businessToEdit}
-          onClose={() => setBusinessToEdit(null)}
-        />
-      )}
       <div>
         {businesses.length === 0 ? (
           <p className="text-foreground">No businesses found.</p>
         ) : (
           businesses.map((business) => (
             <div
-              className="space-y-8 border-t border-secondary pt-8 mb-8 first:mt-16"
+              className="space-y-8 border-t border-foreground pt-8 mb-8 first:mt-16"
               key={business.id}
             >
               <div className="max-w-prose space-y-4">
@@ -48,19 +45,24 @@ export default function BusinessList({
                 <p className="capitalize">Category: {business.category}</p>
               </div>
               {currentUser?.role === "admin" && (
-                <div className="space-x-8">
-                  <Button
-                    variant="secondary"
-                    onClick={() => handleEdit(business)}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    onClick={() => business.id && deleteBusiness(business.id)}
-                  >
-                    Delete
-                  </Button>
-                </div>
+                <Dialog onOpenChange={() => setBusinessToEdit(business)}>
+                  <BusinessModal business={businessToEdit} />
+                  <div className="space-x-8">
+                    <DialogTrigger asChild>
+                      <Button
+                        variant="secondary"
+                        onClick={() => handleEdit(business)}
+                      >
+                        Edit
+                      </Button>
+                    </DialogTrigger>
+                    <Button
+                      onClick={() => business.id && deleteBusiness(business.id)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </Dialog>
               )}
             </div>
           ))
