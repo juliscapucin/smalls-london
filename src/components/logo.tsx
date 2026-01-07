@@ -1,8 +1,7 @@
 export default function Logo() {
   return (
     <svg
-      aria-label="Smalls.London Logo"
-      role="link"
+      aria-hidden="true"
       width="190"
       height="69"
       viewBox="0 0 190 69"

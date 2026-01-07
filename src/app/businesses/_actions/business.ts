@@ -51,7 +51,7 @@ export async function deleteBusiness(businessId: string) {
     .eq("owner_id", user.id);
 
   if (error) {
-    return { error: true, errorMessage: error.message };
+    return { error: true, message: error.message };
   }
 
   revalidatePath("/businesses");
