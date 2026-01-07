@@ -10,7 +10,7 @@ import { User } from "@/types/user";
 
 type BusinessListProps = {
   businesses: Business[];
-  currentUser: User | null;
+  currentUser?: User | null;
 };
 
 export default function BusinessList({

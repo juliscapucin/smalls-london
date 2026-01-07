@@ -82,12 +82,21 @@ const HeaderMenu = async () => {
           </NavigationMenu.Item>
 
           <NavigationMenu.Item className={classnames.item}>
-            <NavigationMenu.Link
+            <NavigationMenu.Trigger
               className={cn(classnames.trigger, classnames.focus)}
-              href="/search"
             >
-              Search
-            </NavigationMenu.Link>
+              Search{" "}
+              <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
+            </NavigationMenu.Trigger>
+            <NavigationMenu.Content className={classnames.content}>
+              <ul className="w-full list-none">
+                {["businesses", "events"].map((category) => (
+                  <ListItem key={category} href={`/${category}/search`}>
+                    {category}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenu.Content>
           </NavigationMenu.Item>
 
           <NavigationMenu.Indicator className={classnames.indicator}>
@@ -134,7 +143,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
           {...props}
           ref={forwardedRef}
         >
-          <span className="mb-[5px] font-medium leading-[1.2] text-foreground">
+          <span className="mb-[5px] font-medium leading-[1.2] text-foreground capitalize">
             {children}
           </span>
         </Link>

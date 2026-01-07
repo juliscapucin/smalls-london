@@ -9,6 +9,7 @@
   --accent-green: oklch(72.485% 0.1369 168.328);
   --accent-yellow: oklch(97.386% 0.12528 107.564);
   --accent-vanilla: oklch(87.367% 0.01706 87.997);
+  --accent: var(--accent-yellow);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -23,7 +24,7 @@
   --color-accent-green: var(--accent-green);
   --color-accent-yellow: var(--accent-yellow);
   --color-accent-vanilla: var(--accent-vanilla);
-  --color-accent: var(--accent-yellow);
+  --color-accent: var(--accent);
   --color-accent-foreground: var(--secondary);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--secondary);
