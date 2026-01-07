@@ -48,7 +48,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
       </div>
 
       <SheetContent side="right" className="w-80 max-w-[85vw]">
-        <nav className="mt-6 flex flex-col gap-2">
+        <nav className="mt-(--height-header) flex flex-col gap-2">
           {navItems.map((item) => {
             if (item.type === "link") {
               return (
@@ -95,7 +95,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
 function BurgerIcon() {
   return (
     <div
-      className="h-12 w-6 flex flex-col justify-center gap-1.5 relative"
+      className="size-6 flex flex-col justify-center gap-1.5 relative"
       aria-hidden="true"
     >
       {[...Array(3)].map((_, index) => (
