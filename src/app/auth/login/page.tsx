@@ -1,4 +1,4 @@
-import { LoginForm } from "@/services/supabase/components";
+import { LoginForm } from "../_components";
 
 export default function Page() {
   return (
