@@ -33,7 +33,10 @@ const HeaderMenu = async () => {
     <header>
       <div className="hidden lg:flex">
         <NavigationMenu.Root className={classnames.root}>
-          <NavigationMenu.Link href="/">
+          <NavigationMenu.Link
+            href="/"
+            aria-label="Smalls.London logo — Homepage"
+          >
             <Logo />
           </NavigationMenu.Link>
 
