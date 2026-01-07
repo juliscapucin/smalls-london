@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { deleteBusiness } from "@/app/businesses/_actions/business";
-import BusinessModal from "@/app/businesses/_components/business-modal";
+import { BusinessModal } from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
 import { Button } from "@/components/ui/button";
+import { InternalLink } from "@/components/ui/link";
 import { TypographyHeading } from "@/components/ui/typography-heading";
+
 import { User } from "@/types/user";
 
 type BusinessListProps = {
@@ -33,7 +35,11 @@ export default function BusinessList({
       )}
       <div>
         {businesses.length === 0 ? (
-          <p className="text-foreground">No businesses found.</p>
+          <p className="text-foreground">
+            No businesses found.{" "}
+            <InternalLink href="/businesses/submit">Click here</InternalLink> to
+            submit a new business.
+          </p>
         ) : (
           businesses.map((business) => (
             <div

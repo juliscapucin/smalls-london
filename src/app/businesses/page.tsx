@@ -1,7 +1,7 @@
 import { getAllBusinesses } from "@/app/businesses/_lib/getAllBusinesses";
 import { getCurrentUser } from "@/lib/get-current-user";
 
-import PageWrapper from "@/components/page-wrapper";
+import { PageWrapper } from "@/components/page-wrapper";
 import { TypographyHeading } from "@/components/ui/typography-heading";
 import BusinessList from "./_components/business-list";
 

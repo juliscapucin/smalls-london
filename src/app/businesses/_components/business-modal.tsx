@@ -11,10 +11,7 @@ type BusinessModalProps = {
   onClose: () => void;
 };
 
-export default function BusinessModal({
-  business,
-  onClose,
-}: BusinessModalProps) {
+export function BusinessModal({ business, onClose }: BusinessModalProps) {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {

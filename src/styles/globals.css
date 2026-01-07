@@ -202,7 +202,7 @@
 
   /* FOCUS STYLES */
   :focus-visible {
-    @apply outline-none ring-1 ring-ring;
+    @apply outline-none ring-3 ring-ring ring-offset-2 rounded-lg;
   }
 
   .gutter-stable {

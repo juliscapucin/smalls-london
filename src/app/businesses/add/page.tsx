@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { getBusinessesByUserId } from "../_lib/getBusinessesByUserId";
 import { getCurrentUser } from "@/lib/get-current-user";
 
-import PageWrapper from "@/components/page-wrapper";
+import { PageWrapper } from "@/components/page-wrapper";
 import { TypographyHeading } from "@/components/ui/typography-heading";
 import BusinessForm from "../_components/business-form";
 import BusinessList from "../_components/business-list";

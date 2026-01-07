@@ -1,4 +1,4 @@
-import PageWrapper from "@/components/page-wrapper";
+import { PageWrapper } from "@/components/page-wrapper";
 import { TypographyHeading } from "@/components/ui/typography-heading";
 import { getCurrentUser } from "@/lib/get-current-user";
 
