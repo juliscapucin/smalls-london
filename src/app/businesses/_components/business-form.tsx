@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { Business } from "../_types/business";
 import {
   Select,
@@ -28,34 +29,33 @@ type BusinessFormProps = {
 
 export default function BusinessForm({ business }: BusinessFormProps) {
   const [newBusiness, setNewBusiness] = useState({
-    name: business ? business.name : "",
-    description: business ? business.description : "",
-    category: business ? business.category : "",
-    email: business ? business.email : "",
+    name: business?.name || "",
+    description: business?.description || "",
+    category: business?.category || "",
+    email: business?.email || "",
   });
   const action = business ? "Update" : "Add";
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (business?.id) {
+      updateBusiness(business.id, newBusiness);
+    } else {
+      addBusiness(newBusiness);
+      setNewBusiness({
+        name: "",
+        description: "",
+        category: "",
+        email: "",
+      });
+    }
+
+    // TODO: handle errors and loading states
+  };
+
   return (
-    <form
-      className="max-w-content"
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (business?.id) {
-          updateBusiness(business.id, newBusiness);
-        } else {
-          addBusiness(newBusiness);
-          setNewBusiness({
-            name: "",
-            description: "",
-            category: "",
-            email: "",
-          });
-        }
-      }}
-    >
-      <TypographyHeading tag="h2" variant="title" className="mb-6">
-        {action} Profile
-      </TypographyHeading>
+    <form onSubmit={handleSubmit}>
+      <h2 className="heading-headline mb-6">{variant} Business Profile</h2>
       <div className="mb-4">
         <Label>
           Full Name

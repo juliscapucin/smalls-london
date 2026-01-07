@@ -18,7 +18,7 @@ export default async function Page() {
     <PageWrapper>
       <UserForm currentUser={currentUser} />
       {currentUser.role === "admin" && (
-        <Button className="mt-8" variant={"outline"}>
+        <Button className="mt-8">
           <Link href="/businesses/add">Add Businesses</Link>
         </Button>
       )}
