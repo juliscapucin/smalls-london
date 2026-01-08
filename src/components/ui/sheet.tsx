@@ -1,8 +1,9 @@
 "use client";
 
+// Adapted from Shadcn UI Sheet component: https://ui.shadcn.com/docs/components/sheet
+
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-import { XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "./button";

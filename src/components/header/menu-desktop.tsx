@@ -1,13 +1,14 @@
 import * as React from "react";
 import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronDownIcon, Search } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Category } from "@/types/category";
 
 import { AuthButton } from "@/app/auth/_components/auth-button";
 import { Logo } from "@/components/logo";
+import { Input } from "@/components/ui/input";
 
 const classnames = {
   root: "fixed hidden lg:flex justify-between items-center h-header z-20 top-0 left-0 right-0 px-2 bg-background border-b-2 border-b-secondary",
@@ -22,6 +23,8 @@ const classnames = {
     "absolute top-[58px] min-w-[245px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left",
   indicator:
     "top-[48px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
+  input:
+    "bg-background rounded-lg z-20 transition-opacity duration-300 group-data-[state=closed]:opacity-0 group-data-[state=closed]:pointer-events-none",
   focus: "focus-visible:ring-ring focus-visible:ring-2",
 };
 
@@ -34,6 +37,7 @@ export async function DesktopMenu({
   businessCategories,
   eventCategories,
 }: DesktopMenuProps) {
+  // TODO: test if clicking opens the dropdown
   return (
     <NavigationMenu.Root className={classnames.root}>
       <NavigationMenu.Link href="/" aria-label="Smalls.London logo — Homepage">
@@ -89,17 +93,16 @@ export async function DesktopMenu({
           <NavigationMenu.Trigger
             className={cn(classnames.trigger, classnames.focus)}
           >
-            Search{" "}
+            Search
             <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className={classnames.content}>
-            <ul className="w-full list-none">
-              {["businesses", "events"].map((category) => (
-                <ListItem key={category} href={`/${category}/search`}>
-                  {category}
-                </ListItem>
-              ))}
-            </ul>
+            <Input
+              className={classnames.input}
+              type="text"
+              autoFocus
+              aria-label="Search input"
+            />
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 

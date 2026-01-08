@@ -1,7 +1,7 @@
 import { getCategories } from "@/lib/get-categories";
 
-import { DesktopMenu } from "@/components/desktop-menu";
-import { MobileMenu } from "./mobile-menu";
+import { DesktopMenu } from "./menu-desktop";
+import { MobileMenu } from "./menu-mobile";
 import { Category } from "@/types/category";
 
 export type NavItem =
@@ -11,6 +11,8 @@ export type NavItem =
 export async function Header() {
   const businessCategories = await getCategories("business_categories");
   const eventCategories = await getCategories("event_categories");
+
+  // TODO: test if query results are rendering correctly (mock data?)
 
   const navItems: NavItem[] = [
     { type: "link", label: "Home", href: "/" },
