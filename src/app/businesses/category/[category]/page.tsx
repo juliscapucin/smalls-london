@@ -5,15 +5,12 @@ import { PageWrapper } from "@/components/page-wrapper";
 import { TypographyHeading } from "@/components/ui/typography-heading";
 import { getCurrentUser } from "@/lib/get-current-user";
 
-type PageProps = {
-  params: {
-    category: string;
-  };
-};
-
-export default async function Page(props: PageProps) {
-  const params = await props.params;
-  const category = params.category;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const { category } = await params;
   const businesses = await getAllBusinesses(category);
   const currentUser = await getCurrentUser();
 

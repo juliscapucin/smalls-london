@@ -3,12 +3,11 @@ import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { ChevronDownIcon, Search } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Category } from "@/types/category";
 
 import { AuthButton } from "@/app/auth/_components/auth-button";
 import { Logo } from "@/components/logo";
-import { Input } from "@/components/ui/input";
+import { SearchInput } from "./search-input";
 
 const classnames = {
   root: "fixed hidden lg:flex justify-between items-center h-header z-20 top-0 left-0 right-0 px-2 bg-background border-b-2 border-b-secondary",
@@ -20,12 +19,9 @@ const classnames = {
     "relative top-px ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180",
   link: "block select-none rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground no-underline outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
   content:
-    "absolute top-[58px] min-w-[245px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left",
+    "absolute top-[58px] min-w-[245px] w-[400px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left",
   indicator:
     "top-[48px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
-  input:
-    "bg-background rounded-lg z-20 transition-opacity duration-300 group-data-[state=closed]:opacity-0 group-data-[state=closed]:pointer-events-none",
-  focus: "focus-visible:ring-ring focus-visible:ring-2",
 };
 
 type DesktopMenuProps = {
@@ -46,9 +42,7 @@ export async function DesktopMenu({
 
       <NavigationMenu.List className={classnames.list}>
         <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger
-            className={cn(classnames.trigger, classnames.focus)}
-          >
+          <NavigationMenu.Trigger className={classnames.trigger}>
             Businesses{" "}
             <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
           </NavigationMenu.Trigger>
@@ -68,9 +62,7 @@ export async function DesktopMenu({
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger
-            className={cn(classnames.trigger, classnames.focus)}
-          >
+          <NavigationMenu.Trigger className={classnames.trigger}>
             Events{" "}
             <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
           </NavigationMenu.Trigger>
@@ -90,19 +82,12 @@ export async function DesktopMenu({
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger
-            className={cn(classnames.trigger, classnames.focus)}
-          >
+          <NavigationMenu.Trigger className={classnames.trigger}>
             Search
             <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className={classnames.content}>
-            <Input
-              className={classnames.input}
-              type="text"
-              autoFocus
-              aria-label="Search input"
-            />
+            <SearchInput />
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 
@@ -145,7 +130,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
       <NavigationMenu.Link asChild>
         <Link
           href={href}
-          className={cn(classnames.link, classnames.focus)}
+          className={classnames.link}
           {...props}
           ref={forwardedRef}
         >

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { linkClassnames } from "@/components/ui/link";
 
 const buttonVariants = cva(
-  "inline-flex text-sm items-center justify-center gap-2 whitespace-nowrap rounded-full transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex text-sm items-center justify-center gap-2 whitespace-nowrap rounded-full transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -19,13 +19,13 @@ const buttonVariants = cva(
         secondary:
           "bg-accent-yellow text-foreground hover:bg-foreground/80 uppercase",
         ghost: "hover:bg-accent hover:text-accent-foreground uppercase",
-        link: linkClassnames,
+        link: linkClassnames, // reuse link styles
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-full px-3 text-xs",
         lg: "h-10 rounded-full px-8",
-        icon: "h-12 w-12",
+        icon: "size-10 aspect-square",
       },
     },
     defaultVariants: {
