@@ -5,8 +5,9 @@ import { MobileMenu } from "./menu-mobile";
 import { Category } from "@/types/category";
 
 export type NavItem =
-  | { type: "link"; label: string; href: string }
-  | { type: "group"; label: string; path: string; items: Category[] };
+  | { type: "link"; label: string; path: string }
+  | { type: "group"; label: string; path: string; items: Category[] }
+  | { type: "search"; label: string; path: string };
 
 export async function Header() {
   const businessCategories = await getCategories("business_categories");
@@ -15,17 +16,17 @@ export async function Header() {
   // TODO: test if query results are rendering correctly (mock data?)
 
   const navItems: NavItem[] = [
-    { type: "link", label: "Home", href: "/" },
+    { type: "link", label: "Home", path: "/" },
     {
       type: "group",
       label: "Businesses",
-      path: "businesses",
+      path: "/businesses",
       items: [...businessCategories],
     },
     {
       type: "group",
       label: "Events",
-      path: "events",
+      path: "/events",
       items: [...eventCategories],
     },
   ];

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+// Customized Shadcn UI Sheet and Accordion components
 import {
   Sheet,
   SheetContent,
@@ -18,6 +19,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Logo } from "@/components/logo";
+import { SearchInput } from "./search-input";
 
 import type { NavItem } from "./header";
 import type { Category } from "@/types/category";
@@ -49,50 +51,67 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
 
       <SheetContent side="right" className="w-80 max-w-[85vw]">
         <nav className="mt-(--height-header) flex flex-col gap-2">
-          {navItems.map((item) => {
-            if (item.type === "link") {
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block px-4 py-2"
-                >
-                  {item.label}
-                </Link>
-              );
-            } else if (item.type === "group") {
-              return (
-                <Accordion key={item.label} type="single" collapsible>
-                  <AccordionItem value={item.label}>
-                    <AccordionTrigger className="px-4">
-                      {item.label}
-                    </AccordionTrigger>
-                    <AccordionContent className="px-2">
+          {
+            <div className="border-b-2 border-foreground pb-8">
+              <h3 className="px-2">Search</h3>
+              <SearchInput />
+            </div>
+          }
+          <Accordion type="single" collapsible>
+            {navItems.map((item) => {
+              if (item.type === "link") {
+                return <NavItem item={item} />;
+              } else if (item.type === "group") {
+                return (
+                  <AccordionItem
+                    value={item.label}
+                    className="first-of-type:border-t-2 border-foreground"
+                  >
+                    <AccordionTrigger>{item.label}</AccordionTrigger>
+                    <AccordionContent>
                       <div className="flex flex-col gap-1">
                         {item.items.map((category: Category) => (
+                          // Wrap each NavItem with SheetClose to close the sheet on navigation
                           <SheetClose asChild key={category.name}>
-                            <Link
-                              href={`/${item.path}/category/${category.name}`}
-                              className="px-4 py-2 hover:bg-accent rounded-full"
-                            >
-                              {category.label}
-                            </Link>
+                            <NavItem
+                              item={{
+                                type: "group",
+                                label: category.label,
+                                path: `${item.path}/category/${category.name}`,
+                              }}
+                            />
                           </SheetClose>
                         ))}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                </Accordion>
-              );
-            }
-          })}
+                );
+              }
+            })}
+          </Accordion>
         </nav>
       </SheetContent>
     </Sheet>
   );
 }
 
-function BurgerIcon() {
+type NavItemProps = {
+  item: { type: string; label: string; path: string };
+};
+
+const NavItem = ({ item }: NavItemProps) => {
+  return (
+    <Link
+      key={item.label}
+      href={item.path}
+      className={`block py-2 ${item.type === "link" ? "pb-4" : ""}`}
+    >
+      {item.label}
+    </Link>
+  );
+};
+
+const BurgerIcon = () => {
   return (
     <div
       className="size-6 flex flex-col justify-center gap-1.5 relative"
@@ -106,4 +125,4 @@ function BurgerIcon() {
       ))}
     </div>
   );
-}
+};

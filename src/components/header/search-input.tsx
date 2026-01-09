@@ -18,7 +18,7 @@ export function SearchInput() {
   };
 
   return (
-    <div className="relative flex items-center justify-center gap-2 px-2">
+    <div className="relative flex items-center justify-center gap-2">
       <Input
         className="bg-background rounded-full transition-opacity duration-300 group-data-[state=closed]:opacity-0 group-data-[state=closed]:pointer-events-none"
         type="text"

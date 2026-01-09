@@ -17,17 +17,17 @@ export type Database = {
       business_categories: {
         Row: {
           id: string
-          label: string | null
+          label: string
           name: string
         }
         Insert: {
           id?: string
-          label?: string | null
+          label: string
           name: string
         }
         Update: {
           id?: string
-          label?: string | null
+          label?: string
           name?: string
         }
         Relationships: []
