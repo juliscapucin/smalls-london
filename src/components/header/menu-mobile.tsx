@@ -32,6 +32,13 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  const mobileNavItems = [
+    { label: "Home", path: "/", items: undefined },
+    ...navItems,
+  ];
+
+  console.log(mobileNavItems);
+
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -51,17 +58,15 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
 
       <SheetContent side="right" className="w-80 max-w-[85vw] min-w-[350px]">
         <nav className="mt-(--height-header) flex flex-col gap-2">
-          {
-            <div className="border-b-2 border-foreground pb-8">
-              <h3 className="px-2">Search</h3>
-              <SearchInput />
-            </div>
-          }
+          <div className="border-b-2 border-foreground pb-8">
+            <h3 className="px-2">Search</h3>
+            <SearchInput />
+          </div>
           <Accordion type="single" collapsible>
-            {navItems.map((item) => {
-              if (item.type === "link") {
+            {mobileNavItems.map((item) => {
+              if (!item.items) {
                 return <NavItem item={item} />;
-              } else if (item.type === "group") {
+              } else if (item.items && item.items.length > 0) {
                 return (
                   <AccordionItem
                     value={item.label}
@@ -72,14 +77,14 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
                     </AccordionTrigger>
                     <AccordionContent>
                       <div className="flex flex-col gap-1">
-                        {item.items.map((category: Category) => (
+                        {item.items?.map((category: Category) => (
                           // Wrap each NavItem with SheetClose to close the sheet on navigation
                           <SheetClose asChild key={category.name}>
                             <NavItem
                               item={{
-                                type: "group",
                                 label: category.label,
                                 path: `${item.path}/category/${category.name}`,
+                                isGroup: true,
                               }}
                             />
                           </SheetClose>
@@ -98,7 +103,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
 }
 
 type NavItemProps = {
-  item: { type: string; label: string; path: string };
+  item: { label: string; path: string; isGroup?: boolean };
 };
 
 const NavItem = ({ item }: NavItemProps) => {
@@ -107,7 +112,7 @@ const NavItem = ({ item }: NavItemProps) => {
       key={item.label}
       href={item.path}
       className={`block py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1 transition-all transition-300 ${
-        item.type === "link" ? "mb-2" : ""
+        item.isGroup ? "" : "mb-2"
       }`}
     >
       {item.label}

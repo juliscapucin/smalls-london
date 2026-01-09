@@ -4,36 +4,32 @@ import { DesktopMenu } from "./menu-desktop";
 import { MobileMenu } from "./menu-mobile";
 import { Category } from "@/types/category";
 
-export type NavItem =
-  | { type: "link"; label: string; path: string }
-  | { type: "group"; label: string; path: string; items: Category[] }
-  | { type: "search"; label: string; path: string };
+export type NavItem = {
+  label: string;
+  path: string;
+  items?: Category[];
+};
 
 export async function Header() {
   const businessCategories = await getCategories("business_categories");
   const eventCategories = await getCategories("event_categories");
 
-  // TODO: test if query results are rendering correctly (mock data?)
+  // TODO: test if items are rendering correctly (query mock data)
 
+  // Might add this to DB later
   const navItems: NavItem[] = [
-    { type: "link", label: "Home", path: "/" },
     {
-      type: "group",
       label: "Businesses",
       path: "/businesses",
       items: [...businessCategories],
     },
-    {
-      type: "group",
-      label: "Events",
-      path: "/events",
-      items: [...eventCategories],
-    },
+    { label: "Events", path: "/events", items: [...eventCategories] },
   ];
 
   return (
     <header>
       <DesktopMenu
+        navItems={navItems}
         businessCategories={businessCategories}
         eventCategories={eventCategories}
       />

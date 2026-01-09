@@ -8,6 +8,7 @@ import { Category } from "@/types/category";
 import { AuthButton } from "@/app/auth/_components/auth-button";
 import { Logo } from "@/components/logo";
 import { SearchInput } from "./search-input";
+import type { NavItem } from "./header";
 
 const classnames = {
   root: "fixed hidden lg:flex justify-between items-center h-header z-20 top-0 left-0 right-0 px-2 bg-background border-b-2 border-b-secondary",
@@ -27,13 +28,15 @@ const classnames = {
 type DesktopMenuProps = {
   businessCategories: Category[];
   eventCategories: Category[];
+  navItems: NavItem[];
 };
 
 export async function DesktopMenu({
+  navItems,
   businessCategories,
   eventCategories,
 }: DesktopMenuProps) {
-  // TODO: test if clicking opens the dropdown
+  // TODO: add test checking if click opens the dropdown + correct items are shown
   return (
     <NavigationMenu.Root className={classnames.root}>
       <NavigationMenu.Link href="/" aria-label="Smalls.London logo — Homepage">
@@ -41,45 +44,32 @@ export async function DesktopMenu({
       </NavigationMenu.Link>
 
       <NavigationMenu.List className={classnames.list}>
-        <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger className={classnames.trigger}>
-            Businesses{" "}
-            <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
-          </NavigationMenu.Trigger>
-          <NavigationMenu.Content className={classnames.content}>
-            <ul className="w-full list-none">
-              <ListItem href="/businesses">All</ListItem>
-              {businessCategories.map((category) => (
-                <ListItem
-                  key={category.name}
-                  href={`/businesses/category/${category.name}`}
-                >
-                  {category.label}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenu.Content>
-        </NavigationMenu.Item>
-
-        <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger className={classnames.trigger}>
-            Events{" "}
-            <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
-          </NavigationMenu.Trigger>
-          <NavigationMenu.Content className={classnames.content}>
-            <ul className="w-full list-none">
-              <ListItem href="/events">All</ListItem>
-              {eventCategories.map((category) => (
-                <ListItem
-                  key={category.name}
-                  href={`/events/category/${category.name}`}
-                >
-                  {category.label}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenu.Content>
-        </NavigationMenu.Item>
+        {navItems.map((item) => {
+          return (
+            <NavigationMenu.Item className={classnames.item}>
+              <NavigationMenu.Trigger className={classnames.trigger}>
+                {item.label}
+                <ChevronDownIcon
+                  className={classnames.chevronIcon}
+                  aria-hidden
+                />
+              </NavigationMenu.Trigger>
+              <NavigationMenu.Content className={classnames.content}>
+                <ul className="w-full list-none">
+                  <ListItem href={item.path}>All</ListItem>
+                  {businessCategories.map((category) => (
+                    <ListItem
+                      key={category.name}
+                      href={`${item.path}/category/${category.name}`}
+                    >
+                      {category.label}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenu.Content>
+            </NavigationMenu.Item>
+          );
+        })}
 
         <NavigationMenu.Item className={classnames.item}>
           <NavigationMenu.Trigger className={classnames.trigger}>
@@ -91,25 +81,7 @@ export async function DesktopMenu({
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Indicator className={classnames.indicator}>
-          <svg
-            width="23"
-            height="15"
-            viewBox="0 0 23 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11.8195 1.3457L22.6448 11.0957C22.6448 11.0957 22.6448 10.0594 22.6448 14.3457C20.1448 14.3457 5.12615 14.7561 0.994141 14.3457C0.994255 11.8457 0.994141 11.0957 0.994141 11.0957L11.8195 1.3457Z"
-              fill="#F5F3EA"
-            />
-            <path
-              d="M22.3206 11.0957L11.4952 1.3457L0.669922 11.0957"
-              stroke="#302634"
-              strokeWidth="2"
-            />
-          </svg>
-        </NavigationMenu.Indicator>
+        <NavigationMenuIndicator />
       </NavigationMenu.List>
 
       <React.Suspense>
@@ -142,3 +114,27 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
     </li>
   )
 );
+
+const NavigationMenuIndicator = () => {
+  return (
+    <NavigationMenu.Indicator className={classnames.indicator}>
+      <svg
+        width="23"
+        height="15"
+        viewBox="0 0 23 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M11.8195 1.3457L22.6448 11.0957C22.6448 11.0957 22.6448 10.0594 22.6448 14.3457C20.1448 14.3457 5.12615 14.7561 0.994141 14.3457C0.994255 11.8457 0.994141 11.0957 0.994141 11.0957L11.8195 1.3457Z"
+          fill="var(--color-background)"
+        />
+        <path
+          d="M22.3206 11.0957L11.4952 1.3457L0.669922 11.0957"
+          stroke="var(--color-foreground)"
+          strokeWidth="2"
+        />
+      </svg>
+    </NavigationMenu.Indicator>
+  );
+};
