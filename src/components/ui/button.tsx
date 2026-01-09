@@ -10,14 +10,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
+        primary:
           "bg-foreground text-background hover:bg-accent-orange uppercase",
+        secondary:
+          "bg-accent-yellow text-foreground hover:bg-foreground/80 uppercase",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase",
         outline:
           "border-[2px] border-foreground bg-background hover:bg-accent hover:text-accent-foreground uppercase",
-        secondary:
-          "bg-accent-yellow text-foreground hover:bg-foreground/80 uppercase",
         ghost: "hover:bg-accent hover:text-accent-foreground uppercase",
         link: linkClassnames, // reuse link styles
       },
@@ -29,7 +29,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "primary",
       size: "default",
     },
   }

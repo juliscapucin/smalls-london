@@ -30,7 +30,7 @@
   --color-destructive-foreground: var(--secondary);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-ring: var(--focus-ring);
+  --color-ring: var(--focus-ring); /* used for focus ring */
 
   /* Typography */
   --font-primary: var(--font-pp-frama), sans-serif;

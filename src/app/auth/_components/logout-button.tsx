@@ -15,7 +15,7 @@ export function LogoutButton() {
   };
 
   return (
-    <Button onClick={logout} size="lg" variant="default">
+    <Button onClick={logout} size="lg" variant="primary">
       Logout
     </Button>
   );

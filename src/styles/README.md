@@ -30,9 +30,9 @@ They are neutral and used throughout the interface.
 
 Examples:
 
-- `--color-primary`
-- `--color-secondary`
-- `--color-ring`
+- `--color-background`
+- `--color-foreground`
+- `--color-ring` (used for focus-within ring)
 
 Usage:
 
@@ -41,12 +41,10 @@ Usage:
 
 ### 2. UI semantic colors
 
-Semantic colors describe **interaction and state**, not brand.
+Semantic colors describe **interaction and state**.
 
 Examples:
 
-- `--color-primary`
-- `--color-secondary`
 - `--color-muted`
 - `--color-destructive`
 - `--color-accent`
@@ -91,7 +89,7 @@ Layout decisions are centralized to maintain rhythm and consistency.
 Defined tokens:
 
 - `--max-width-desktop`
-- `--max-width-modal`
+- `--max-width-content`
 - Header, footer, and content heights
 - Page padding:
   - Mobile: p-4 (16px)
