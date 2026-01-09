@@ -28,11 +28,7 @@ export async function Header() {
 
   return (
     <header>
-      <DesktopMenu
-        navItems={navItems}
-        businessCategories={businessCategories}
-        eventCategories={eventCategories}
-      />
+      <DesktopMenu navItems={navItems} />
       <MobileMenu navItems={navItems} />
     </header>
   );

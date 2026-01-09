@@ -75,6 +75,15 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
                     </AccordionTrigger>
                     <AccordionContent>
                       <div className="flex flex-col gap-1">
+                        <SheetClose asChild>
+                          <NavItem
+                            item={{
+                              label: "All",
+                              path: `${item.path}`,
+                              isGroupItem: true,
+                            }}
+                          />
+                        </SheetClose>
                         {item.items?.map((category: Category) => (
                           // Wrap each NavItem with SheetClose to close the sheet on navigation
                           <SheetClose asChild key={category.name}>
@@ -82,7 +91,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
                               item={{
                                 label: category.label,
                                 path: `${item.path}/category/${category.name}`,
-                                isGroup: true,
+                                isGroupItem: true,
                               }}
                             />
                           </SheetClose>
@@ -101,7 +110,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
 }
 
 type NavItemProps = {
-  item: { label: string; path: string; isGroup?: boolean };
+  item: { label: string; path: string; isGroupItem?: boolean };
 };
 
 const NavItem = ({ item }: NavItemProps) => {
@@ -110,7 +119,7 @@ const NavItem = ({ item }: NavItemProps) => {
       key={item.label}
       href={item.path}
       className={`block py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1 transition-all transition-300 ${
-        item.isGroup ? "" : "mb-2"
+        item.isGroupItem ? "" : "mb-2"
       }`}
     >
       {item.label}

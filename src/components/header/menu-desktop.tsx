@@ -2,8 +2,6 @@ import * as React from "react";
 import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
-import { Category } from "@/types/category";
-
 import { AuthButton } from "@/app/auth/_components/auth-button";
 import { Logo } from "@/components/logo";
 import { IconChevronDown } from "@/components/icons/icon-chevron-down";
@@ -25,16 +23,10 @@ const classnames = {
 };
 
 type DesktopMenuProps = {
-  businessCategories: Category[];
-  eventCategories: Category[];
   navItems: NavItem[];
 };
 
-export async function DesktopMenu({
-  navItems,
-  businessCategories,
-  eventCategories,
-}: DesktopMenuProps) {
+export async function DesktopMenu({ navItems }: DesktopMenuProps) {
   // TODO: add test checking if click opens the dropdown + correct items are shown
   return (
     <NavigationMenu.Root className={classnames.root}>
@@ -53,7 +45,7 @@ export async function DesktopMenu({
               <NavigationMenu.Content className={classnames.content}>
                 <ul className="w-full list-none">
                   <ListItem href={item.path}>All</ListItem>
-                  {businessCategories.map((category) => (
+                  {item.items?.map((category) => (
                     <ListItem
                       key={category.name}
                       href={`${item.path}/category/${category.name}`}
