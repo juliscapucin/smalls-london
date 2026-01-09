@@ -1,5 +1,7 @@
 "use client";
 
+// Adapted from Shadcn UI Sheet component: https://ui.shadcn.com/docs/components/accordion
+
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
