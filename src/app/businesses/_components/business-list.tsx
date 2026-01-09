@@ -5,14 +5,12 @@ import { deleteBusiness } from "@/app/businesses/_actions/business";
 import { BusinessModal } from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
 import { Button } from "@/components/ui/button";
-import { InternalLink } from "@/components/ui/link";
 import { TypographyHeading } from "@/components/ui/typography-heading";
-
 import { User } from "@/types/user";
 
 type BusinessListProps = {
   businesses: Business[];
-  currentUser?: User | null;
+  currentUser: User | null;
 };
 
 export default function BusinessList({
@@ -35,15 +33,11 @@ export default function BusinessList({
       )}
       <div>
         {businesses.length === 0 ? (
-          <p className="text-foreground">
-            No businesses found.{" "}
-            <InternalLink href="/businesses/submit">Click here</InternalLink> to
-            submit a new business.
-          </p>
+          <p className="text-foreground">No businesses found.</p>
         ) : (
           businesses.map((business) => (
             <div
-              className="space-y-8 border-t border-foreground pt-8 mb-8 first:mt-16"
+              className="space-y-8 border-t border-secondary pt-8 mb-8 first:mt-16"
               key={business.id}
             >
               <div className="max-w-prose space-y-4">
@@ -53,8 +47,7 @@ export default function BusinessList({
                 <p>{business.description}</p>
                 <p className="capitalize">Category: {business.category}</p>
               </div>
-              {(currentUser?.role === "admin" ||
-                currentUser?.role === "guest") && (
+              {currentUser?.role === "admin" && (
                 <div className="space-x-8">
                   <Button
                     variant="secondary"
