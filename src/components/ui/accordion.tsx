@@ -34,7 +34,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "flex flex-1 items-start justify-between gap-4 py-2 my-2 text-left transition-all outline-none hover:underline disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>div]:rotate-180",
+          "flex flex-1 items-start justify-between gap-4 py-2 my-2 text-left transition-all outline-none disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>div]:rotate-180",
           className
         )}
         {...props}
@@ -57,7 +57,7 @@ function AccordionContent({
       className="data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down overflow-hidden border-t-2 border-foreground"
       {...props}
     >
-      <div className={cn("p-4 pt-2", className)}>{children}</div>
+      <div className={cn("py-4 pt-2", className)}>{children}</div>
     </AccordionPrimitive.Content>
   );
 }

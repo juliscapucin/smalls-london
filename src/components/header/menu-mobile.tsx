@@ -49,7 +49,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
         </SheetTrigger>
       </div>
 
-      <SheetContent side="right" className="w-80 max-w-[85vw]">
+      <SheetContent side="right" className="w-80 max-w-[85vw] min-w-[350px]">
         <nav className="mt-(--height-header) flex flex-col gap-2">
           {
             <div className="border-b-2 border-foreground pb-8">
@@ -67,7 +67,9 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
                     value={item.label}
                     className="first-of-type:border-t-2 border-foreground"
                   >
-                    <AccordionTrigger>{item.label}</AccordionTrigger>
+                    <AccordionTrigger className="py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1">
+                      {item.label}
+                    </AccordionTrigger>
                     <AccordionContent>
                       <div className="flex flex-col gap-1">
                         {item.items.map((category: Category) => (
@@ -104,7 +106,9 @@ const NavItem = ({ item }: NavItemProps) => {
     <Link
       key={item.label}
       href={item.path}
-      className={`block py-2 ${item.type === "link" ? "pb-4" : ""}`}
+      className={`block py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1 transition-all transition-300 ${
+        item.type === "link" ? "mb-2" : ""
+      }`}
     >
       {item.label}
     </Link>
