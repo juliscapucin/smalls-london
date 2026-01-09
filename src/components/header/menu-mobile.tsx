@@ -37,8 +37,6 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
     ...navItems,
   ];
 
-  console.log(mobileNavItems);
-
   useEffect(() => {
     setOpen(false);
   }, [pathname]);

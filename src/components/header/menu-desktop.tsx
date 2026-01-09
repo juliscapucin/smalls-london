@@ -1,12 +1,12 @@
 import * as React from "react";
 import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { ChevronDownIcon, Search } from "lucide-react";
 
 import { Category } from "@/types/category";
 
 import { AuthButton } from "@/app/auth/_components/auth-button";
 import { Logo } from "@/components/logo";
+import { IconChevronDown } from "@/components/icons/icon-chevron-down";
 import { SearchInput } from "./search-input";
 import type { NavItem } from "./header";
 
@@ -16,13 +16,12 @@ const classnames = {
   item: "flex justify-center items-center",
   trigger:
     "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
-  chevronIcon:
-    "relative top-px ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180",
+  chevronIcon: "relative mt-px ml-1 group-data-[state=open]:rotate-180",
   link: "block select-none rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground no-underline outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
   content:
     "absolute top-[58px] min-w-[245px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left",
   indicator:
-    "top-[48px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
+    "top-[49px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
 };
 
 type DesktopMenuProps = {
@@ -49,10 +48,7 @@ export async function DesktopMenu({
             <NavigationMenu.Item className={classnames.item}>
               <NavigationMenu.Trigger className={classnames.trigger}>
                 {item.label}
-                <ChevronDownIcon
-                  className={classnames.chevronIcon}
-                  aria-hidden
-                />
+                <IconChevronDown className={classnames.chevronIcon} />
               </NavigationMenu.Trigger>
               <NavigationMenu.Content className={classnames.content}>
                 <ul className="w-full list-none">
@@ -74,7 +70,7 @@ export async function DesktopMenu({
         <NavigationMenu.Item className={classnames.item}>
           <NavigationMenu.Trigger className={classnames.trigger}>
             Search
-            <ChevronDownIcon className={classnames.chevronIcon} aria-hidden />
+            <IconChevronDown className={classnames.chevronIcon} />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className={classnames.content}>
             <SearchInput />
@@ -120,19 +116,19 @@ const NavigationMenuIndicator = () => {
     <NavigationMenu.Indicator className={classnames.indicator}>
       <svg
         width="23"
-        height="15"
-        viewBox="0 0 23 15"
+        height="14"
+        viewBox="0 0 23 14"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M11.8195 1.3457L22.6448 11.0957C22.6448 11.0957 22.6448 10.0594 22.6448 14.3457C20.1448 14.3457 5.12615 14.7561 0.994141 14.3457C0.994255 11.8457 0.994141 11.0957 0.994141 11.0957L11.8195 1.3457Z"
-          fill="var(--color-background)"
+          d="M11.1504 2.31738L21.1513 11.3174C21.1513 11.3174 21.1504 11.8174 21.1504 13.8174C18.6504 13.8174 5.15039 13.8174 1.15039 13.8174C1.1505 11.352 1.15131 11.3174 1.15131 11.3174L11.1504 2.31738Z"
+          fill="#F5F3EA"
         />
         <path
-          d="M22.3206 11.0957L11.4952 1.3457L0.669922 11.0957"
-          stroke="var(--color-foreground)"
-          strokeWidth="2"
+          d="M21.6504 10.3174L11.1504 1.31738L0.650391 10.3174"
+          stroke="#302634"
+          stroke-width="2"
         />
       </svg>
     </NavigationMenu.Indicator>
