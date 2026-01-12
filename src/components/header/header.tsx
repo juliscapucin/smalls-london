@@ -1,3 +1,5 @@
+import React from "react";
+
 import { getCategories } from "@/lib/get-categories";
 
 import { MenuDesktop } from "./menu-desktop";
@@ -29,9 +31,15 @@ export async function Header() {
 
   return (
     <header>
-      <MenuDesktop navItems={navItems} />
+      <MenuDesktop navItems={navItems}>
+        <React.Suspense>
+          <AuthButton variant="desktop" />
+        </React.Suspense>
+      </MenuDesktop>
       <MenuMobile navItems={navItems}>
-        <AuthButton variant="mobile" />
+        <React.Suspense>
+          <AuthButton variant="mobile" />
+        </React.Suspense>
       </MenuMobile>
     </header>
   );

@@ -1,8 +1,9 @@
+"use client";
+
 import * as React from "react";
 import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
-import { AuthButton } from "@/app/auth/_components/auth-button";
 import { Logo } from "@/components/logo";
 import { IconChevronDown } from "@/components/icons/icon-chevron-down";
 import { IconMenuIndicator } from "@/components/icons/icon-menu-indicator";
@@ -25,9 +26,12 @@ const classnames = {
 
 type MenuDesktopProps = {
   navItems: NavItem[];
+  children?: React.ReactNode;
 };
 
-export async function MenuDesktop({ navItems }: MenuDesktopProps) {
+export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
+  const [open, setOpen] = React.useState(false);
+
   // TODO: add test checking if click opens the dropdown + correct items are shown
   return (
     <NavigationMenu.Root className={classnames.root}>
@@ -38,7 +42,15 @@ export async function MenuDesktop({ navItems }: MenuDesktopProps) {
         {navItems.map((item) => {
           return (
             <NavigationMenu.Item className={classnames.item} key={item.label}>
-              <NavigationMenu.Trigger className={classnames.trigger}>
+              <NavigationMenu.Trigger
+                className={classnames.trigger}
+                onClick={(e) => e.preventDefault()}
+                onFocus={() => setOpen(true)}
+                onBlur={() => setOpen(false)}
+                onMouseEnter={() => setOpen(true)}
+                onMouseLeave={() => setOpen(false)}
+                data-state={open ? "open" : "closed"}
+              >
                 {item.label}
                 <IconChevronDown className={classnames.chevronIcon} />
               </NavigationMenu.Trigger>
@@ -72,13 +84,57 @@ export async function MenuDesktop({ navItems }: MenuDesktopProps) {
           <IconMenuIndicator />
         </NavigationMenu.Indicator>
       </NavigationMenu.List>
-
-      <React.Suspense>
-        <AuthButton />
-      </React.Suspense>
+      {/* Slot to render Menu Auth Button */}
+      {children}
     </NavigationMenu.Root>
   );
 }
+
+type NavigationItemProps = {
+  item: NavItem;
+};
+
+const NavigationItem = React.forwardRef<HTMLLIElement, NavigationItemProps>(
+  ({ item }, forwardedRef) => {
+    const [open, setOpen] = React.useState(false);
+
+    return (
+      <NavigationMenu.Item
+        className={classnames.item}
+        key={item.label}
+        ref={forwardedRef}
+      >
+        <NavigationMenu.Trigger
+          className={classnames.trigger}
+          onClick={(e) => e.preventDefault()}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setOpen(false)}
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+          data-state={open ? "open" : "closed"}
+        >
+          {item.label}
+          <IconChevronDown className={classnames.chevronIcon} />
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content className={classnames.content}>
+          <ul className="w-full">
+            <ListItem href={item.path}>All</ListItem>
+            {item.items?.map((category) => (
+              <ListItem
+                key={category.name}
+                href={`${item.path}/category/${category.name}`}
+              >
+                {category.label}
+              </ListItem>
+            ))}
+          </ul>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    );
+  }
+);
+
+NavigationItem.displayName = "NavigationItem";
 
 type ListItemProps = {
   children?: React.ReactNode;
