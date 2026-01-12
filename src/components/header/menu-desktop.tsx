@@ -82,12 +82,15 @@ export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
           <NavigationMenu.Trigger
             className={classnames.trigger}
             onClick={(e) => e.preventDefault()}
-            onFocusCapture={() => setOpen("search")}
+            onFocus={() => setOpen("search")}
           >
             Search
             <IconChevronDown className={classnames.chevronIcon} />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className={classnames.content}>
+          <NavigationMenu.Content
+            className={classnames.content}
+            onFocusOutside={() => setOpen(undefined)}
+          >
             <SearchInput />
           </NavigationMenu.Content>
         </NavigationMenu.Item>
