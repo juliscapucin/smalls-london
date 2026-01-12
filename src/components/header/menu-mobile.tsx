@@ -26,9 +26,10 @@ import type { Category } from "@/types/category";
 
 type MenuMobileProps = {
   navItems: NavItem[];
+  children?: React.ReactNode;
 };
 
-export function MenuMobile({ navItems }: MenuMobileProps) {
+export function MenuMobile({ navItems, children }: MenuMobileProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -103,6 +104,7 @@ export function MenuMobile({ navItems }: MenuMobileProps) {
               }
             })}
           </Accordion>
+          {children}
         </nav>
       </SheetContent>
     </Sheet>

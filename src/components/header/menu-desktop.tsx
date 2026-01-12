@@ -37,7 +37,7 @@ export async function MenuDesktop({ navItems }: MenuDesktopProps) {
       <NavigationMenu.List className={classnames.list}>
         {navItems.map((item) => {
           return (
-            <NavigationMenu.Item className={classnames.item}>
+            <NavigationMenu.Item className={classnames.item} key={item.label}>
               <NavigationMenu.Trigger className={classnames.trigger}>
                 {item.label}
                 <IconChevronDown className={classnames.chevronIcon} />

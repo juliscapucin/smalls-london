@@ -2,6 +2,7 @@ import { getCategories } from "@/lib/get-categories";
 
 import { MenuDesktop } from "./menu-desktop";
 import { MenuMobile } from "./menu-mobile";
+import { AuthButton } from "@/app/auth/_components/auth-button";
 import { Category } from "@/types/category";
 
 export type NavItem = {
@@ -29,7 +30,9 @@ export async function Header() {
   return (
     <header>
       <MenuDesktop navItems={navItems} />
-      <MenuMobile navItems={navItems} />
+      <MenuMobile navItems={navItems}>
+        <AuthButton variant="mobile" />
+      </MenuMobile>
     </header>
   );
 }

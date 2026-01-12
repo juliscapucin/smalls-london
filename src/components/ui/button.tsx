@@ -13,7 +13,7 @@ const buttonVariants = cva(
         primary:
           "bg-foreground text-background hover:bg-foreground/80 uppercase",
         secondary:
-          "bg-accent-yellow text-foreground hover:bg-foreground/80 uppercase",
+          "bg-accent-yellow text-foreground hover:bg-foreground/20 uppercase",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase",
         outline:
