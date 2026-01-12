@@ -1,7 +1,7 @@
 import { getCategories } from "@/lib/get-categories";
 
-import { DesktopMenu } from "./menu-desktop";
-import { MobileMenu } from "./menu-mobile";
+import { MenuDesktop } from "./menu-desktop";
+import { MenuMobile } from "./menu-mobile";
 import { Category } from "@/types/category";
 
 export type NavItem = {
@@ -28,8 +28,8 @@ export async function Header() {
 
   return (
     <header>
-      <DesktopMenu navItems={navItems} />
-      <MobileMenu navItems={navItems} />
+      <MenuDesktop navItems={navItems} />
+      <MenuMobile navItems={navItems} />
     </header>
   );
 }

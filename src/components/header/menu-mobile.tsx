@@ -24,11 +24,11 @@ import { SearchInput } from "./search-input";
 import type { NavItem } from "./header";
 import type { Category } from "@/types/category";
 
-type MobileMenuProps = {
+type MenuMobileProps = {
   navItems: NavItem[];
 };
 
-export function MobileMenu({ navItems }: MobileMenuProps) {
+export function MenuMobile({ navItems }: MenuMobileProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 

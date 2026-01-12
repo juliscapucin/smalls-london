@@ -22,11 +22,11 @@ const classnames = {
     "top-[49px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
 };
 
-type DesktopMenuProps = {
+type MenuDesktopProps = {
   navItems: NavItem[];
 };
 
-export async function DesktopMenu({ navItems }: DesktopMenuProps) {
+export async function MenuDesktop({ navItems }: MenuDesktopProps) {
   // TODO: add test checking if click opens the dropdown + correct items are shown
   return (
     <NavigationMenu.Root className={classnames.root}>
