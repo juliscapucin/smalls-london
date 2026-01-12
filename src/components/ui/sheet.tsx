@@ -6,7 +6,8 @@ import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
+import { Button } from "@/components/ui/button";
+import { IconClose } from "@/components/icons/icon-close";
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
@@ -78,24 +79,12 @@ function SheetContent({
           asChild
           className="data-[state=open]:bg-foreground absolute top-4 right-4 rounded-full transition-colors hover:bg-accent disabled:pointer-events-none"
         >
-          <Button variant="ghost" size="icon">
-            <CloseIcon />
-            <span className="sr-only">Close</span>
+          <Button variant="ghost" size="icon" aria-label="Close menu">
+            <IconClose />
           </Button>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
     </SheetPortal>
-  );
-}
-
-function CloseIcon() {
-  const classnames =
-    "absolute h-0.5 w-full bg-foreground rotate-45 rounded-full top-1/2 left-0 transform -translate-y-1/2";
-  return (
-    <div className="relative size-6">
-      <div className={cn(classnames, "rotate-45")}></div>
-      <div className={cn(classnames, "-rotate-45")}></div>
-    </div>
   );
 }
 
