@@ -1,5 +1,7 @@
 "use client";
 
+// Customized Radix UI Navigation Menu component
+
 import * as React from "react";
 import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
@@ -30,26 +32,31 @@ type MenuDesktopProps = {
 };
 
 export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
-  const [open, setOpen] = React.useState(false);
-
   // TODO: add test checking if click opens the dropdown + correct items are shown
+
+  const [open, setOpen] = React.useState<string | undefined>(undefined); // Customised state to manage open menu item
+
   return (
-    <NavigationMenu.Root className={classnames.root}>
+    <NavigationMenu.Root
+      value={open}
+      onValueChange={setOpen}
+      className={classnames.root}
+    >
       <NavigationMenu.Link href="/" aria-label="Smalls.London logo — Homepage">
         <Logo />
       </NavigationMenu.Link>
       <NavigationMenu.List className={classnames.list}>
         {navItems.map((item) => {
           return (
-            <NavigationMenu.Item className={classnames.item} key={item.label}>
+            <NavigationMenu.Item
+              className={classnames.item}
+              key={item.label}
+              value={item.label}
+            >
               <NavigationMenu.Trigger
                 className={classnames.trigger}
                 onClick={(e) => e.preventDefault()}
-                onFocus={() => setOpen(true)}
-                onBlur={() => setOpen(false)}
-                onMouseEnter={() => setOpen(true)}
-                onMouseLeave={() => setOpen(false)}
-                data-state={open ? "open" : "closed"}
+                onFocus={() => setOpen(item.label)}
               >
                 {item.label}
                 <IconChevronDown className={classnames.chevronIcon} />
@@ -71,8 +78,12 @@ export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
           );
         })}
 
-        <NavigationMenu.Item className={classnames.item}>
-          <NavigationMenu.Trigger className={classnames.trigger}>
+        <NavigationMenu.Item className={classnames.item} value="search">
+          <NavigationMenu.Trigger
+            className={classnames.trigger}
+            onClick={(e) => e.preventDefault()}
+            onFocusCapture={() => setOpen("search")}
+          >
             Search
             <IconChevronDown className={classnames.chevronIcon} />
           </NavigationMenu.Trigger>
@@ -80,61 +91,16 @@ export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
             <SearchInput />
           </NavigationMenu.Content>
         </NavigationMenu.Item>
+
         <NavigationMenu.Indicator className={classnames.indicator}>
           <IconMenuIndicator />
         </NavigationMenu.Indicator>
       </NavigationMenu.List>
-      {/* Slot to render Menu Auth Button */}
+      {/* Slot to render Menu Auth Button (server component) */}
       {children}
     </NavigationMenu.Root>
   );
 }
-
-type NavigationItemProps = {
-  item: NavItem;
-};
-
-const NavigationItem = React.forwardRef<HTMLLIElement, NavigationItemProps>(
-  ({ item }, forwardedRef) => {
-    const [open, setOpen] = React.useState(false);
-
-    return (
-      <NavigationMenu.Item
-        className={classnames.item}
-        key={item.label}
-        ref={forwardedRef}
-      >
-        <NavigationMenu.Trigger
-          className={classnames.trigger}
-          onClick={(e) => e.preventDefault()}
-          onFocus={() => setOpen(true)}
-          onBlur={() => setOpen(false)}
-          onMouseEnter={() => setOpen(true)}
-          onMouseLeave={() => setOpen(false)}
-          data-state={open ? "open" : "closed"}
-        >
-          {item.label}
-          <IconChevronDown className={classnames.chevronIcon} />
-        </NavigationMenu.Trigger>
-        <NavigationMenu.Content className={classnames.content}>
-          <ul className="w-full">
-            <ListItem href={item.path}>All</ListItem>
-            {item.items?.map((category) => (
-              <ListItem
-                key={category.name}
-                href={`${item.path}/category/${category.name}`}
-              >
-                {category.label}
-              </ListItem>
-            ))}
-          </ul>
-        </NavigationMenu.Content>
-      </NavigationMenu.Item>
-    );
-  }
-);
-
-NavigationItem.displayName = "NavigationItem";
 
 type ListItemProps = {
   children?: React.ReactNode;
@@ -151,7 +117,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
           {...props}
           ref={forwardedRef}
         >
-          <span className="mb-[5px] font-medium leading-[1.2] text-foreground capitalize">
+          <span className="mb-1.25 font-medium leading-[1.2] text-foreground capitalize">
             {children}
           </span>
         </Link>

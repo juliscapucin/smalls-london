@@ -109,6 +109,7 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
               }
             })}
           </Accordion>
+          {/* Slot to render Menu Auth Button (server component) */}
           {children}
         </nav>
       </SheetContent>
