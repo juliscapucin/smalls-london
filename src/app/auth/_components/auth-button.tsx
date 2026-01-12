@@ -17,13 +17,18 @@ export async function AuthButton({ variant = "desktop" }: AuthButtonProps) {
   // Get user info from the token claims
   const user = await data?.claims;
 
+  let firstName = "";
   let firstLetter = "";
 
   if (user && user.sub && user.email) {
     // Fetch additional user details from the users database
     const userDetails = await getUserById(user.sub);
-    firstLetter = userDetails?.full_name
-      ? userDetails?.full_name.charAt(0).toUpperCase()
+    firstName = userDetails?.full_name
+      ? userDetails.full_name.split(" ")[0]
+      : "";
+
+    firstLetter = firstName
+      ? firstName.charAt(0).toUpperCase()
       : user.email.charAt(0).toUpperCase();
   }
 
@@ -34,10 +39,17 @@ export async function AuthButton({ variant = "desktop" }: AuthButtonProps) {
       }`}
     >
       <Button variant="primary" size="icon" asChild>
-        <Link href="/user/profile" className="font-primary text-xl">
+        <Link
+          href="/user/profile"
+          className="font-primary text-xl"
+          aria-label="Go to User profile"
+        >
           {firstLetter}
         </Link>
-      </Button>
+      </Button>{" "}
+      <span className="hidden lg:block max-w-40 truncate">
+        Hi, {firstName || user.email}
+      </span>
       <LogoutButton />
     </div>
   ) : (
