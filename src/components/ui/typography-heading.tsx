@@ -11,24 +11,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const headingVariants = cva(
-  "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-  {
-    variants: {
-      variant: {
-        display:
-          "text-display-mobile md:text-display-tablet lg:text-display-desktop leading-display font-bold",
-        headline:
-          "text-headline-mobile md:text-headline-tablet lg:text-headline-desktop font-medium leading-headline",
-        title:
-          "text-title-mobile md:text-title-tablet lg:text-title-desktop leading-title",
-      },
+const headingVariants = cva("focus-visible:outline-none", {
+  variants: {
+    variant: {
+      display:
+        "text-display-mobile md:text-display-tablet lg:text-display-desktop leading-display font-bold",
+      headline:
+        "text-headline-mobile md:text-headline-tablet lg:text-headline-desktop font-medium leading-headline",
+      title:
+        "text-title-mobile md:text-title-tablet lg:text-title-desktop leading-title",
     },
-    defaultVariants: {
-      variant: "headline",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "headline",
+  },
+});
 
 const TypographyHeading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
   ({ tag, className, variant, children, ...props }, ref) => {

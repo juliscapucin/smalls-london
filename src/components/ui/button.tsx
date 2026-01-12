@@ -11,7 +11,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-foreground text-background hover:bg-accent-orange uppercase",
+          "bg-foreground text-background hover:bg-foreground/80 uppercase",
         secondary:
           "bg-accent-yellow text-foreground hover:bg-foreground/80 uppercase",
         destructive:
