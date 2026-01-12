@@ -18,7 +18,7 @@ const classnames = {
   chevronIcon: "relative mt-px ml-1 group-data-[state=open]:rotate-180",
   link: "block select-none rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground no-underline outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
   content:
-    "absolute top-[58px] min-w-[245px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left",
+    "absolute top-[58px] min-w-[245px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in",
   indicator:
     "top-[49px] left-0 z-20 flex items-end justify-center overflow-hidden transition-[width,transform_200ms_ease] data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in",
 };
@@ -34,7 +34,6 @@ export async function MenuDesktop({ navItems }: MenuDesktopProps) {
       <NavigationMenu.Link href="/" aria-label="Smalls.London logo — Homepage">
         <Logo />
       </NavigationMenu.Link>
-
       <NavigationMenu.List className={classnames.list}>
         {navItems.map((item) => {
           return (
@@ -44,7 +43,7 @@ export async function MenuDesktop({ navItems }: MenuDesktopProps) {
                 <IconChevronDown className={classnames.chevronIcon} />
               </NavigationMenu.Trigger>
               <NavigationMenu.Content className={classnames.content}>
-                <ul className="w-full list-none">
+                <ul className="w-full">
                   <ListItem href={item.path}>All</ListItem>
                   {item.items?.map((category) => (
                     <ListItem

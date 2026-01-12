@@ -14,7 +14,7 @@ export const IconMenuIndicator = () => {
       <path
         d="M21.6504 10.3174L11.1504 1.31738L0.650391 10.3174"
         stroke="var(--foreground)"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </svg>
   );

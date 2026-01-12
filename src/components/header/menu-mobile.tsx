@@ -74,30 +74,35 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
                     <AccordionTrigger className="py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1">
                       {item.label}
                     </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="flex flex-col gap-1">
-                        <SheetClose asChild>
-                          <NavItem
-                            item={{
-                              label: "All",
-                              path: `${item.path}`,
-                              isGroupItem: true,
-                            }}
-                          />
-                        </SheetClose>
-                        {item.items?.map((category: Category) => (
-                          // Wrap each NavItem with SheetClose to close the sheet on navigation
-                          <SheetClose asChild key={category.name}>
+                    <AccordionContent asChild>
+                      <ul className="flex flex-col gap-1">
+                        <li>
+                          <SheetClose asChild>
                             <NavItem
                               item={{
-                                label: category.label,
-                                path: `${item.path}/category/${category.name}`,
+                                label: "All",
+                                path: `${item.path}`,
                                 isGroupItem: true,
                               }}
                             />
                           </SheetClose>
+                        </li>
+                        {item.items?.map((category: Category) => (
+                          <li key={category.name}>
+                            {/* Wrap each NavItem with SheetClose to close the
+                            sheet on navigation */}
+                            <SheetClose asChild key={category.name}>
+                              <NavItem
+                                item={{
+                                  label: category.label,
+                                  path: `${item.path}/category/${category.name}`,
+                                  isGroupItem: true,
+                                }}
+                              />
+                            </SheetClose>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </AccordionContent>
                   </AccordionItem>
                 );
