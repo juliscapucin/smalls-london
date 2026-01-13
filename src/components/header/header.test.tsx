@@ -39,8 +39,8 @@ describe("Header Component", () => {
     });
   });
 
-  describe("Desktop Menu2", () => {
-    it("should render subcategories on navlink focus", async () => {
+  describe("Submenus", () => {
+    it("should render Businesses subcategories on navlink focus", async () => {
       const HeaderComponent = await Header();
       act(() => {
         render(HeaderComponent);
@@ -53,15 +53,91 @@ describe("Header Component", () => {
       trigger?.focus();
 
       waitFor(() => {
+        expect(screen.getByText("All")).toBeVisible();
         expect(screen.getByText("Design")).toBeVisible();
         expect(screen.getByText("Beauty")).toBeVisible();
+      });
+    }, 500);
+
+    it("should render Events subcategories on navlink focus", async () => {
+      const HeaderComponent = await Header();
+      act(() => {
+        render(HeaderComponent);
+      });
+
+      const trigger = screen.queryByRole("button", { name: "Events" });
+
+      expect(trigger).toBeVisible();
+
+      trigger?.focus();
+
+      waitFor(() => {
+        expect(screen.getByText("All")).toBeVisible();
+        expect(screen.getByText("Music")).toBeVisible();
+        expect(screen.getByText("Art")).toBeVisible();
       });
     }, 500);
   });
 
   describe("Mobile Menu", () => {
-    it("should toggle mobile menu on button click", async () => {
-      // Add test implementation
+    beforeEach(() => {
+      // Mock mobile viewport
+      global.innerWidth = 375;
+      global.innerHeight = 667;
+      global.dispatchEvent(new Event("resize"));
+    });
+
+    it("should toggle mobile menu on hamburger button click", async () => {
+      const HeaderComponent = await Header();
+      act(() => {
+        render(HeaderComponent);
+      });
+
+      const user = userEvent.setup();
+
+      // Find the mobile menu toggle button (hamburger icon)
+      const hamburgerButton = screen.getByLabelText(/menu/i);
+      expect(hamburgerButton).toBeInTheDocument();
+
+      // Initially, mobile menu should be closed
+      expect(
+        screen.queryByRole("navigation", { name: /mobile/i })
+      ).not.toBeVisible();
+
+      // Click to open
+      await user.click(hamburgerButton);
+
+      await waitFor(() => {
+        expect(
+          screen.getByRole("navigation", { name: /mobile/i })
+        ).toBeVisible();
+      });
+
+      // Click to close
+      await user.click(hamburgerButton);
+
+      await waitFor(() => {
+        expect(
+          screen.queryByRole("navigation", { name: /mobile/i })
+        ).not.toBeVisible();
+      });
+    });
+
+    it("should show mobile menu categories when opened", async () => {
+      const HeaderComponent = await Header();
+      act(() => {
+        render(HeaderComponent);
+      });
+
+      const user = userEvent.setup();
+      const hamburgerButton = screen.getByLabelText(/menu/i);
+
+      await user.click(hamburgerButton);
+
+      await waitFor(() => {
+        expect(screen.getByText("Businesses")).toBeVisible();
+        expect(screen.getByText("Events")).toBeVisible();
+      });
     });
   });
 
