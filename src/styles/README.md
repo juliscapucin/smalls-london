@@ -32,7 +32,7 @@ Examples:
 
 - `--color-background`
 - `--color-foreground`
-- `--color-ring` (used for focus-within ring)
+- `--color-focus-ring` (used for focus-within ring)
 
 Usage:
 
@@ -41,18 +41,34 @@ Usage:
 
 ### 2. UI semantic colors
 
-Semantic colors describe **interaction and state**.
+Semantic colors describe **meaning and state**.
 
 Examples:
 
 - `--color-muted`
 - `--color-destructive`
-- `--color-accent`
+- `--color-accent` (primary accent color, used on buttons)
 
 Usage:
 
-- Buttons, links, focus/hover states
+- Convey state and intent on buttons, links, focus/hover states
 - Selection and interactive feedback
+
+### 3. Brand accent colors
+
+Brand colors are used for visual emphasis and identity, not semantics.
+
+Examples:
+
+- `--color-accent-orange`
+- `--color-accent-blue`
+- `--color-accent-green`
+
+Usage:
+
+- Buttons and brand-forward elements use `--color-accent`
+- Other accent colors may be used interchangeably for branding
+- Brand accent colors must not communicate state or semantic meaning
 
 ---
 

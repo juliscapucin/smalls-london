@@ -23,7 +23,7 @@ export function SearchInput() {
         className="bg-background rounded-full transition-opacity duration-300 group-data-[state=closed]:opacity-0 group-data-[state=closed]:pointer-events-none"
         type="text"
         autoFocus
-        aria-label="Search input"
+        aria-label="Search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={(e) => {

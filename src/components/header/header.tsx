@@ -1,7 +1,10 @@
+import React from "react";
+
 import { getCategories } from "@/lib/get-categories";
 
-import { DesktopMenu } from "./menu-desktop";
-import { MobileMenu } from "./menu-mobile";
+import { MenuDesktop } from "./menu-desktop";
+import { MenuMobile } from "./menu-mobile";
+import { AuthButton } from "@/app/auth/_components/auth-button";
 import { Category } from "@/types/category";
 
 export type NavItem = {
@@ -28,8 +31,16 @@ export async function Header() {
 
   return (
     <header>
-      <DesktopMenu navItems={navItems} />
-      <MobileMenu navItems={navItems} />
+      <MenuDesktop navItems={navItems}>
+        <React.Suspense>
+          <AuthButton variant="desktop" />
+        </React.Suspense>
+      </MenuDesktop>
+      <MenuMobile navItems={navItems}>
+        <React.Suspense>
+          <AuthButton variant="mobile" />
+        </React.Suspense>
+      </MenuMobile>
     </header>
   );
 }
