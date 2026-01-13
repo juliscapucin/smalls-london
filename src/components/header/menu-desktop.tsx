@@ -3,6 +3,7 @@
 // Customized Radix UI Navigation Menu component
 
 import * as React from "react";
+import { useState } from "react";
 import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
@@ -34,7 +35,7 @@ type MenuDesktopProps = {
 export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
   // TODO: add test checking if click opens the dropdown + correct items are shown
 
-  const [open, setOpen] = React.useState<string | undefined>(undefined); // Customised state to manage open menu item
+  const [open, setOpen] = useState<string>(""); // Customised state to manage open menu item
 
   return (
     <NavigationMenu.Root
@@ -89,7 +90,7 @@ export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content
             className={classnames.content}
-            onFocusOutside={() => setOpen(undefined)}
+            onFocusOutside={() => setOpen("")}
           >
             <SearchInput />
           </NavigationMenu.Content>

@@ -1,36 +1,35 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/services/supabase/server";
 import { LogoutButton } from "@/app/auth/_components/logout-button";
-import { getUserById } from "@/lib/get-user-by-id";
+import type { JwtPayload } from "@supabase/supabase-js";
+import { useScreenSize } from "@/hooks/useScreenSize";
+import { User } from "@/types/user";
 
 type AuthButtonProps = {
-  variant?: "desktop" | "mobile";
+  variant: "desktop" | "mobile";
+  user: User | JwtPayload | undefined;
+  firstname?: string;
 };
 
-export async function AuthButton({ variant = "desktop" }: AuthButtonProps) {
-  const supabase = await createClient();
+export function AuthButton({
+  variant = "desktop",
+  user,
+  firstname,
+}: AuthButtonProps) {
+  const { isDesktop } = useScreenSize();
 
-  // You can also use getUser() which will be slower.
-  const { data } = await supabase.auth.getClaims();
-
-  // Get user info from the token claims
-  const user = await data?.claims;
-
-  let firstName = "";
-  let firstLetter = "";
-
-  if (user && user.sub && user.email) {
-    // Fetch additional user details from the users database
-    const userDetails = await getUserById(user.sub);
-    firstName = userDetails?.full_name
-      ? userDetails.full_name.split(" ")[0]
-      : "";
-
-    firstLetter = firstName
-      ? firstName.charAt(0).toUpperCase()
-      : user.email.charAt(0).toUpperCase();
+  if (variant === "desktop" && !isDesktop) {
+    return null;
+  } else if (variant === "mobile" && isDesktop) {
+    return null;
   }
+
+  const email = user?.email ?? "";
+  const firstLetter = firstname
+    ? firstname.charAt(0).toUpperCase()
+    : email.charAt(0).toUpperCase();
 
   return user ? (
     <div
@@ -46,9 +45,9 @@ export async function AuthButton({ variant = "desktop" }: AuthButtonProps) {
         >
           {firstLetter}
         </Link>
-      </Button>{" "}
+      </Button>
       <span className="hidden lg:block max-w-40 truncate">
-        Hi, {firstName || user.email}
+        Hi, {firstname || email}
       </span>
       <LogoutButton />
     </div>

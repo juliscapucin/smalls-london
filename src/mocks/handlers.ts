@@ -24,9 +24,4 @@ export const handlers = [
   http.get(`${SUPABASE_URL}/auth/v1/user`, () => {
     return HttpResponse.json(null);
   }),
-
-  // Mock users table
-  http.get(`${SUPABASE_URL}/rest/v1/users`, () => {
-    return HttpResponse.json([]);
-  }),
 ];

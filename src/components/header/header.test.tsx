@@ -1,5 +1,7 @@
+import React, { act } from "react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { Header } from "./header";
 import { MenuDesktop } from "./menu-desktop";
@@ -22,22 +24,45 @@ describe("Header Component", () => {
   });
 
   describe("Rendering", () => {
-    it("should render header component and navigation items with categories", async () => {
+    it("should render header component and navigation items", async () => {
       const HeaderComponent = await Header();
-      render(HeaderComponent);
+      act(() => {
+        render(HeaderComponent);
+      });
 
       const headerElement = screen.getByRole("banner");
       expect(headerElement).toBeInTheDocument();
 
       // Check for static navigation items
-      expect(screen.getByText("Businesses")).toBeInTheDocument();
-      expect(screen.getByText("Events")).toBeInTheDocument();
+      expect(screen.getByText("Businesses")).toBeVisible();
+      expect(screen.getByText("Events")).toBeVisible();
     });
   });
 
   describe("Desktop Menu", () => {
-    it("should render desktop menu on large screens", () => {
-      // Add viewport mock and test
+    it("should render subcategories", async () => {
+      render(
+        <MenuDesktop
+          navItems={[
+            {
+              label: "Businesses",
+              path: "/businesses",
+              items: [
+                { id: "1", name: "design", label: "Design" },
+                { id: "2", name: "beauty", label: "Beauty" },
+              ],
+            },
+          ]}
+        />
+      );
+
+      const trigger = screen.queryByRole("button", { name: "Businesses" });
+
+      expect(trigger).toBeVisible();
+
+      trigger?.focus();
+
+      expect(await screen.findByText("All")).toBeVisible();
     });
   });
 
