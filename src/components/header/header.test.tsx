@@ -24,7 +24,7 @@ describe("Header Component", () => {
   });
 
   describe("Rendering", () => {
-    it("should render header component and navigation items", async () => {
+    it("should render header component and category items", async () => {
       const HeaderComponent = await Header();
       act(() => {
         render(HeaderComponent);
@@ -33,28 +33,18 @@ describe("Header Component", () => {
       const headerElement = screen.getByRole("banner");
       expect(headerElement).toBeInTheDocument();
 
-      // Check for static navigation items
+      // Check for static category items
       expect(screen.getByText("Businesses")).toBeVisible();
       expect(screen.getByText("Events")).toBeVisible();
     });
   });
 
-  describe("Desktop Menu", () => {
-    it("should render subcategories", async () => {
-      render(
-        <MenuDesktop
-          navItems={[
-            {
-              label: "Businesses",
-              path: "/businesses",
-              items: [
-                { id: "1", name: "design", label: "Design" },
-                { id: "2", name: "beauty", label: "Beauty" },
-              ],
-            },
-          ]}
-        />
-      );
+  describe("Desktop Menu2", () => {
+    it("should render subcategories on navlink focus", async () => {
+      const HeaderComponent = await Header();
+      act(() => {
+        render(HeaderComponent);
+      });
 
       const trigger = screen.queryByRole("button", { name: "Businesses" });
 
@@ -62,8 +52,11 @@ describe("Header Component", () => {
 
       trigger?.focus();
 
-      expect(await screen.findByText("All")).toBeVisible();
-    });
+      waitFor(() => {
+        expect(screen.getByText("Design")).toBeVisible();
+        expect(screen.getByText("Beauty")).toBeVisible();
+      });
+    }, 500);
   });
 
   describe("Mobile Menu", () => {
