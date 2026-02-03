@@ -56,7 +56,10 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
       </div>
 
       <SheetContent side="right" className="w-80 max-w-[85vw] min-w-[350px]">
-        <nav className="mt-(--height-header) flex flex-col gap-2">
+        <nav
+          className="mt-(--height-header) flex flex-col gap-2"
+          aria-label="Mobile Menu"
+        >
           <div className="border-b-2 border-foreground pb-8">
             <h3 className="px-2">Search</h3>
             <SearchInput />
