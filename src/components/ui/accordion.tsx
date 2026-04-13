@@ -1,7 +1,5 @@
 "use client";
 
-// Adapted from Shadcn UI Sheet component: https://ui.shadcn.com/docs/components/accordion
-
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
@@ -39,7 +37,7 @@ function AccordionTrigger({
         data-slot="accordion-trigger"
         className={cn(
           "flex flex-1 items-start justify-between gap-4 py-2 my-2 text-left transition-all outline-none disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>div]:rotate-180",
-          className
+          className,
         )}
         {...props}
       >

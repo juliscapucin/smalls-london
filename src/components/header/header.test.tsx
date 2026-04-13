@@ -1,6 +1,6 @@
 import React, { act } from "react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { Header } from "./header";
@@ -138,8 +138,9 @@ describe("Header Component", () => {
       await user.click(hamburgerButton);
 
       await waitFor(() => {
-        expect(screen.getByText("Businesses")).toBeVisible();
-        expect(screen.getByText("Events")).toBeVisible();
+        const mobileMenu = screen.getByRole("navigation", { name: /mobile menu/i });
+        expect(within(mobileMenu).getByText("Businesses")).toBeVisible();
+        expect(within(mobileMenu).getByText("Events")).toBeVisible();
       });
     });
   });

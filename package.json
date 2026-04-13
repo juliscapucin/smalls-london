@@ -41,9 +41,9 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
-    "@vitest/browser-playwright": "^4.0.17",
-    "@vitest/browser-preview": "^4.0.17",
-    "@vitest/ui": "^4.0.17",
+    "@vitest/browser-playwright": "^4.1.4",
+    "@vitest/browser-preview": "^4.1.4",
+    "@vitest/ui": "^4.1.4",
     "autoprefixer": "^10.4.22",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.8",
@@ -54,6 +54,6 @@
     "tailwindcss": "^4.1.0",
     "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^6.0.3",
-    "vitest": "^4.0.17"
+    "vitest": "^4.1.4"
   }
 }
