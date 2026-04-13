@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import { getCurrentUser } from "@/lib/get-current-user";
 
-import PageWrapper from "@/components/page-wrapper";
+import { PageWrapper } from "@/components/page-wrapper";
 import UserForm from "../_components/user-form";
 import { Button } from "@/components/ui/button";
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import PageWrapper from "@/components/page-wrapper";
+import { PageWrapper } from "@/components/page-wrapper";
 import { createClient } from "@/services/supabase/client";
 import { UpdateUser } from "@/types/user";
 import { Input } from "@/components/ui/input";

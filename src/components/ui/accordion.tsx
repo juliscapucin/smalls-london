@@ -1,0 +1,69 @@
+"use client";
+
+// Adapted from Shadcn UI Sheet component: https://ui.shadcn.com/docs/components/accordion
+
+import * as React from "react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+
+import { cn } from "@/lib/utils";
+
+import { IconChevronDown } from "@/components/icons/icon-chevron-down";
+
+function Accordion({
+  ...props
+}: React.ComponentProps<typeof AccordionPrimitive.Root>) {
+  return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
+}
+
+function AccordionItem({
+  className,
+  ...props
+}: React.ComponentProps<typeof AccordionPrimitive.Item>) {
+  return (
+    <AccordionPrimitive.Item
+      data-slot="accordion-item"
+      className={cn("border-b-2 border-foreground", className)}
+      {...props}
+    />
+  );
+}
+
+function AccordionTrigger({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
+  return (
+    <AccordionPrimitive.Header className="flex">
+      <AccordionPrimitive.Trigger
+        data-slot="accordion-trigger"
+        className={cn(
+          "flex flex-1 items-start justify-between gap-4 py-2 my-2 text-left transition-all outline-none disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>div]:rotate-180",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        <IconChevronDown className="mt-0.5" />
+      </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Header>
+  );
+}
+
+function AccordionContent({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof AccordionPrimitive.Content>) {
+  return (
+    <AccordionPrimitive.Content
+      data-slot="accordion-content"
+      className={`data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down overflow-hidden py-4 pt-2 border-t-2 border-foreground ${className}`}
+      {...props}
+    >
+      {children}
+    </AccordionPrimitive.Content>
+  );
+}
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

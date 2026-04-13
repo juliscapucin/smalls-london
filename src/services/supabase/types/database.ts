@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      business_categories: {
+        Row: {
+          id: string
+          label: string
+          name: string
+        }
+        Insert: {
+          id?: string
+          label: string
+          name: string
+        }
+        Update: {
+          id?: string
+          label?: string
+          name?: string
+        }
+        Relationships: []
+      }
       businesses: {
         Row: {
           category: string | null
@@ -59,25 +77,49 @@ export type Database = {
             foreignKeyName: "businesses_category_fkey"
             columns: ["category"]
             isOneToOne: false
-            referencedRelation: "categories"
+            referencedRelation: "business_categories"
             referencedColumns: ["name"]
           },
         ]
       }
-      categories: {
+      event_categories: {
         Row: {
           id: string
-          label: string | null
+          label: string
           name: string
         }
         Insert: {
           id?: string
-          label?: string | null
+          label: string
           name: string
         }
         Update: {
           id?: string
-          label?: string | null
+          label?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          location: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          id?: string
+          location: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          location?: string
           name?: string
         }
         Relationships: []

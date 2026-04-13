@@ -11,10 +11,7 @@ type BusinessModalProps = {
   onClose: () => void;
 };
 
-export default function BusinessModal({
-  business,
-  onClose,
-}: BusinessModalProps) {
+export function BusinessModal({ business, onClose }: BusinessModalProps) {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -33,7 +30,7 @@ export default function BusinessModal({
   }
   return (
     <div className="fixed inset-0 bg-background/90">
-      <div className="p-8 w-1/2 max-w-modal mx-auto h-[80vh] mt-[10vh] bg-background border border-secondary rounded-lg">
+      <div className="p-8 w-1/2 max-w-content mx-auto h-[80vh] mt-[10vh] bg-background border border-foreground rounded-lg">
         <BusinessForm business={business} />
       </div>
     </div>
