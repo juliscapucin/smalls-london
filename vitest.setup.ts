@@ -15,7 +15,9 @@ vi.mock("next/navigation", async (importOriginal) => {
       forward: vi.fn(),
       refresh: vi.fn(),
     }),
-    usePathname: () => "/",
+    usePathname: vi.fn(),
+    useParams: vi.fn(),
+    notFound: vi.fn(),
   };
 });
 
@@ -34,7 +36,10 @@ Object.defineProperty(globalThis, "ResizeObserver", {
 beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
 
 // Reset handlers after each test
-afterEach(() => server.resetHandlers());
+afterEach(() => {
+  server.resetHandlers();
+  vi.resetAllMocks();
+});
 
 // Clean up after all tests
 afterAll(() => server.close());

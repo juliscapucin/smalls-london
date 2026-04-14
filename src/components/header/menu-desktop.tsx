@@ -42,6 +42,7 @@ export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
       value={open}
       onValueChange={setOpen}
       className={classnames.root}
+      aria-label="Desktop Menu"
     >
       <NavigationMenu.Link href="/" aria-label="Smalls.London logo — Homepage">
         <Logo />
@@ -127,5 +128,5 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
         </Link>
       </NavigationMenu.Link>
     </li>
-  )
+  ),
 );
