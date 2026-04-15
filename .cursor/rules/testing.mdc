@@ -1,0 +1,20 @@
+---
+alwaysApply: true
+---
+
+# Testing Conventions
+
+## Framework
+
+- Use Vitest with React Testing Library for frontend
+- Mock external services using MSW, never make real API calls in tests
+
+## Structure
+
+- One test file per source file, named \_.test.ts
+- Group tests with describe blocks by method or behavior
+- Use arrange-act-assert pattern
+
+## Examples to follow
+
+- src/components/ui/button/button.test.tsx (good example of component tests)

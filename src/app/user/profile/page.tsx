@@ -5,7 +5,7 @@ import { getCurrentUser } from "@/lib/get-current-user";
 
 import { PageWrapper } from "@/components/page-wrapper";
 import UserForm from "../_components/user-form";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 
 export default async function Page() {
   const currentUser = await getCurrentUser();

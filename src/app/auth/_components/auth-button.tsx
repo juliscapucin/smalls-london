@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { LogoutButton } from "@/app/auth/_components/logout-button";
 import type { JwtPayload } from "@supabase/supabase-js";
 import { useScreenSize } from "@/hooks/useScreenSize";

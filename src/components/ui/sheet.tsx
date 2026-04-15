@@ -6,7 +6,7 @@ import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { IconClose } from "@/components/icons/icon-close";
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
@@ -40,7 +40,7 @@ function SheetOverlay({
       data-slot="sheet-overlay"
       className={cn(
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in fixed inset-0 z-50 bg-foreground/70",
-        className
+        className,
       )}
       {...props}
     />
@@ -70,7 +70,7 @@ function SheetContent({
             "data-[state=closed]:animate-exit-to-top data-[state=open]:animate-enter-from-top inset-x-0 top-0 h-auto border-b",
           side === "bottom" &&
             "data-[state=closed]:animate-exit-to-bottom data-[state=open]:animate-enter-from-bottom inset-x-0 bottom-0 h-auto border-t",
-          className
+          className,
         )}
         {...props}
       >
