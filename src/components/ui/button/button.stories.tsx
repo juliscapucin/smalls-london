@@ -42,9 +42,6 @@ const meta = {
       control: false,
     },
   },
-  parameters: {
-    layout: "centered",
-  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -78,7 +75,10 @@ function VariantMatrix({ variant }: { variant: Variant }) {
                     {state}
                   </td>
                   {sizes.map((size) => (
-                    <td key={`${variant}-${state}-${size}`} className="px-2 py-1">
+                    <td
+                      key={`${variant}-${state}-${size}`}
+                      className="px-2 py-1"
+                    >
                       <Button variant={variant} size={size} state={state}>
                         Hello
                       </Button>
@@ -101,8 +101,8 @@ export const Playground: Story = {
     state: "default",
     children: "Button",
   },
-  globals: {
-    viewport: { value: "tablet", isRotated: false },
+  parameters: {
+    layout: "centered",
   },
 };
 

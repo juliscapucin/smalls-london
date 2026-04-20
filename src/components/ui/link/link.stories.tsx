@@ -53,9 +53,6 @@ const meta = {
       control: false,
     },
   },
-  parameters: {
-    layout: "centered",
-  },
 } satisfies Meta<typeof Link>;
 
 export default meta;
@@ -107,8 +104,8 @@ export const Playground: Story = {
     variant: "default",
     children: "Link",
   },
-  globals: {
-    viewport: { value: "tablet", isRotated: false },
+  parameters: {
+    layout: "centered",
   },
 };
 
