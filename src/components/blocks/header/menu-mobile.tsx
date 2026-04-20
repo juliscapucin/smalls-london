@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Button } from "@/components/ui/button/button";
+import { Button } from "@/components/ui/button";
 // Customized Shadcn UI Sheet and Accordion components
 import {
   Sheet,
@@ -49,7 +49,7 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
           <Logo />
         </Link>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" aria-label="Open menu">
+          <Button variant="ghost" size="sm" aria-label="Open menu">
             <BurgerIcon />
           </Button>
         </SheetTrigger>

@@ -1,60 +1,94 @@
 import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import { linkClassnames } from "@/components/ui/link";
+
+const textSize = {
+  xs: "text-label-small leading-label-small tracking-label-small",
+  sm: "text-label-small leading-label-small tracking-label-small",
+  md: "text-label-medium leading-label-medium tracking-label-medium",
+  lg: "text-label-medium leading-label-medium tracking-label-medium",
+};
 
 const buttonVariants = cva(
-  "inline-flex text-sm items-center justify-center gap-2 whitespace-nowrap rounded-full transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-3xl border-2 border-transparent font-p-p-frama font-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none cursor-pointer uppercase",
   {
     variants: {
       variant: {
         primary:
-          "bg-button-primary-background text-button-primary-foreground hover:bg-button-primary-hover-background active:bg-button-primary-active-background uppercase",
+          "bg-button-primary-background text-button-primary-foreground hover:bg-button-primary-hover-background active:bg-button-primary-active-background data-[state=hover]:bg-button-primary-hover-background data-[state=active]:bg-button-primary-active-background data-[state=active-hover]:bg-button-primary-active-background disabled:bg-button-primary-disabled-background disabled:text-button-primary-disabled-foreground",
         secondary:
-          "border-[2px] border-button-secondary-border bg-button-secondary-background text-button-secondary-foreground hover:bg-button-secondary-hover-background active:bg-button-secondary-active-background uppercase",
-        destructive:
-          "bg-destructive text-background hover:bg-destructive-emphasis uppercase",
-        outline:
-          "border-[2px] border-foreground bg-background hover:bg-background-subtle uppercase",
+          "border-button-secondary-border bg-button-secondary-background text-button-secondary-foreground hover:bg-button-secondary-hover-background active:bg-button-secondary-active-background data-[state=hover]:bg-button-secondary-hover-background data-[state=active]:bg-button-secondary-active-background data-[state=active-hover]:bg-button-secondary-active-background disabled:bg-button-secondary-disabled-background disabled:text-button-secondary-disabled-foreground disabled:border-muted-foreground",
         ghost:
-          "border-[2px] border-button-ghost-border bg-button-ghost-background text-button-ghost-foreground hover:bg-button-ghost-hover-background active:bg-button-ghost-active-background uppercase",
-        link: linkClassnames, // reuse link styles
+          "bg-button-ghost-background text-button-ghost-foreground hover:bg-button-ghost-hover-background hover:border-button-ghost-hover-border hover:border-[2px] active:bg-button-ghost-active-background active:border-button-ghost-hover-border data-[state=hover]:bg-button-ghost-hover-background data-[state=active]:bg-button-ghost-active-background data-[state=active-hover]:bg-button-ghost-active-background disabled:bg-button-ghost-disabled-background disabled:text-button-ghost-disabled-foreground disabled:border-muted-foreground",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-full px-3 text-xs",
-        lg: "h-10 rounded-full px-8",
-        icon: "size-10 aspect-square",
+        xs: "h-6 px-2",
+        sm: "h-8 px-4",
+        md: "h-10 px-4",
+        lg: "h-12 px-6",
+      },
+      state: {
+        default: "",
+        hover: "",
+        active: "",
+        "active-hover": "",
+        disabled: "",
       },
     },
     defaultVariants: {
       variant: "primary",
-      size: "default",
+      size: "md",
+      state: "default",
     },
   },
 );
 
+export type ButtonState =
+  | "default"
+  | "hover"
+  | "active"
+  | "active-hover"
+  | "disabled";
+
 export interface ButtonProps
   extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
+    React.ComponentPropsWithoutRef<"button">,
+    VariantProps<typeof buttonVariants> {}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+  (
+    {
+      className,
+      variant,
+      size,
+      state = "default",
+      disabled,
+      type,
+      children,
+      ...props
+    },
+    ref,
+  ) => {
+    const isDisabled = disabled || state === "disabled";
+
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+      <button
         ref={ref}
+        type={type ?? "button"}
+        data-state={state}
+        disabled={isDisabled}
+        className={cn(buttonVariants({ variant, size }), className)}
         {...props}
-      />
+      >
+        <span className={cn(textSize[size as keyof typeof textSize])}>
+          {children}
+        </span>
+      </button>
     );
   },
 );
+
 Button.displayName = "Button";
 
 export { Button, buttonVariants };

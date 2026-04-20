@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button/button";
+import { Button } from "@/components/ui/button";
 import { LogoutButton } from "@/app/auth/_components/logout-button";
 import type { JwtPayload } from "@supabase/supabase-js";
 import { useScreenSize } from "@/hooks/useScreenSize";
@@ -37,7 +37,7 @@ export function AuthButton({
         variant === "mobile" ? "mx-auto mt-8" : "flex-row"
       }`}
     >
-      <Button variant="primary" size="icon" asChild>
+      <Button variant="primary" size="md">
         <Link
           href="/user/profile"
           className="font-primary text-xl"
@@ -53,10 +53,10 @@ export function AuthButton({
     </div>
   ) : (
     <div className={`flex gap-2 ${variant === "mobile" ? "mx-auto mt-8" : ""}`}>
-      <Button asChild size="lg" variant="outline">
+      <Button size="lg" variant="secondary">
         <Link href="/auth/login">Sign in</Link>
       </Button>
-      <Button asChild size="lg" variant="primary">
+      <Button size="lg" variant="primary">
         <Link href="/auth/sign-up">Sign up</Link>
       </Button>
     </div>

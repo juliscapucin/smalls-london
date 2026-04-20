@@ -32,7 +32,6 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
-    viewport: { value: "ipad", isRotated: false },
     backgrounds: {
       value: "light",
     },
