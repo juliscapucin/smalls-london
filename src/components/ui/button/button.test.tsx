@@ -15,7 +15,7 @@ describe("Button", () => {
       expect(button.tagName).toBe("BUTTON");
       expect(button).toHaveClass("inline-flex");
       expect(button).toHaveClass("bg-button-primary-background");
-      expect(button).toHaveClass("h-9");
+      expect(button).toHaveClass("h-10");
     });
 
     it("merges consumer className with component classes", () => {
@@ -31,10 +31,7 @@ describe("Button", () => {
     it.each([
       ["primary", "bg-button-primary-background"],
       ["secondary", "bg-button-secondary-background"],
-      ["destructive", "bg-destructive"],
-      ["outline", "border-[2px]"],
       ["ghost", "bg-button-ghost-background"],
-      ["link", "underline"],
     ] as const)("applies %s variant styles", (variant, classToken) => {
       render(<Button variant={variant}>Action</Button>);
 
@@ -44,15 +41,31 @@ describe("Button", () => {
     });
 
     it.each([
-      ["default", "h-9"],
+      ["xs", "h-6"],
       ["sm", "h-8"],
-      ["lg", "h-10"],
+      ["md", "h-10"],
+      ["lg", "h-12"],
       ["icon", "size-10"],
     ] as const)("applies %s size styles", (size, classToken) => {
       render(<Button size={size}>Action</Button>);
 
       expect(screen.getByRole("button", { name: "Action" })).toHaveClass(
         classToken,
+      );
+    });
+
+    it.each([
+      ["default", "default"],
+      ["hover", "hover"],
+      ["active", "active"],
+      ["focus", "focus"],
+      ["disabled", "disabled"],
+    ] as const)("applies %s state as data attribute", (state, value) => {
+      render(<Button state={state}>Action</Button>);
+
+      expect(screen.getByRole("button", { name: "Action" })).toHaveAttribute(
+        "data-state",
+        value,
       );
     });
   });
@@ -95,22 +108,27 @@ describe("Button", () => {
       expect(button).toHaveClass("disabled:pointer-events-none");
       expect(onClick).not.toHaveBeenCalled();
     });
-  });
 
-  describe("asChild behavior and edge cases", () => {
-    it("renders child element with forwarded classes and props when asChild is true", () => {
+    it("treats the focus state as a visual state, but keeps the button enabled", async () => {
+      const user = userEvent.setup();
+      const onClick = vi.fn();
+
       render(
-        <Button asChild variant="link">
-          <a href="/account">Account</a>
+        <Button state="focus" onClick={onClick}>
+          Save
         </Button>,
       );
 
-      const link = screen.getByRole("link", { name: "Account" });
-      expect(link).toHaveAttribute("href", "/account");
-      expect(link).toHaveClass("inline-flex");
-      expect(link).toHaveClass("underline");
-    });
+      const button = screen.getByRole("button", { name: "Save" });
+      await user.click(button);
 
+      expect(button).toHaveAttribute("data-state", "focus");
+      expect(button).not.toBeDisabled();
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("edge cases", () => {
     it("renders with base styles even when runtime-invalid variant or size values are provided", () => {
       render(
         <Button variant={"invalid-variant" as never} size={"invalid-size" as never}>
@@ -120,13 +138,7 @@ describe("Button", () => {
 
       const button = screen.getByRole("button", { name: "Action" });
       expect(button).toHaveClass("inline-flex");
-      expect(button).toHaveClass("rounded-full");
-    });
-
-    it("renders without crashing when asChild is true and no child is provided", () => {
-      const { container } = render(<Button asChild />);
-
-      expect(container).toBeEmptyDOMElement();
+      expect(button).toHaveClass("rounded-3xl");
     });
 
     it("forwards refs to the rendered element", () => {

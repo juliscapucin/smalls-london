@@ -1,4 +1,4 @@
-# Add Input Component Spec
+# Add Card Component Spec
 
 ## Overview
 

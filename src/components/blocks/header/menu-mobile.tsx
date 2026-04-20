@@ -49,7 +49,7 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
           <Logo />
         </Link>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="sm" aria-label="Open menu">
+          <Button variant="ghost" size="icon" aria-label="Open menu">
             <BurgerIcon />
           </Button>
         </SheetTrigger>

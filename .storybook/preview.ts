@@ -8,16 +8,13 @@ const preview: Preview = {
     nextjs: {
       appDirectory: true,
     },
-    viewport: {
-      viewports: INITIAL_VIEWPORTS,
-    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
     },
-    layout: "fullscreen", // remove default Storybook padding
+
     backgrounds: {
       options: {
         dark: { name: "Dark", value: "var(--color-foreground)" },

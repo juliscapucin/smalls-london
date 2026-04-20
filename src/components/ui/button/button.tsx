@@ -11,18 +11,19 @@ const textSize = {
 };
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-3xl border-2 border-transparent font-p-p-frama font-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none cursor-pointer uppercase",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-3xl border-2 border-transparent font-p-p-frama font-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring data-[state=focus]:outline-none data-[state=focus]:ring-2 data-[state=focus]:ring-ring disabled:pointer-events-none cursor-pointer uppercase",
   {
     variants: {
       variant: {
         primary:
-          "bg-button-primary-background text-button-primary-foreground hover:bg-button-primary-hover-background active:bg-button-primary-active-background data-[state=hover]:bg-button-primary-hover-background data-[state=active]:bg-button-primary-active-background data-[state=active-hover]:bg-button-primary-active-background disabled:bg-button-primary-disabled-background disabled:text-button-primary-disabled-foreground",
+          "bg-button-primary-background text-button-primary-foreground hover:bg-button-primary-hover-background active:bg-button-primary-active-background data-[state=hover]:bg-button-primary-hover-background data-[state=active]:bg-button-primary-active-background data-[state=focus]:bg-button-primary-hover-background disabled:bg-button-primary-disabled-background disabled:text-button-primary-disabled-foreground",
         secondary:
-          "border-button-secondary-border bg-button-secondary-background text-button-secondary-foreground hover:bg-button-secondary-hover-background active:bg-button-secondary-active-background data-[state=hover]:bg-button-secondary-hover-background data-[state=active]:bg-button-secondary-active-background data-[state=active-hover]:bg-button-secondary-active-background disabled:bg-button-secondary-disabled-background disabled:text-button-secondary-disabled-foreground disabled:border-muted-foreground",
+          "border-button-secondary-border bg-button-secondary-background text-button-secondary-foreground hover:bg-button-secondary-hover-background active:bg-button-secondary-active-background data-[state=hover]:bg-button-secondary-hover-background data-[state=active]:bg-button-secondary-active-background data-[state=focus]:bg-button-secondary-hover-background disabled:bg-button-secondary-disabled-background disabled:text-button-secondary-disabled-foreground disabled:border-button-secondary-disabled-foreground",
         ghost:
-          "bg-button-ghost-background text-button-ghost-foreground hover:bg-button-ghost-hover-background hover:border-button-ghost-hover-border hover:border-[2px] active:bg-button-ghost-active-background active:border-button-ghost-hover-border data-[state=hover]:bg-button-ghost-hover-background data-[state=active]:bg-button-ghost-active-background data-[state=active-hover]:bg-button-ghost-active-background disabled:bg-button-ghost-disabled-background disabled:text-button-ghost-disabled-foreground disabled:border-muted-foreground",
+          "bg-button-ghost-background text-button-ghost-foreground border-[2px] hover:bg-button-ghost-hover-background hover:border-button-ghost-border active:bg-button-ghost-active-background active:border-button-ghost-border data-[state=hover]:bg-button-ghost-hover-background data-[state=hover]:border-button-ghost-border data-[state=active]:bg-button-ghost-active-background data-[state=active]:border-button-ghost-border data-[state=focus]:bg-button-ghost-active-background data-[state=focus]:border-button-ghost-border disabled:text-button-ghost-disabled-foreground",
       },
       size: {
+        icon: "size-10 aspect-square",
         xs: "h-6 px-2",
         sm: "h-8 px-4",
         md: "h-10 px-4",
@@ -32,7 +33,7 @@ const buttonVariants = cva(
         default: "",
         hover: "",
         active: "",
-        "active-hover": "",
+        focus: "",
         disabled: "",
       },
     },
@@ -44,12 +45,7 @@ const buttonVariants = cva(
   },
 );
 
-export type ButtonState =
-  | "default"
-  | "hover"
-  | "active"
-  | "active-hover"
-  | "disabled";
+export type ButtonState = "default" | "hover" | "active" | "focus" | "disabled";
 
 export interface ButtonProps
   extends
