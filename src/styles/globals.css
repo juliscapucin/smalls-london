@@ -3,22 +3,14 @@
 @import "./tailwind-theme.css";
 
 @theme inline {
-  --leading-display: 1.05;
-  --leading-headline: 1.15;
-  --leading-title: 1.3;
-  --leading-body: 1.6;
-  --leading-label: 1.4;
-
-  --tracking-display: -0.02em;
-  --tracking-label: 0.04em;
-
   /* Layout */
+  --spacing: 0.25rem; /* 4px */
   --max-width-desktop: 2800px;
   --max-width-content: 800px;
 
   /* Heights based on Tailwind's spacing scale: --spacing: 0.25rem /* 4px */
   --height-header: calc(var(--spacing) * 20) /* [40] 10rem = 160px */;
-  --height-footer: calc(var(--spacing) * 150); /* [150] 37.5rem = 600px */
+  --height-footer: calc(var(--spacing) * 100); /* [100] 25rem = 400px */
   --height-content: calc(100svh - var(--height-header));
 
   /* ANIMATIONS */
