@@ -33,7 +33,7 @@ export function SearchInput() {
         }}
       />
       <Button
-        variant="outline"
+        variant="ghost"
         size="icon"
         aria-label="Search"
         onClick={handleSearch}

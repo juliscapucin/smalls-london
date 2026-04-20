@@ -4,7 +4,7 @@
 
 import * as React from "react";
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/components/ui/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 import { Logo } from "@/components/ui/logo";
@@ -116,6 +116,16 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
   ({ children, href, ...props }, forwardedRef) => (
     <li>
       <NavigationMenu.Link asChild>
+        {/* <Link
+          href={href}
+          className={classnames.link}
+          {...props}
+          ref={forwardedRef}
+        >
+          <span className="mb-1.25 font-medium leading-[1.2] text-foreground capitalize">
+            {children}
+          </span>
+        </Link> */}
         <Link
           href={href}
           className={classnames.link}
