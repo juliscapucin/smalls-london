@@ -35,6 +35,11 @@ const meta = {
       </div>
     ),
   ],
+  globals: {
+    backgrounds: {
+      value: "light",
+    },
+  },
 } satisfies Meta;
 
 export default meta;
@@ -44,7 +49,7 @@ type Story = StoryObj<typeof meta>;
 export const MenuDesktopStory: Story = {
   name: "Menu Desktop",
   render: () => (
-    <div className="h-80 bg-background">
+    <div className="h-80">
       <MenuDesktop navItems={navItems}>
         <div className="text-sm">Auth slot</div>
       </MenuDesktop>
@@ -58,7 +63,7 @@ export const MenuDesktopStory: Story = {
 export const MenuMobileStory: Story = {
   name: "Menu Mobile",
   render: () => (
-    <div className="@container h-80 bg-background">
+    <div className="@container h-80">
       <MenuMobile navItems={navItems}>
         <div className="text-sm px-2">Auth slot</div>
       </MenuMobile>

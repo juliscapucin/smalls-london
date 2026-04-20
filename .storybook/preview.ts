@@ -18,6 +18,12 @@ const preview: Preview = {
       },
     },
     layout: "fullscreen", // remove default Storybook padding
+    backgrounds: {
+      options: {
+        dark: { name: "Dark", value: "var(--color-foreground)" },
+        light: { name: "Light", value: "var(--color-background)" },
+      },
+    },
     a11y: {
       // 'todo' - show a11y violations in the test UI only
       // 'error' - fail CI on a11y violations
@@ -27,6 +33,9 @@ const preview: Preview = {
   },
   initialGlobals: {
     viewport: { value: "ipad", isRotated: false },
+    backgrounds: {
+      value: "light",
+    },
   },
 };
 
