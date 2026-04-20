@@ -14,7 +14,7 @@ describe("Button", () => {
       expect(button).toBeInTheDocument();
       expect(button.tagName).toBe("BUTTON");
       expect(button).toHaveClass("inline-flex");
-      expect(button).toHaveClass("bg-foreground");
+      expect(button).toHaveClass("bg-button-primary-background");
       expect(button).toHaveClass("h-9");
     });
 
@@ -29,11 +29,11 @@ describe("Button", () => {
 
   describe("variants and sizes", () => {
     it.each([
-      ["primary", "bg-foreground"],
-      ["secondary", "bg-accent-yellow"],
+      ["primary", "bg-button-primary-background"],
+      ["secondary", "bg-button-secondary-background"],
       ["destructive", "bg-destructive"],
       ["outline", "border-[2px]"],
-      ["ghost", "hover:bg-accent"],
+      ["ghost", "bg-button-ghost-background"],
       ["link", "underline"],
     ] as const)("applies %s variant styles", (variant, classToken) => {
       render(<Button variant={variant}>Action</Button>);

@@ -66,7 +66,7 @@ export default function BusinessForm({ business }: BusinessFormProps) {
           <Textarea
             rows={7}
             name="description"
-            className="w-full border border-secondary rounded-md p-2"
+            className="w-full border border-foreground-subtle rounded-md p-2"
             required
             value={newBusiness.description!}
             onChange={(e) => {
@@ -78,7 +78,7 @@ export default function BusinessForm({ business }: BusinessFormProps) {
           Category
           <select
             name="category"
-            className="w-fit border border-secondary rounded-md p-2 block"
+            className="w-fit border border-foreground-subtle rounded-md p-2 block"
             required
             onChange={(e) => {
               setNewBusiness({ ...newBusiness, category: e.target.value });

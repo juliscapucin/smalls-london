@@ -77,7 +77,7 @@ function SheetContent({
         {children}
         <SheetPrimitive.Close
           asChild
-          className="data-[state=open]:bg-foreground absolute top-4 right-4 rounded-full transition-colors hover:bg-accent disabled:pointer-events-none"
+          className="data-[state=open]:bg-foreground absolute top-4 right-4 rounded-full transition-colors hover:bg-accent-1 disabled:pointer-events-none"
         >
           <Button variant="ghost" size="icon" aria-label="Close menu">
             <IconClose />

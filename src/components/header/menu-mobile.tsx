@@ -44,7 +44,7 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <div className="fixed top-0 left-0 right-0 flex items-center justify-between h-header px-2 bg-background border-b-2 border-b-secondary lg:hidden z-20">
+      <div className="fixed top-0 left-0 right-0 flex items-center justify-between h-header px-2 bg-background border-b-2 border-b-foreground-subtle lg:hidden z-20">
         <Link href="/" aria-label="Smalls.London logo — Homepage">
           <Logo />
         </Link>
@@ -74,7 +74,7 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
                     value={item.label}
                     className="first-of-type:border-t-2 border-foreground"
                   >
-                    <AccordionTrigger className="py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1">
+                    <AccordionTrigger className="py-2 px-3 hover:bg-accent-1 hover:rounded-full focus-within:bg-accent-1 focus-within:rounded-full focus-within:mx-1">
                       {item.label}
                     </AccordionTrigger>
                     <AccordionContent asChild>
@@ -129,7 +129,7 @@ const NavItem = ({ item }: NavItemProps) => {
     <Link
       key={item.label}
       href={item.path}
-      className={`block py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1 transition-all transition-300 ${
+      className={`block py-2 px-3 hover:bg-accent-1 hover:rounded-full focus-within:bg-accent-1 focus-within:rounded-full focus-within:mx-1 transition-all transition-300 ${
         item.isGroupItem ? "" : "mb-2"
       }`}
     >

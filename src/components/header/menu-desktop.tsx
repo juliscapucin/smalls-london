@@ -14,13 +14,13 @@ import { SearchInput } from "./search-input";
 import type { NavItem } from "./header";
 
 const classnames = {
-  root: "fixed hidden lg:flex justify-between items-center h-header z-20 top-0 left-0 right-0 px-2 bg-background border-b-2 border-b-secondary",
+  root: "fixed hidden lg:flex justify-between items-center h-header z-20 top-0 left-0 right-0 px-2 bg-background border-b-2 border-b-foreground-subtle",
   list: "hidden md:flex justify-center items-center gap-4 list-none",
   item: "flex justify-center items-center",
   trigger:
-    "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
+    "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground outline-none hover:bg-accent-1 focus-visible:border-foreground focus-visible:bg-accent-1",
   chevronIcon: "relative mt-px ml-1 group-data-[state=open]:rotate-180",
-  link: "block select-none rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground no-underline outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
+  link: "block select-none rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground no-underline outline-none hover:bg-accent-1 focus-visible:border-foreground focus-visible:bg-accent-1",
   content:
     "absolute top-[58px] min-w-[245px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in",
   indicator:

@@ -7,6 +7,9 @@
     "lint": "eslint .",
     "gen-schemas": "supabase gen types typescript --project-id drjmezmfocczxovyuhhd --schema public > ./src/services/supabase/schemas/supabase.ts",
     "gen-types": "supabase gen types typescript --project-id drjmezmfocczxovyuhhd > ./src/services/supabase/types/database.ts",
+    "tokens:build": "node scripts/generate-tokens-css.mjs",
+    "tokens:format": "prettier --write \"design_tokens/*.json\"",
+    "design-tokens": "npm run tokens:build && npm run tokens:format",
     "test": "vitest",
     "test-ui": "vitest --ui"
   },
