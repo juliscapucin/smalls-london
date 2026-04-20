@@ -7,7 +7,7 @@ import { useState } from "react";
 import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/ui/logo";
 import { IconChevronDown } from "@/components/icons/icon-chevron-down";
 import { IconMenuIndicator } from "@/components/icons/icon-menu-indicator";
 import { SearchInput } from "./search-input";

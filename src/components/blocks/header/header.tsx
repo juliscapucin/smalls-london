@@ -14,7 +14,6 @@ export type NavItem = {
   path: string;
   items?: Category[];
 };
-// TODO: test if items are rendering correctly (query mock data)
 
 export async function Header() {
   const businessCategories = await getCategories("business_categories");
@@ -37,7 +36,7 @@ export async function Header() {
       : undefined;
   }
 
-  // Might add this to DB later
+  // TODO: Add this to DB
   const navItems: NavItem[] = [
     {
       label: "Businesses",

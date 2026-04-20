@@ -74,6 +74,10 @@ function SheetContent({
         )}
         {...props}
       >
+        <SheetPrimitive.Title className="sr-only">Menu</SheetPrimitive.Title>
+        <SheetPrimitive.Description className="sr-only">
+          Mobile navigation panel
+        </SheetPrimitive.Description>
         {children}
         <SheetPrimitive.Close
           asChild
