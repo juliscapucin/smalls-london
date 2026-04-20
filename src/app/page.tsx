@@ -1,5 +1,4 @@
-import Hero from "@/components/hero";
-import { PageWrapper } from "@/components/page-wrapper";
+import Hero from "@/components/blocks/hero";
 
 export default function Home() {
   return <Hero />;

@@ -11,18 +11,20 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-foreground text-background hover:bg-foreground/80 uppercase",
+          "bg-button-primary-background text-button-primary-foreground hover:bg-button-primary-hover-background active:bg-button-primary-active-background uppercase",
         secondary:
-          "bg-accent-yellow text-foreground hover:bg-foreground/20 uppercase",
+          "border-[2px] border-button-secondary-border bg-button-secondary-background text-button-secondary-foreground hover:bg-button-secondary-hover-background active:bg-button-secondary-active-background uppercase",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase",
+          "bg-destructive text-background hover:bg-destructive-emphasis uppercase",
         outline:
-          "border-[2px] border-foreground bg-background hover:bg-accent hover:text-accent-foreground uppercase",
-        ghost: "hover:bg-accent hover:text-accent-foreground uppercase",
+          "border-[2px] border-foreground bg-background hover:bg-background-subtle uppercase",
+        ghost:
+          "border-button-ghost-border bg-button-ghost-background text-button-ghost-foreground hover:bg-button-ghost-hover-background hover:border-button-ghost-hover-border hover:border-[2px] active:bg-button-ghost-active-background active:border-button-ghost-hover-border uppercase",
         link: linkClassnames, // reuse link styles
       },
       size: {
         default: "h-9 px-4 py-2",
+        xs: "h-8 rounded-full px-3 text-xs",
         sm: "h-8 rounded-full px-3 text-xs",
         lg: "h-10 rounded-full px-8",
         icon: "size-10 aspect-square",

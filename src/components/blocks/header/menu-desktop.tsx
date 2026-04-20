@@ -3,23 +3,24 @@
 // Customized Radix UI Navigation Menu component
 
 import * as React from "react";
+import { useState } from "react";
 import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/ui/logo";
 import { IconChevronDown } from "@/components/icons/icon-chevron-down";
 import { IconMenuIndicator } from "@/components/icons/icon-menu-indicator";
 import { SearchInput } from "./search-input";
 import type { NavItem } from "./header";
 
 const classnames = {
-  root: "fixed hidden lg:flex justify-between items-center h-header z-20 top-0 left-0 right-0 px-2 bg-background border-b-2 border-b-secondary",
+  root: "fixed hidden lg:flex justify-between items-center h-header z-20 top-0 left-0 right-0 px-2 bg-background border-b-2 border-b-foreground-subtle",
   list: "hidden md:flex justify-center items-center gap-4 list-none",
   item: "flex justify-center items-center",
   trigger:
-    "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
+    "group flex select-none items-center justify-between gap-0.5 rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground outline-none hover:bg-accent-1 focus-visible:border-foreground focus-visible:bg-accent-1",
   chevronIcon: "relative mt-px ml-1 group-data-[state=open]:rotate-180",
-  link: "block select-none rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground no-underline outline-none hover:bg-accent focus-visible:border-foreground focus-visible:bg-accent",
+  link: "block select-none rounded-full border-2 border-transparent hover:border-foreground px-3 py-2 text-foreground no-underline outline-none hover:bg-accent-1 focus-visible:border-foreground focus-visible:bg-accent-1",
   content:
     "absolute top-[58px] min-w-[245px] bg-background border-2 border-foreground rounded-lg p-2 origin-[top_center] data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in",
   indicator:
@@ -34,13 +35,14 @@ type MenuDesktopProps = {
 export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
   // TODO: add test checking if click opens the dropdown + correct items are shown
 
-  const [open, setOpen] = React.useState<string | undefined>(undefined); // Customised state to manage open menu item
+  const [open, setOpen] = useState<string>(""); // Customised state to manage open menu item
 
   return (
     <NavigationMenu.Root
       value={open}
       onValueChange={setOpen}
       className={classnames.root}
+      aria-label="Desktop Menu"
     >
       <NavigationMenu.Link href="/" aria-label="Smalls.London logo — Homepage">
         <Logo />
@@ -89,7 +91,7 @@ export function MenuDesktop({ navItems, children }: MenuDesktopProps) {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content
             className={classnames.content}
-            onFocusOutside={() => setOpen(undefined)}
+            onFocusOutside={() => setOpen("")}
           >
             <SearchInput />
           </NavigationMenu.Content>
@@ -126,5 +128,5 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
         </Link>
       </NavigationMenu.Link>
     </li>
-  )
+  ),
 );

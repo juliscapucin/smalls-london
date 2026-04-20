@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { TypographyHeading } from "./ui/typography-heading";
+import { TypographyHeading } from "../ui/typography-heading";
 
 // TODO: implement hero
 // Copy: An Opinionated Guide to London's Best Small Creative Businesses
@@ -16,7 +16,7 @@ export default function Hero() {
           To be implemented
         </TypographyHeading>
         <div
-          className="absolute inset-0 bg-accent-orange -z-1"
+          className="absolute inset-0 bg-accent-2 -z-1"
           aria-hidden="true"
         ></div>
       </div>
@@ -26,6 +26,7 @@ export default function Hero() {
         fill
         sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"}
         className="h-full w-full object-cover"
+        loading="eager"
       />
     </div>
   );

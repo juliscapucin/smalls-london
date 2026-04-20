@@ -4,7 +4,7 @@ import { useState } from "react";
 import { deleteBusiness } from "@/app/businesses/_actions/business";
 import { BusinessModal } from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { TypographyHeading } from "@/components/ui/typography-heading";
 import { User } from "@/types/user";
 
@@ -37,7 +37,7 @@ export default function BusinessList({
         ) : (
           businesses.map((business) => (
             <div
-              className="space-y-8 border-t border-secondary pt-8 mb-8 first:mt-16"
+              className="space-y-8 border-t border-foreground-subtle pt-8 mb-8 first:mt-16"
               key={business.id}
             >
               <div className="max-w-prose space-y-4">

@@ -6,7 +6,14 @@
     "start": "next start",
     "lint": "eslint .",
     "gen-schemas": "supabase gen types typescript --project-id drjmezmfocczxovyuhhd --schema public > ./src/services/supabase/schemas/supabase.ts",
-    "gen-types": "supabase gen types typescript --project-id drjmezmfocczxovyuhhd > ./src/services/supabase/types/database.ts"
+    "gen-types": "supabase gen types typescript --project-id drjmezmfocczxovyuhhd > ./src/services/supabase/types/database.ts",
+    "tokens:build": "node scripts/generate-tokens-css.mjs",
+    "tokens:format": "prettier --write \"design_tokens/*.json\"",
+    "design-tokens": "npm run tokens:build && npm run tokens:format",
+    "test": "vitest",
+    "test-ui": "vitest --ui",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
@@ -23,7 +30,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.511.0",
-    "next": "^16.0.8",
+    "next": "^16",
     "next-themes": "^0.4.6",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
@@ -31,16 +38,37 @@
     "zod": "^4.2.1"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.2",
     "@eslint/eslintrc": "^3.3.3",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-vitest": "^10.3.5",
+    "@storybook/nextjs-vite": "^10.3.5",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
     "@types/node": "^22.19.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/browser-playwright": "^4.1.4",
+    "@vitest/browser-preview": "^4.1.4",
+    "@vitest/coverage-v8": "^4.1.4",
+    "@vitest/ui": "^4.1.4",
     "autoprefixer": "^10.4.22",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.8",
+    "eslint-plugin-storybook": "^10.3.5",
+    "jsdom": "^27.4.0",
+    "msw": "^2.12.7",
+    "playwright": "^1.59.1",
     "postcss": "^8.5.6",
+    "storybook": "^10.3.5",
     "supabase": "^2.65.7",
     "tailwindcss": "^4.1.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^8.0.9",
+    "vite-tsconfig-paths": "^6.0.3",
+    "vitest": "^4.1.4"
   }
 }

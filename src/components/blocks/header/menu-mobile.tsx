@@ -18,7 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/ui/logo";
 import { SearchInput } from "./search-input";
 
 import type { NavItem } from "./header";
@@ -44,7 +44,7 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <div className="fixed top-0 left-0 right-0 flex items-center justify-between h-header px-2 bg-background border-b-2 border-b-secondary lg:hidden z-20">
+      <div className="fixed top-0 left-0 right-0 flex items-center justify-between h-header px-2 bg-background border-b-2 border-b-foreground-subtle lg:hidden @lg:flex z-20">
         <Link href="/" aria-label="Smalls.London logo — Homepage">
           <Logo />
         </Link>
@@ -56,7 +56,10 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
       </div>
 
       <SheetContent side="right" className="w-80 max-w-[85vw] min-w-[350px]">
-        <nav className="mt-(--height-header) flex flex-col gap-2">
+        <nav
+          className="mt-(--height-header) flex flex-col gap-2"
+          aria-label="Mobile Menu"
+        >
           <div className="border-b-2 border-foreground pb-8">
             <h3 className="px-2">Search</h3>
             <SearchInput />
@@ -64,14 +67,15 @@ export function MenuMobile({ navItems, children }: MenuMobileProps) {
           <Accordion type="single" collapsible>
             {mobileNavItems.map((item) => {
               if (!item.items) {
-                return <NavItem item={item} />;
+                return <NavItem key={item.label} item={item} />;
               } else if (item.items && item.items.length > 0) {
                 return (
                   <AccordionItem
+                    key={item.label}
                     value={item.label}
                     className="first-of-type:border-t-2 border-foreground"
                   >
-                    <AccordionTrigger className="py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1">
+                    <AccordionTrigger className="py-2 px-3 hover:bg-accent-1 hover:rounded-full focus-within:bg-accent-1 focus-within:rounded-full focus-within:mx-1">
                       {item.label}
                     </AccordionTrigger>
                     <AccordionContent asChild>
@@ -124,9 +128,8 @@ type NavItemProps = {
 const NavItem = ({ item }: NavItemProps) => {
   return (
     <Link
-      key={item.label}
       href={item.path}
-      className={`block py-2 px-3 hover:bg-accent hover:rounded-full focus-within:bg-accent focus-within:rounded-full focus-within:mx-1 transition-all transition-300 ${
+      className={`block py-2 px-3 hover:bg-accent-1 hover:rounded-full focus-within:bg-accent-1 focus-within:rounded-full focus-within:mx-1 transition-all transition-300 ${
         item.isGroupItem ? "" : "mb-2"
       }`}
     >

@@ -6,7 +6,7 @@ import { PageWrapper } from "@/components/page-wrapper";
 import { createClient } from "@/services/supabase/client";
 import { UpdateUser } from "@/types/user";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { Label } from "@/components/ui/label";
 
 type UserFormProps = {
