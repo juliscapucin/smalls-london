@@ -69,7 +69,9 @@ type MockAuthButtonsProps = {
 function MockAuthButtons({ isAuthenticated, variant }: MockAuthButtonsProps) {
   if (isAuthenticated) {
     return (
-      <div className={`flex items-center gap-2 ${variant === "mobile" ? "mx-auto mt-8" : ""}`}>
+      <div
+        className={`flex items-center gap-2 ${variant === "mobile" ? "mx-auto mt-8" : ""}`}
+      >
         <Button variant="primary" size="md" aria-label="Go to User profile">
           <Link href="/user/profile">J</Link>
         </Button>
@@ -96,7 +98,7 @@ function MockAuthButtons({ isAuthenticated, variant }: MockAuthButtonsProps) {
 export const MenuDesktopStory: Story = {
   name: "Menu Desktop",
   render: ({ isAuthenticated }) => (
-    <div className="h-80">
+    <div className="w-full h-80">
       <MenuDesktop navItems={navItems}>
         <MockAuthButtons isAuthenticated={isAuthenticated} variant="desktop" />
       </MenuDesktop>
