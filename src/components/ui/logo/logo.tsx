@@ -1,14 +1,15 @@
 import { cn } from "@/lib/utils";
 
-export type LogoVariant =
-  | "default"
-  | "horizontal"
-  | "horizontal-inverted"
-  | "horizontal-alt";
+export const variants = [
+  "default",
+  "horizontal",
+  "horizontal-inverted",
+  "horizontal-alt",
+];
 
 type LogoProps = {
   className?: string;
-  variant?: LogoVariant;
+  variant?: (typeof variants)[number];
 };
 
 type LogoVariantConfig = {
@@ -57,7 +58,7 @@ const STACKED_LOGO_PATHS = [
 const STACKED_DOT_PATH =
   "M190 26.3526C190 30.2316 186.863 33.3762 182.994 33.3762C179.124 33.3762 175.987 30.2316 175.987 26.3526C175.987 22.4736 179.124 19.329 182.994 19.329C186.863 19.329 190 22.4736 190 26.3526Z";
 
-const LOGO_VARIANTS: Record<LogoVariant, LogoVariantConfig> = {
+const LOGO_VARIANTS: Record<(typeof variants)[number], LogoVariantConfig> = {
   horizontal: {
     width: 364,
     height: 32,

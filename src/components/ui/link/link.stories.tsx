@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { MatrixSection } from "@/storybook/matrix-components";
-import { getForcedStateClassname } from "@/storybook/matrix-helpers";
-import { linkStateStyles, Link, type LinkVariant } from "./link";
+import { componentStates } from "@/storybook/matrix-helpers";
+import { Link, type LinkVariant } from "./link";
 
 const variants: LinkVariant[] = ["default", "footer", "inline"];
-const states = ["default", "hover", "active", "focus"] as const;
+
+const matrixStatesStyles: Record<LinkVariant, string> = {
+  default:
+    "data-[state=hover]:border-foreground data-[state=hover]:bg-accent-1 data-[state=active]:border-foreground data-[state=active]:bg-background data-[state=focus]:border-foreground data-[state=focus]:bg-background data-[state=focus]:ring-2 data-[state=focus]:ring-ring data-[state=focus]:ring-offset-2 data-[state=disabled]:border-foreground data-[state=disabled]:bg-background",
+  footer:
+    "data-[state=hover]:underline data-[state=hover]:decoration-1 data-[state=hover]:underline-offset-2 data-[state=active]:underline data-[state=active]:decoration-1 data-[state=active]:underline-offset-2 data-[state=focus]:border-ring data-[state=focus]:underline data-[state=focus]:decoration-1 data-[state=focus]:underline-offset-2 data-[state=focus]:ring-2 data-[state=focus]:ring-ring data-[state=focus]:ring-offset-2 data-[state=disabled]:border-ring data-[state=disabled]:underline data-[state=disabled]:decoration-1 data-[state=disabled]:underline-offset-2",
+  inline:
+    "data-[state=hover]:text-foreground data-[state=active]:text-foreground data-[state=focus]:border-ring data-[state=focus]:text-foreground data-[state=focus]:ring-2 data-[state=focus]:ring-ring data-[state=focus]:ring-offset-2 data-[state=disabled]:text-muted-foreground",
+};
 
 const meta = {
   title: "UI/Link",
@@ -48,7 +56,7 @@ function VariantMatrix({ variant }: { variant: LinkVariant }) {
           </tr>
         </thead>
         <tbody>
-          {states.map((state) => (
+          {componentStates.map((state) => (
             <tr key={`${variant}-${state}`}>
               <td className="px-2 py-1 text-label-small leading-label-small tracking-label-small capitalize">
                 {state}
@@ -58,11 +66,7 @@ function VariantMatrix({ variant }: { variant: LinkVariant }) {
                   href="/"
                   variant={variant}
                   data-state={state}
-                  className={getForcedStateClassname({
-                    stateStylesByVariant: linkStateStyles,
-                    variant,
-                    state,
-                  })}
+                  className={matrixStatesStyles[variant]}
                 >
                   Link
                 </Link>
@@ -91,6 +95,7 @@ export const DefaultMatrix: Story = {
   args: {
     href: "/",
     variant: "default",
+    children: "Link",
   },
   render: () => <VariantMatrix variant="default" />,
   globals: {
@@ -102,6 +107,8 @@ export const FooterMatrix: Story = {
   name: "Footer Matrix",
   args: {
     href: "/",
+    variant: "footer",
+    children: "Link",
   },
   render: () => <VariantMatrix variant="footer" />,
   globals: {
@@ -113,6 +120,8 @@ export const InlineMatrix: Story = {
   name: "Inline Matrix",
   args: {
     href: "/",
+    variant: "inline",
+    children: "Link",
   },
   render: () => <VariantMatrix variant="inline" />,
   globals: {

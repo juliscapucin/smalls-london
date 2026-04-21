@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { Logo, type LogoVariant } from "./logo";
-
-const variants: LogoVariant[] = [
-  "default",
-  "stacked",
-  "horizontal-inverted",
-  "horizontal-alt",
-];
+import { Logo, variants } from "./logo";
 
 const meta = {
   title: "UI/Logo",
@@ -52,7 +45,7 @@ export const Default: Story = {
 
 export const Stacked: Story = {
   args: {
-    variant: "stacked",
+    variant: "horizontal",
   },
   parameters: {
     layout: "centered",

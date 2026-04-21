@@ -1,20 +1,26 @@
-export type StateStyleMap<
-  TVariant extends string,
-  TState extends string,
-> = Record<TVariant, Record<TState, string>>;
+export const componentStates = [
+  "default",
+  "hover",
+  "active",
+  "focus",
+  "disabled",
+] as const;
 
-export function getForcedStateClassname<
-  TVariant extends string,
-  TState extends string,
->(args: {
-  stateStylesByVariant: StateStyleMap<TVariant, TState>;
-  variant: TVariant;
-  state: TState | "default";
-}) {
-  const { stateStylesByVariant, variant, state } = args;
-  if (state === "default") {
-    return "";
-  }
-
-  return stateStylesByVariant[variant][state];
-}
+export const statePrefixMap: Record<
+  Exclude<(typeof componentStates)[number], "default">,
+  string
+> = {
+  hover: "hover:",
+  active: "active:",
+  focus: "focus-visible:",
+  disabled: "disabled:",
+};
+export const stateDataPrefixMap: Record<
+  Exclude<(typeof componentStates)[number], "default">,
+  string
+> = {
+  hover: "data-[state=hover]:",
+  active: "data-[state=active]:",
+  focus: "data-[state=focus]:",
+  disabled: "data-[state=disabled]:",
+};
