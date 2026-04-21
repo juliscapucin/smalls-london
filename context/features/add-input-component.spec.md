@@ -8,5 +8,5 @@ Use the design referenced in this Figma link: https://www.figma.com/design/eyw3V
 
 - Add folder 'input' in /components/ui
 - Create input.stories.tsx
-- Import Base UI Input component: https://base-ui.com/react/components/input
+- Import Radix UI Input component: https://base-ui.com/react/components/input
 - Create input.stories.tsx with variant and states matrix

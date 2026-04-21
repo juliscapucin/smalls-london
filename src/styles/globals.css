@@ -5,8 +5,8 @@
 @theme inline {
   /* Layout */
   --spacing: 0.25rem; /* 4px */
-  --max-width-desktop: 2800px;
-  --max-width-content: 800px;
+  --max-width-wide: 2800px;
+  --max-width-content: 1200px;
 
   /* Heights based on Tailwind's spacing scale: --spacing: 0.25rem /* 4px */
   --height-header: calc(var(--spacing) * 20) /* [40] 10rem = 160px */;

@@ -18,7 +18,7 @@
   --foreground-subtle: #403f56;
   --muted-background: #f0efed;
   --muted-foreground: #93949a;
-  --ring: #96979e;
+  --focus-ring: #96979e;
   --success: #069124;
   --success-emphasis: #035415;
   --success-subtle: #c5dcca;
@@ -75,8 +75,7 @@
   --display-small-weight: 900;
 
   /* Typography / Font Family */
-  --font-family-brand: "PP Right Grotesk Mono";
-  --font-family-plain: "Roboto Mono";
+  --font-family-brand: "PP Frama";
 
   /* Typography / Headline */
   --headline-large-letter-spacing: 0;
@@ -122,15 +121,15 @@
 
   /* Typography / Title */
   --title-large-letter-spacing: 0;
-  --title-large-line-height: 80;
+  --title-large-line-height: 48;
   --title-large-size: 40;
   --title-large-weight: 400;
   --title-medium-letter-spacing: 0;
-  --title-medium-line-height: 72;
+  --title-medium-line-height: 38;
   --title-medium-size: 32;
   --title-medium-weight: 400;
   --title-small-letter-spacing: 0;
-  --title-small-line-height: 28;
+  --title-small-line-height: 24;
   --title-small-size: 28;
   --title-small-weight: 400;
 }
@@ -154,7 +153,7 @@
   --foreground-subtle: #fbfaf7;
   --muted-background: #93949a;
   --muted-foreground: #f0efed;
-  --ring: #96979e;
+  --focus-ring: #96979e;
   --success: #069124;
   --success-emphasis: #035415;
   --success-subtle: #c5dcca;

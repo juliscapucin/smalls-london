@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const fontPrimary = localFont({
-  variable: "--font-pp-frama",
+  variable: "--font-brand",
   src: [
     {
       path: "../../public/fonts/PPFrama-Black.otf",

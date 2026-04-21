@@ -7,5 +7,5 @@ Use the design referenced in this Figma link: https://www.figma.com/design/eyw3V
 ## Requirements
 
 - Add folder 'card' in /components/blocks
-- Import Base UI Card component: https://base-ui.com/react/components/card
+- Import Radix UI Card component: https://base-ui.com/react/components/card
 - Create card.stories.tsx with variant matrix (use /components/ui/button.stories.tsx as an example)
