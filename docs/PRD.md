@@ -1,12 +1,12 @@
 # Product Requirements Document (PRD)
 
-## Digital Agency Website — AI-Driven Design System
+## Smalls.London — AI-Driven Design System
 
 ---
 
 ## 1. Overview
 
-This project is a digital agency website built with:
+This project is a a curated directory of small creative businesses and events in London. Built with:
 
 - Next.js (version from package.json: dependencies.next)
 - Tailwind CSS (devDependencies.tailwindcss)

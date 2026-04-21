@@ -1,5 +1,5 @@
 import { PageWrapper } from "@/components/page-wrapper";
-import { TypographyHeading } from "@/components/ui/typography-heading";
+import { TypographyHeading } from "@/components/ui/typography/heading/typography-heading";
 import { getCurrentUser } from "@/lib/get-current-user";
 
 type PageProps = {

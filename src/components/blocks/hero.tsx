@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { TypographyHeading } from "../ui/typography-heading";
+import { TypographyHeading } from "../ui/typography/heading/typography-heading";
 
 // TODO: implement hero
 // Copy: An Opinionated Guide to London's Best Small Creative Businesses

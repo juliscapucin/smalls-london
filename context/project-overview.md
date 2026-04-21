@@ -1,6 +1,6 @@
 # Smalls London - Project Overview
 
-> A curated directory of small creative businesses and events in London.
+A curated directory of small creative businesses and events in London.
 
 ---
 

@@ -1,5 +1,5 @@
 import { PageWrapper } from "@/components/page-wrapper";
-import { TypographyHeading } from "@/components/ui/typography-heading";
+import { TypographyHeading } from "@/components/ui/typography/heading/typography-heading";
 
 export default function Page() {
   return (

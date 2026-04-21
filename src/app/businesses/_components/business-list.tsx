@@ -5,7 +5,7 @@ import { deleteBusiness } from "@/app/businesses/_actions/business";
 import { BusinessModal } from "@/app/businesses/_components/business-modal";
 import { Business } from "@/app/businesses/_types/business";
 import { Button } from "@/components/ui/button/button";
-import { TypographyHeading } from "@/components/ui/typography-heading";
+import { TypographyHeading } from "@/components/ui/typography/heading/typography-heading";
 import { User } from "@/types/user";
 
 type BusinessListProps = {

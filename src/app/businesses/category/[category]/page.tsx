@@ -2,7 +2,7 @@ import { getAllBusinesses } from "@/app/businesses/_lib/getAllBusinesses";
 
 import BusinessList from "@/app/businesses/_components/business-list";
 import { PageWrapper } from "@/components/page-wrapper";
-import { TypographyHeading } from "@/components/ui/typography-heading";
+import { TypographyHeading } from "@/components/ui/typography/heading/typography-heading";
 import { getCurrentUser } from "@/lib/get-current-user";
 
 export default async function Page({
