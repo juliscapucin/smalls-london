@@ -32,7 +32,7 @@ const navItems: NavItem[] = [
 ];
 
 const meta = {
-  title: "Components/Header",
+  title: "Blocks/Header",
   tags: ["autodocs"],
   args: {
     isAuthenticated: false,
