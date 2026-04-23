@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <CategoryHeader color="accent-1" label="Design" />
+      <CategoryHeader color="accent-3" label="An opinionated catalog" />
     </>
   );
 }

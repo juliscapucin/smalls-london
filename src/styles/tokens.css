@@ -79,12 +79,12 @@
 
   /* Typography / Headline */
   --headline-large-letter-spacing: 0;
-  --headline-large-line-height: 80;
-  --headline-large-size: 64;
+  --headline-large-line-height: 64;
+  --headline-large-size: 40;
   --headline-large-weight: 900;
   --headline-medium-letter-spacing: 0;
-  --headline-medium-line-height: 72;
-  --headline-medium-size: 45;
+  --headline-medium-line-height: 45;
+  --headline-medium-size: 30;
   --headline-medium-weight: 900;
   --headline-small-letter-spacing: 0;
   --headline-small-line-height: 40;

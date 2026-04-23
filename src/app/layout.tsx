@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 
 import { Header } from "@/components/blocks/header/header";
+import { Footer } from "@/components/blocks/footer/footer";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className={`${fontPrimary.className} antialiased font-normal`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
